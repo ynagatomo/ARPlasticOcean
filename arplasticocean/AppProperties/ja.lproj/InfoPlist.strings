@@ -1,0 +1,6 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "ARプラスチックの海";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "AR体験のためにカメラを使用します．";
+
