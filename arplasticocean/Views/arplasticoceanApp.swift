@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ARPlasticOceanApp: App {
+    @StateObject var appStateController = AppStateController()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(appStateController)
         }
     }
 }

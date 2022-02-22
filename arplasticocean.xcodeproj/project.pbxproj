@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA74B28227C4749800D79775 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28127C4749800D79775 /* Log.swift */; };
+		BA74B28427C474C000D79775 /* RealityDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28327C474C000D79775 /* RealityDump.swift */; };
+		BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
+		BA74B28F27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
+		BA74B29127C4780700D79775 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29027C4780700D79775 /* HomeView.swift */; };
+		BA74B29327C47EC500D79775 /* OceanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29227C47EC500D79775 /* OceanView.swift */; };
+		BA74B29527C47F1A00D79775 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29427C47F1A00D79775 /* NoteView.swift */; };
+		BA74B29727C47F8000D79775 /* DevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29627C47F8000D79775 /* DevView.swift */; };
+		BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29B27C4898E00D79775 /* AppConstant.swift */; };
+		BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29E27C496FC00D79775 /* ARScene.swift */; };
+		BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B2A027C4971800D79775 /* ARViewController.swift */; };
+		BA74B2A327C4CB1400D79775 /* effectSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */; };
 		BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */; };
-		BAAD373B27C38993005FA7DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD373A27C38993005FA7DE /* ContentView.swift */; };
 		BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373C27C38994005FA7DE /* Assets.xcassets */; };
 		BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373F27C38994005FA7DE /* Preview Assets.xcassets */; };
 		BAAD374F27C39B90005FA7DE /* arplasticoceanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD374E27C39B90005FA7DE /* arplasticoceanTests.swift */; };
@@ -28,9 +39,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA74B28127C4749800D79775 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		BA74B28327C474C000D79775 /* RealityDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityDump.swift; sourceTree = "<group>"; };
+		BA74B28D27C4778100D79775 /* AppStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateController.swift; sourceTree = "<group>"; };
+		BA74B29027C4780700D79775 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BA74B29227C47EC500D79775 /* OceanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanView.swift; sourceTree = "<group>"; };
+		BA74B29427C47F1A00D79775 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		BA74B29627C47F8000D79775 /* DevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevView.swift; sourceTree = "<group>"; };
+		BA74B29B27C4898E00D79775 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		BA74B29E27C496FC00D79775 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
+		BA74B2A027C4971800D79775 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = effectSound1.mp3; sourceTree = "<group>"; };
 		BAAD373527C38993005FA7DE /* arplasticocean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arplasticocean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arplasticoceanApp.swift; sourceTree = "<group>"; };
-		BAAD373A27C38993005FA7DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BAAD373C27C38994005FA7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAAD373F27C38994005FA7DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BAAD374627C38A6F005FA7DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +82,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA74B28027C4747600D79775 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B28127C4749800D79775 /* Log.swift */,
+				BA74B28327C474C000D79775 /* RealityDump.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BA74B28527C4750B00D79775 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B28A27C4769200D79775 /* Sounds */,
+				BA74B28927C4766F00D79775 /* Fish */,
+				BA74B28827C4761500D79775 /* Refuses */,
+				BA74B28727C4753000D79775 /* Kids */,
+				BA74B28627C4752800D79775 /* Stages */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BA74B28627C4752800D79775 /* Stages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stages;
+			sourceTree = "<group>";
+		};
+		BA74B28727C4753000D79775 /* Kids */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Kids;
+			sourceTree = "<group>";
+		};
+		BA74B28827C4761500D79775 /* Refuses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Refuses;
+			sourceTree = "<group>";
+		};
+		BA74B28927C4766F00D79775 /* Fish */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fish;
+			sourceTree = "<group>";
+		};
+		BA74B28A27C4769200D79775 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		BA74B28B27C476BB00D79775 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B28D27C4778100D79775 /* AppStateController.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BA74B28C27C4770400D79775 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA74B29827C4894600D79775 /* AppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B29B27C4898E00D79775 /* AppConstant.swift */,
+			);
+			path = AppConfiguration;
+			sourceTree = "<group>";
+		};
+		BA74B29D27C496E300D79775 /* ARScene */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B29E27C496FC00D79775 /* ARScene.swift */,
+			);
+			path = ARScene;
+			sourceTree = "<group>";
+		};
 		BAAD372C27C38993005FA7DE = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +193,13 @@
 			children = (
 				BAAD374627C38A6F005FA7DE /* Info.plist */,
 				BAAD376C27C3A965005FA7DE /* AppProperties */,
+				BA74B29827C4894600D79775 /* AppConfiguration */,
 				BAAD376B27C3A945005FA7DE /* Views */,
+				BA74B28B27C476BB00D79775 /* ViewModels */,
+				BA74B28C27C4770400D79775 /* Models */,
+				BA74B29D27C496E300D79775 /* ARScene */,
+				BA74B28027C4747600D79775 /* Utilities */,
+				BA74B28527C4750B00D79775 /* Assets */,
 				BAAD373E27C38994005FA7DE /* Preview Content */,
 			);
 			path = arplasticocean;
@@ -110,7 +225,11 @@
 			isa = PBXGroup;
 			children = (
 				BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */,
-				BAAD373A27C38993005FA7DE /* ContentView.swift */,
+				BA74B29027C4780700D79775 /* HomeView.swift */,
+				BA74B29427C47F1A00D79775 /* NoteView.swift */,
+				BA74B29227C47EC500D79775 /* OceanView.swift */,
+				BA74B2A027C4971800D79775 /* ARViewController.swift */,
+				BA74B29627C47F8000D79775 /* DevView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
+				BA74B2A327C4CB1400D79775 /* effectSound1.mp3 in Resources */,
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,
 				BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
@@ -252,8 +372,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAAD373B27C38993005FA7DE /* ContentView.swift in Sources */,
+				BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */,
+				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
+				BA74B28427C474C000D79775 /* RealityDump.swift in Sources */,
+				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,
+				BA74B29127C4780700D79775 /* HomeView.swift in Sources */,
+				BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */,
+				BA74B29327C47EC500D79775 /* OceanView.swift in Sources */,
 				BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */,
+				BA74B29527C47F1A00D79775 /* NoteView.swift in Sources */,
+				BA74B28227C4749800D79775 /* Log.swift in Sources */,
+				BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAAD374F27C39B90005FA7DE /* arplasticoceanTests.swift in Sources */,
+				BA74B28F27C4778100D79775 /* AppStateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

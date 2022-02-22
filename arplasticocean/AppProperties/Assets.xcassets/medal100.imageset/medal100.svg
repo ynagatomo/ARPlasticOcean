@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(0.978474,0,0,0.978474,12,12)">
+        <circle cx="511" cy="511" r="511" style="fill:rgb(134,210,246);stroke:rgb(38,75,103);stroke-width:2.34px;"/>
+    </g>
+    <g transform="matrix(0.927593,0,0,0.927593,37,40)">
+        <circle cx="511" cy="511" r="511" style="fill:rgb(58,140,189);"/>
+    </g>
+    <g id="レイヤー1">
+        <g transform="matrix(0.742039,0,0,0.742039,-120.927,88.5562)">
+            <text x="238px" y="772px" style="font-family:'Tahoma', sans-serif;font-size:744.229px;fill:rgb(2,52,112);">100</text>
+        </g>
+        <g transform="matrix(0.742039,0,0,0.742039,-133.927,78.5562)">
+            <text x="238px" y="772px" style="font-family:'Tahoma', sans-serif;font-size:744.229px;fill:rgb(134,210,246);">100</text>
+        </g>
+    </g>
+</svg>
