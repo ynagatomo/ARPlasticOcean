@@ -17,7 +17,7 @@ class AppConstant {
                                         comment: "App Review URL.")
 
     // App Review
-    static let appReviewInterval = 25 // each cleanup count
+    static let appReviewInterval = 27 // cleanup count interval
 
     // Sound Effect: getting Medal
     static let soundMedalName = "medal1"

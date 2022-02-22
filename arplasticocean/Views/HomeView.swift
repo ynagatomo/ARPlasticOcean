@@ -31,7 +31,7 @@ struct HomeView: View {
                 Button(action: {
                     showingNoteView = true
                 }, label: {
-                    Image(systemName: "doc.plaintext.fill")
+                    Image(systemName: "info.circle.fill") // "doc.plaintext.fill")
                 })
                 Spacer()
 
@@ -88,12 +88,14 @@ struct HomeView: View {
         }
         #endif
         .alert("medal approval alert",
-               isPresented: $showingMedalApproval, actions: {
-            Button("not send", role: .cancel, action: {})
-            Button("send", action: {})
-        }, message: {
-            Text("you got a new medal.")
-        })
+               isPresented: $showingMedalApproval, actions: {})
+        //        .alert("medal approval alert",
+        //               isPresented: $showingMedalApproval, actions: {
+        //            Button("not send", role: .cancel, action: {})
+        //            Button("send", action: {})
+        //        }, message: {
+        //            Text("you got a new medal.")
+        //        })
     }
 
     private func update() {
@@ -108,12 +110,14 @@ struct HomeView: View {
 
         // show the AppReview in app?
         if appStateController.isShowingAppReview() {
-            if let windowScene = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.windowScene {
+            if let windowScene = (UIApplication.shared.connectedScenes.first
+                                  as? UIWindowScene)?.windows.first?.windowScene {
                 SKStoreReviewController.requestReview(in: windowScene)
             }
         }
     }
 
+    // Play the Sound Effect to approve getting a new Medal.
     private func playMedalSound() {
         if appStateController.isSoundEnable {
             medalSoundPlayer.stop()
