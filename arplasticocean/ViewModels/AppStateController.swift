@@ -17,7 +17,7 @@ struct CleanupMedal {
 @MainActor
 class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
-    @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = -1
+    @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
     @Published private(set) var cleanupCount = 0
 
     @Published var isSoundEnable = true
