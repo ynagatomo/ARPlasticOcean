@@ -18,7 +18,13 @@
 		BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29B27C4898E00D79775 /* AppConstant.swift */; };
 		BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29E27C496FC00D79775 /* ARScene.swift */; };
 		BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B2A027C4971800D79775 /* ARViewController.swift */; };
-		BA74B2A327C4CB1400D79775 /* effectSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */; };
+		BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A427C4D93900D79775 /* cleanup1.mp3 */; };
+		BA74B2A727C4D94E00D79775 /* medal1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A627C4D94E00D79775 /* medal1.mp3 */; };
+		BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A827C4D95900D79775 /* collect1.mp3 */; };
+		BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AA27C4D96B00D79775 /* wave1.m4a */; };
+		BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */; };
+		BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AF27C4DA7300D79775 /* hidamari.m4a */; };
+		BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2B127C4DA8600D79775 /* needbetter.m4a */; };
 		BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */; };
 		BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373C27C38994005FA7DE /* Assets.xcassets */; };
 		BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373F27C38994005FA7DE /* Preview Assets.xcassets */; };
@@ -49,7 +55,13 @@
 		BA74B29B27C4898E00D79775 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		BA74B29E27C496FC00D79775 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		BA74B2A027C4971800D79775 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
-		BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = effectSound1.mp3; sourceTree = "<group>"; };
+		BA74B2A427C4D93900D79775 /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
+		BA74B2A627C4D94E00D79775 /* medal1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = medal1.mp3; sourceTree = "<group>"; };
+		BA74B2A827C4D95900D79775 /* collect1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collect1.mp3; sourceTree = "<group>"; };
+		BA74B2AA27C4D96B00D79775 /* wave1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = wave1.m4a; sourceTree = "<group>"; };
+		BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nukumori.m4a; sourceTree = "<group>"; };
+		BA74B2AF27C4DA7300D79775 /* hidamari.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hidamari.m4a; sourceTree = "<group>"; };
+		BA74B2B127C4DA8600D79775 /* needbetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = needbetter.m4a; sourceTree = "<group>"; };
 		BAAD373527C38993005FA7DE /* arplasticocean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arplasticocean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arplasticoceanApp.swift; sourceTree = "<group>"; };
 		BAAD373C27C38994005FA7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,7 +106,8 @@
 		BA74B28527C4750B00D79775 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BA74B28A27C4769200D79775 /* Sounds */,
+				BA74B2AC27C4DA2300D79775 /* StageSounds */,
+				BA74B28A27C4769200D79775 /* EffectSounds */,
 				BA74B28927C4766F00D79775 /* Fish */,
 				BA74B28827C4761500D79775 /* Refuses */,
 				BA74B28727C4753000D79775 /* Kids */,
@@ -131,12 +144,14 @@
 			path = Fish;
 			sourceTree = "<group>";
 		};
-		BA74B28A27C4769200D79775 /* Sounds */ = {
+		BA74B28A27C4769200D79775 /* EffectSounds */ = {
 			isa = PBXGroup;
 			children = (
-				BA74B2A227C4CB1400D79775 /* effectSound1.mp3 */,
+				BA74B2A427C4D93900D79775 /* cleanup1.mp3 */,
+				BA74B2A627C4D94E00D79775 /* medal1.mp3 */,
+				BA74B2A827C4D95900D79775 /* collect1.mp3 */,
 			);
-			path = Sounds;
+			path = EffectSounds;
 			sourceTree = "<group>";
 		};
 		BA74B28B27C476BB00D79775 /* ViewModels */ = {
@@ -168,6 +183,17 @@
 				BA74B29E27C496FC00D79775 /* ARScene.swift */,
 			);
 			path = ARScene;
+			sourceTree = "<group>";
+		};
+		BA74B2AC27C4DA2300D79775 /* StageSounds */ = {
+			isa = PBXGroup;
+			children = (
+				BA74B2AA27C4D96B00D79775 /* wave1.m4a */,
+				BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */,
+				BA74B2AF27C4DA7300D79775 /* hidamari.m4a */,
+				BA74B2B127C4DA8600D79775 /* needbetter.m4a */,
+			);
+			path = StageSounds;
 			sourceTree = "<group>";
 		};
 		BAAD372C27C38993005FA7DE = {
@@ -329,9 +355,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
-				BA74B2A327C4CB1400D79775 /* effectSound1.mp3 in Resources */,
+				BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */,
+				BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */,
+				BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */,
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,
+				BA74B2A727C4D94E00D79775 /* medal1.mp3 in Resources */,
 				BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */,
+				BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */,
+				BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */,
+				BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
 			);

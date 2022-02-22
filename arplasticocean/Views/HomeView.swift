@@ -14,14 +14,14 @@ struct HomeView: View {
     @State private var showingNoteView = false
     @State private var showingOceanView = false
     @State private var showingDevView = false
-    @State private var showingAppReview = false
     @State private var showingMedalApproval = false
 
     @State private var medal: CleanupMedal?
 
     // swiftlint:disable force_try
-    private let medalSoundPlayer = try! AVAudioPlayer(contentsOf:
-            Bundle.main.url(forResource: "effectSound1", withExtension: "mp3")!)
+    private let medalSoundPlayer = try! AVAudioPlayer(
+        contentsOf: Bundle.main.url(forResource: AppConstant.soundMedalName,
+                                    withExtension: AppConstant.soundMedalExt)!)
 
     var body: some View {
         VStack {
@@ -103,6 +103,13 @@ struct HomeView: View {
                 medal = appStateController.cleanupMedal
                 showingMedalApproval = true
                 playMedalSound()
+            }
+        }
+
+        // show the AppReview in app?
+        if appStateController.isShowingAppReview() {
+            if let windowScene = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.windowScene {
+                SKStoreReviewController.requestReview(in: windowScene)
             }
         }
     }

@@ -17,6 +17,7 @@ struct CleanupMedal {
 @MainActor
 class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
+    @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = -1
     @Published private(set) var cleanupCount = 0
 
     @Published var isSoundEnable = true
@@ -58,5 +59,15 @@ class AppStateController: ObservableObject {
             // swiftlint:disable line_length
             debugLog("setCleanupCount(\(count)) was called but the value is same as the current value. So it was just ignored.")
         }
+    }
+
+    func isShowingAppReview() -> Bool {
+        var isShowing = false
+        if cleanupCount % AppConstant.appReviewInterval == 0
+            && lastAppReviewCleanupCount != cleanupCount {
+            lastAppReviewCleanupCount = cleanupCount
+            isShowing = true
+        }
+        return isShowing
     }
 }
