@@ -71,7 +71,7 @@ struct HomeView: View {
         .padding()
         .padding(.vertical, 32)
         .background {
-            Image("homeBackgroundImage1K")
+            Image("homeBackground")
                 .resizable()
                 .scaledToFill()
         }
