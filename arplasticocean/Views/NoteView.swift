@@ -121,8 +121,32 @@ struct ExplanationView: View {
                 .font(.title2)
                 .fontWeight(.bold)
 
-            Text("(dummy) explanation. explanation. explanation. explanation...", comment: "(dummy) Explanation...")
+            Text("note explanation", comment: "Explanation about the plastic pollution.")
                 .padding(4)
+
+            HStack {
+                Image("noteRefuses")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                Text("note refuses", comment: "Explanation about plastic refuses.")
+            } // HStack
+
+            HStack {
+                Image("noteFish")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                Text("note lives", comment: "Explanation about damage to sea creatures.")
+            } // HStack
+
+            HStack {
+                Image("noteRecycle")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                Text("note recycle", comment: "Explanation about reduce, reuse, and recycle.")
+            } // HStack
         } // VStack
     }
 }

@@ -134,7 +134,7 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(appStateController)
             .previewInterfaceOrientation(.portrait)
             .onAppear {
-                appStateController.setCleanupCount(10)
+                appStateController.setCleanupCount(100)
             }
         HomeView()
             .environmentObject(appStateController)
@@ -152,15 +152,15 @@ struct ContentView: View {
             Text("\(cleanupCount)")
                 .font(.system(size: 64, weight: .black, design: .rounded))
                 .foregroundColor(.white)
-                .padding(.horizontal, 32)
+//                .padding(.horizontal, 32)
                 .shadow(radius: 20)
 
             // Medal
             if let medal = cleanupMedal {
                 Image(medal.imageName)
                     .resizable()
-                    .frame(width: 100, height: 100)
-                    .padding(.horizontal, 32)
+                    .frame(width: 200, height: 200)
+//                    .padding(.horizontal, 0)
                     .shadow(radius: 20)
             }
         } // HStack

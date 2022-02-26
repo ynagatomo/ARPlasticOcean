@@ -11,10 +11,6 @@
 	<dict>
 		<key>UIColorName</key>
 		<string>LaunchScreenColor</string>
-		<key>UIImageName</key>
-		<string>homeBackground</string>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<false/>
 		<key>UILaunchScreen</key>
 		<string></string>
 	</dict>
