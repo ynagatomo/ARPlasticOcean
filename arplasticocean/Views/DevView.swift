@@ -18,7 +18,11 @@ struct DevView: View {
     @State private var isOnToggleB = false
     @State private var isOnToggleC = false
 
-    let assetNames = ["sample.usdz", "sea.usdz", "fishC.usdz", "bottleA.usdz"]
+    let assetNames = ["stage1.usdz",
+                      "umeiromodoki.usdz",
+                      "bag.usdz", "bottle.usdz", "net.usdz",
+                      "debris1.usdz", "debris2.usdz"
+    ]
     @State private var dumpAsset = 0
 
     private var currentCleanupCountText: String {

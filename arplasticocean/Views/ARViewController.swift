@@ -11,12 +11,10 @@ import RealityKit
 
 class ARViewController: UIViewController {
     var appStateController: AppStateController
-    let arScene: ARScene
+    private var arScene: ARScene!
 
     init(appStateController: AppStateController) {
         self.appStateController = appStateController
-        arScene = ARScene()
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -27,23 +25,33 @@ class ARViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         debugLog("ARViewController: viewDidAppear(_:) was called.")
         let arView = ARView(frame: .zero)
+        #if DEBUG
+        arView.debugOptions = [.showPhysics]
+        #endif
         view = arView
 
         let anchorEntity = AnchorEntity()
         arView.scene.addAnchor(anchorEntity)
 
+        arScene = ARScene(stageIndex: appStateController.stageIndex,
+                          assetManager: appStateController.assetManager)
+        arScene.prepare(arView: arView, anchor: anchorEntity)
+
         let config = ARWorldTrackingConfiguration()
         arView.session.run(config)
+
+        arScene.startSession()
     }
 
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        debugLog("ARViewController: viewWillDisappear(_:) was called.")
-    //    }
+    override func viewWillDisappear(_ animated: Bool) {
+        debugLog("ARViewController: viewWillDisappear(_:) was called.")
+        arScene.stopSession()
+    }
 
     override func viewDidDisappear(_ animated: Bool) {
         debugLog("ARViewController: viewDidDisappear(_:) was called.")
         if arScene.isCleaned {
-            appStateController.incrementCleanupCount() // Cleanup-count ++
+            appStateController.setCleaned() // This stage has been cleaned.
         }
     }
 }

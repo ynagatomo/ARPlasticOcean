@@ -19,8 +19,10 @@ class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
     @Published private(set) var cleanupCount = 0
-
     @Published var isSoundEnable = true
+
+    private(set) var stageIndex: Int = 0     // index of the next stage which will be cleaned
+    let assetManager: AssetManager = AssetManager()
 
     var cleanupMedal: CleanupMedal? {
         var medal: CleanupMedal?
@@ -36,13 +38,20 @@ class AppStateController: ObservableObject {
         return medal
     }
 
+    var nextStageIndex: Int {
+        stageIndex == SceneConstant.stageCount - 1 ? 0 : stageIndex + 1
+    }
+
     init() {
         cleanupCount = savedCleanupCount
     }
 
-    /// Increment the cleanup count.
-    func incrementCleanupCount() {
+    /// Set the stage cleaned and move to the next stage
+    func setCleaned() {
+        // cleanup count ++
         setCleanupCount(cleanupCount + 1)
+        // move to the next stage
+        stageIndex = nextStageIndex
     }
 
     /// Set the cleanup count.

@@ -10,6 +10,13 @@
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
 		BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA327C9EB75003C7152 /* stage1.usdz */; };
 		BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */; };
+		BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA727CB01C3003C7152 /* Stage.swift */; };
+		BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */; };
+		BA3C5AB027CB70CC003C7152 /* bag.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AAB27CB70CC003C7152 /* bag.usdz */; };
+		BA3C5AB127CB70CC003C7152 /* net.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AAC27CB70CC003C7152 /* net.usdz */; };
+		BA3C5AB227CB70CC003C7152 /* debris1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AAD27CB70CC003C7152 /* debris1.usdz */; };
+		BA3C5AB327CB70CC003C7152 /* bottle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AAE27CB70CC003C7152 /* bottle.usdz */; };
+		BA3C5AB427CB70CC003C7152 /* debris2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AAF27CB70CC003C7152 /* debris2.usdz */; };
 		BA74B28227C4749800D79775 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28127C4749800D79775 /* Log.swift */; };
 		BA74B28427C474C000D79775 /* RealityDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28327C474C000D79775 /* RealityDump.swift */; };
 		BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
@@ -51,6 +58,13 @@
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA327C9EB75003C7152 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
 		BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
+		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		BA3C5AAB27CB70CC003C7152 /* bag.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bag.usdz; sourceTree = "<group>"; };
+		BA3C5AAC27CB70CC003C7152 /* net.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = net.usdz; sourceTree = "<group>"; };
+		BA3C5AAD27CB70CC003C7152 /* debris1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = debris1.usdz; sourceTree = "<group>"; };
+		BA3C5AAE27CB70CC003C7152 /* bottle.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bottle.usdz; sourceTree = "<group>"; };
+		BA3C5AAF27CB70CC003C7152 /* debris2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = debris2.usdz; sourceTree = "<group>"; };
 		BA74B28127C4749800D79775 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BA74B28327C474C000D79775 /* RealityDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityDump.swift; sourceTree = "<group>"; };
 		BA74B28D27C4778100D79775 /* AppStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateController.swift; sourceTree = "<group>"; };
@@ -132,6 +146,11 @@
 		BA74B28827C4761500D79775 /* Refuses */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C5AAB27CB70CC003C7152 /* bag.usdz */,
+				BA3C5AAE27CB70CC003C7152 /* bottle.usdz */,
+				BA3C5AAD27CB70CC003C7152 /* debris1.usdz */,
+				BA3C5AAF27CB70CC003C7152 /* debris2.usdz */,
+				BA3C5AAC27CB70CC003C7152 /* net.usdz */,
 			);
 			path = Refuses;
 			sourceTree = "<group>";
@@ -158,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				BA74B28D27C4778100D79775 /* AppStateController.swift */,
+				BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -182,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				BA74B29E27C496FC00D79775 /* ARScene.swift */,
+				BA3C5AA727CB01C3003C7152 /* Stage.swift */,
 			);
 			path = ARScene;
 			sourceTree = "<group>";
@@ -356,19 +377,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */,
+				BA3C5AB327CB70CC003C7152 /* bottle.usdz in Resources */,
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
 				BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */,
+				BA3C5AB127CB70CC003C7152 /* net.usdz in Resources */,
 				BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */,
 				BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */,
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,
+				BA3C5AB227CB70CC003C7152 /* debris1.usdz in Resources */,
 				BA74B2A727C4D94E00D79775 /* medal1.mp3 in Resources */,
 				BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */,
 				BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */,
 				BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */,
 				BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */,
+				BA3C5AB427CB70CC003C7152 /* debris2.usdz in Resources */,
 				BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
+				BA3C5AB027CB70CC003C7152 /* bag.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,12 +439,14 @@
 				BA74B28427C474C000D79775 /* RealityDump.swift in Sources */,
 				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,
 				BA74B29127C4780700D79775 /* HomeView.swift in Sources */,
+				BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */,
 				BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */,
 				BA74B29327C47EC500D79775 /* OceanView.swift in Sources */,
 				BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */,
 				BA74B29527C47F1A00D79775 /* NoteView.swift in Sources */,
 				BA74B28227C4749800D79775 /* Log.swift in Sources */,
 				BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */,
+				BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
