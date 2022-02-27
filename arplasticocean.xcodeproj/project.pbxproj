@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
+		BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA327C9EB75003C7152 /* stage1.usdz */; };
+		BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */; };
 		BA74B28227C4749800D79775 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28127C4749800D79775 /* Log.swift */; };
 		BA74B28427C474C000D79775 /* RealityDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28327C474C000D79775 /* RealityDump.swift */; };
 		BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
+		BA3C5AA327C9EB75003C7152 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
+		BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
 		BA74B28127C4749800D79775 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BA74B28327C474C000D79775 /* RealityDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityDump.swift; sourceTree = "<group>"; };
 		BA74B28D27C4778100D79775 /* AppStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateController.swift; sourceTree = "<group>"; };
@@ -110,7 +116,6 @@
 				BA74B28A27C4769200D79775 /* EffectSounds */,
 				BA74B28927C4766F00D79775 /* Fish */,
 				BA74B28827C4761500D79775 /* Refuses */,
-				BA74B28727C4753000D79775 /* Kids */,
 				BA74B28627C4752800D79775 /* Stages */,
 			);
 			path = Assets;
@@ -119,15 +124,9 @@
 		BA74B28627C4752800D79775 /* Stages */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C5AA327C9EB75003C7152 /* stage1.usdz */,
 			);
 			path = Stages;
-			sourceTree = "<group>";
-		};
-		BA74B28727C4753000D79775 /* Kids */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Kids;
 			sourceTree = "<group>";
 		};
 		BA74B28827C4761500D79775 /* Refuses */ = {
@@ -140,6 +139,7 @@
 		BA74B28927C4766F00D79775 /* Fish */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */,
 			);
 			path = Fish;
 			sourceTree = "<group>";
@@ -165,6 +165,7 @@
 		BA74B28C27C4770400D79775 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */,
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
 				BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */,
 				BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */,
@@ -364,6 +366,7 @@
 				BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */,
 				BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */,
 				BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */,
+				BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
 			);
@@ -406,6 +409,7 @@
 			files = (
 				BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */,
 				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
+				BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */,
 				BA74B28427C474C000D79775 /* RealityDump.swift in Sources */,
 				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,
 				BA74B29127C4780700D79775 /* HomeView.swift in Sources */,
