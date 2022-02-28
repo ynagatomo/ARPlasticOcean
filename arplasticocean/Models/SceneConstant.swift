@@ -20,8 +20,9 @@ struct AssetConstant {
                    offset: 0.75,
                    edge: 6.0,
                    thickness: 0.1,
-                   additionalCollisions: [StageCollisionConstant(shapeType: .sphere(radius: 0.36), // for a Rock
-                               position: SIMD3<Float>([0.0, -(1.5 - 0.75), 0.0]))], // 1.5: radius, 0.75: offset
+                   additionalCollisions: [
+                    StageCollisionConstant(shapeType: .sphere(radius: 0.36), // for a Rock
+                    position: SIMD3<Float>([0.0, -(1.5 - 0.75), 0.0]))], // 1.5: radius, 0.75: offset
                    physicsMass: 1.0,
                    physicsFriction: 0.1,
                    physicsRestitution: 0.1)
@@ -51,10 +52,14 @@ struct AssetConstant {
         case standard = 0
     }
     static let boatAssets: [BoatAssetConstant] = [
-        BoatAssetConstant(name: "Utsuro", modelFile: "utsuro.usdz",
-                          volume: SIMD3<Float>([0.0, 0.0, 0.0]),        // TODO: set appropriate value
-                          gageVolume: SIMD3<Float>([0.0, 0.0, 0.0]),    // TODO: set collision shape
-                          gagePosition: SIMD3<Float>([0.0, 0.0, 0.0]))  // TODO: set collision position
+        BoatAssetConstant(name: "Utsuro", modelFile: "boat1.usdz",
+                          topLevelModelEntityName: "Pole",
+                          volume: SIMD3<Float>([0.8, 1.0, 0.8]),
+                          thickness: 0.04,
+                          position: SIMD3<Float>([0.0, 0.2, 0.0]),
+                          physicsMass: 1.0,
+                          physicsFriction: 0.1,
+                          physicsRestitution: 0.1)
     ]
 
     enum MusicAssetIndex: Int {
@@ -168,9 +173,13 @@ struct RefuseAssetConstant {
 struct BoatAssetConstant {
     let name: String
     let modelFile: String   // USDZ file name with ext.
-    let volume: SIMD3<Float>    // (width, hight, depth) (x, y, z)
-    let gageVolume: SIMD3<Float>    // (width, height, depth) (x, y, z)
-    let gagePosition: SIMD3<Float>  // (x, y, z)
+    let topLevelModelEntityName: String     // top level Model Entity name
+    let volume: SIMD3<Float>    // gage volume (width, hight, depth) (x, y, z)
+    let thickness: Float        // gage collision shape thickness [m]
+    let position: SIMD3<Float>  // gage origin (bottom position) (x, y, z)
+    let physicsMass: Float          // mass [kg]
+    let physicsFriction: Float      // [0, infinity)
+    let physicsRestitution: Float   // [0, 1]
 }
 
 struct SoundAssetConstant {

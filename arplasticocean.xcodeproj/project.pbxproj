@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0927FD27CC883A001F8CB4 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA0927FC27CC883A001F8CB4 /* boat1.usdz */; };
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
 		BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA327C9EB75003C7152 /* stage1.usdz */; };
 		BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA0927FC27CC883A001F8CB4 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA327C9EB75003C7152 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
 		BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA3C5AB527CBBC94003C7152 /* Boat */ = {
+			isa = PBXGroup;
+			children = (
+				BA0927FC27CC883A001F8CB4 /* boat1.usdz */,
+			);
+			path = Boat;
+			sourceTree = "<group>";
+		};
 		BA74B28027C4747600D79775 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 				BA74B28A27C4769200D79775 /* EffectSounds */,
 				BA74B28927C4766F00D79775 /* Fish */,
 				BA74B28827C4761500D79775 /* Refuses */,
+				BA3C5AB527CBBC94003C7152 /* Boat */,
 				BA74B28627C4752800D79775 /* Stages */,
 			);
 			path = Assets;
@@ -381,6 +392,7 @@
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
 				BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */,
 				BA3C5AB127CB70CC003C7152 /* net.usdz in Resources */,
+				BA0927FD27CC883A001F8CB4 /* boat1.usdz in Resources */,
 				BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */,
 				BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */,
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,

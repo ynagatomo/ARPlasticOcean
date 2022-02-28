@@ -21,6 +21,7 @@ class ARScene {
     private var anchor: AnchorEntity!
 
     private var stage: Stage!
+    private var boat: Boat!
     private var fishes: [Fish] = []
     private var refuses: [Refuse] = []
 
@@ -34,6 +35,8 @@ class ARScene {
         self.anchor = anchor
         // load entities and place them in the AR world.
         prepareStage()
+        // load entities and place them in the AR world.
+        prepareBoat()
         // load entities and place them in the AR world.
         prepareFishes()
         // load entities and place them in the AR world.
@@ -66,6 +69,21 @@ class ARScene {
             stage.setEntity(entity: entity)
             // add CollisionComponent and PhysicsBodyComponent
             stage.addPhysics()
+            // place it in the AR world
+            anchor.addChild(entity)
+        }
+    }
+
+    private func prepareBoat() {
+        let boatAssetIndex = SceneConstant.stageConstants[stageIndex].boatAssetIndex
+        // instantiate the boat object
+        boat = Boat(constant: AssetConstant.boatAssets[boatAssetIndex])
+        // load the entity
+        if let entity = assetManager.loadBoatEntity(name: boat.constant.modelFile) {
+            // set the entity
+            boat.setEntity(entity: entity)
+            // add CollisionComponent and PhysicsBodyComponent
+            boat.addPhysics()
             // place it in the AR world
             anchor.addChild(entity)
         }

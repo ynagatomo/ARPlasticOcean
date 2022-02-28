@@ -19,6 +19,7 @@ struct DevView: View {
     @State private var isOnToggleC = false
 
     let assetNames = ["stage1.usdz",
+                      "boat1.usdz",
                       "umeiromodoki.usdz",
                       "bag.usdz", "bottle.usdz", "net.usdz",
                       "debris1.usdz", "debris2.usdz"
