@@ -14,7 +14,7 @@ struct CleanupMedal {
     let imageName: String
 }
 
-@MainActor
+// @MainActor
 class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
