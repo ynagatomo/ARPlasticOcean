@@ -62,7 +62,17 @@ class ARScene {
         // instantiate the stage object
         stage = Stage(constant: AssetConstant.stageAssets[stageIndex])
         // load the entity
-        if let entity = assetManager.loadStageEntity(name: stage.constant.modelFile) {
+        let materialSetting = AssetManager.MaterialSetting(
+            textureName: stage.constant.textureName,
+            domeShowing: stage.constant.domeShowing,
+            domeEntityName: stage.constant.domeEntityName,
+            surfaceEntityName: stage.constant.surfaceEntityName,
+            baseShowing: stage.constant.baseShowing,
+            baseEntityName: stage.constant.baseEntityName)
+        if let entity = assetManager.loadStageEntity(
+            name: stage.constant.modelFile,
+            materialSetting: materialSetting
+        ) {
             // adjust position and scale
             entity.position = SceneConstant.origin  // scene origin
             entity.scale = SceneConstant.scale      // scene scale

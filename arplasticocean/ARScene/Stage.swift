@@ -25,12 +25,6 @@ class Stage {
 
     func setEntity(entity: Entity) {
         self.entity = entity
-        if let domeEntity = entity.findEntity(named: constant.domeEntityName) {
-            domeEntity.isEnabled = constant.domeShowing
-        }
-        if let baseEntity = entity.findEntity(named: constant.baseEntityName) {
-            baseEntity.isEnabled = constant.baseShowing
-        }
     }
 
     // swiftlint:disable function_body_length

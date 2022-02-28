@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA0927FD27CC883A001F8CB4 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA0927FC27CC883A001F8CB4 /* boat1.usdz */; };
+		BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */; };
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
 		BA3C5AA427C9EB75003C7152 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA327C9EB75003C7152 /* stage1.usdz */; };
 		BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		BA0927FC27CC883A001F8CB4 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
+		BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA327C9EB75003C7152 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
 		BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				BAAD373C27C38994005FA7DE /* Assets.xcassets */,
+				BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */,
 				BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */,
 				BAAD376627C3A3A3005FA7DE /* Localizable.strings */,
 				BAAD376327C3A3A3005FA7DE /* InfoPlist.strings */,
@@ -405,6 +408,7 @@
 				BA3C5AB427CB70CC003C7152 /* debris2.usdz in Resources */,
 				BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
+				BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
 				BA3C5AB027CB70CC003C7152 /* bag.usdz in Resources */,
 			);
