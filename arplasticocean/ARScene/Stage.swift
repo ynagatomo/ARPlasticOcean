@@ -25,6 +25,12 @@ class Stage {
 
     func setEntity(entity: Entity) {
         self.entity = entity
+        if let domeEntity = entity.findEntity(named: constant.domeEntityName) {
+            domeEntity.isEnabled = constant.domeShowing
+        }
+        if let baseEntity = entity.findEntity(named: constant.baseEntityName) {
+            baseEntity.isEnabled = constant.baseShowing
+        }
     }
 
     // swiftlint:disable function_body_length
@@ -108,14 +114,17 @@ class Stage {
 
 class Boat {
     let constant: BoatAssetConstant
+    var position: SIMD3<Float>
     private(set) var entity: Entity?
     private(set) var topLevelModelEntity: ModelEntity?
 
-    init(constant: BoatAssetConstant) {
+    init(constant: BoatAssetConstant, position: SIMD3<Float>) {
         self.constant = constant
+        self.position = position
     }
 
     func setEntity(entity: Entity) {
+        entity.position = position  // initial position
         self.entity = entity
     }
 

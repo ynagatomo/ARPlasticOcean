@@ -9,12 +9,36 @@ import Foundation
 
 struct AssetConstant {
     enum StageAssetIndex: Int {
-        case daytime = 0, night, room
+        case room = 0, daytime, night
     }
     static let stageAssets: [StageAssetConstant] = [
+        // Room Stage
+        StageAssetConstant(name: "Room",
+                   modelFile: "stage1.usdz",
+                   topLevelModelEntityName: "StageSurface",
+                   domeShowing: false,
+                   domeEntityName: "StageDome",
+                   baseShowing: false,
+                   baseEntityName: "StageBase",
+                   radius: 1.5,
+                   surface: 0.2,
+                   offset: 0.75,
+                   edge: 6.0,
+                   thickness: 0.1,
+                   additionalCollisions: [
+                    StageCollisionConstant(shapeType: .sphere(radius: 0.36), // for a Rock
+                    position: SIMD3<Float>([0.0, -(1.5 - 0.75), 0.0]))], // 1.5: radius, 0.75: offset
+                   physicsMass: 1.0,
+                   physicsFriction: 0.1,
+                   physicsRestitution: 0.1),
+        // Daytime Stage
         StageAssetConstant(name: "Daytime",
                    modelFile: "stage1.usdz",
                    topLevelModelEntityName: "StageSurface",
+                   domeShowing: true,
+                   domeEntityName: "StageDome",
+                   baseShowing: true,
+                   baseEntityName: "StageBase",
                    radius: 1.5,
                    surface: 0.2,
                    offset: 0.75,
@@ -26,7 +50,6 @@ struct AssetConstant {
                    physicsMass: 1.0,
                    physicsFriction: 0.1,
                    physicsRestitution: 0.1)
-
     ]
 
     enum FishAssetIndex: Int {
@@ -111,6 +134,25 @@ struct SceneConstant {
     static let refuseVolumeRadius: Float = 0.075 // [m]
 
     static let stageConstants: [StageConstant] = [
+        // Room Stage
+        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
+                      secondSoundIndex: AssetConstant.MusicAssetIndex.needbetter.rawValue,
+                      stageAssetIndex: AssetConstant.StageAssetIndex.room.rawValue,
+                      fishProperties: [
+                        FishPropertyConstant(assetIndex: AssetConstant.FishAssetIndex.umeiromodoki.rawValue,
+                                     selectionType: .each, number: 6,
+                                     probability: 1.0, threshold: 2)
+                      ],
+                      refuseProperties: [
+                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bag.rawValue, rate: 0.2),
+                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bottle.rawValue, rate: 0.2),
+                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.net.rawValue, rate: 0.2),
+                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris1.rawValue, rate: 0.2),
+                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris2.rawValue, rate: 0.2)
+                      ],
+                      boatAssetIndex: 0,
+                      fishNumber: 0),
+        // Daytime Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
                       secondSoundIndex: AssetConstant.MusicAssetIndex.nukumori.rawValue,
                       stageAssetIndex: AssetConstant.StageAssetIndex.daytime.rawValue,
@@ -137,6 +179,10 @@ struct StageAssetConstant {
     let name: String
     let modelFile: String   // USDZ fine name with ext.
     let topLevelModelEntityName: String     // top level Model Entity name
+    let domeShowing: Bool   // showing?
+    let domeEntityName: String
+    let baseShowing: Bool   // showing?
+    let baseEntityName: String
     // stage geometry
     let radius: Float   // radius of the Stage Dome [m]
     let surface: Float  // distance to the sea surface from the origin [m]

@@ -19,6 +19,7 @@ class ARScene {
     private let assetManager: AssetManager
     private var arView: ARView!
     private var anchor: AnchorEntity!
+    private var stageEntity: Entity!
 
     private var stage: Stage!
     private var boat: Boat!
@@ -71,21 +72,26 @@ class ARScene {
             stage.addPhysics()
             // place it in the AR world
             anchor.addChild(entity)
+            stageEntity = entity
         }
     }
 
     private func prepareBoat() {
         let boatAssetIndex = SceneConstant.stageConstants[stageIndex].boatAssetIndex
         // instantiate the boat object
-        boat = Boat(constant: AssetConstant.boatAssets[boatAssetIndex])
+        let surfaceY = AssetConstant.stageAssets[stageIndex].offset
+                       - AssetConstant.stageAssets[stageIndex].surface
+        boat = Boat(constant: AssetConstant.boatAssets[boatAssetIndex],
+                    position: SIMD3<Float>([0.0, surfaceY, 0.0])) // initial boat position
         // load the entity
         if let entity = assetManager.loadBoatEntity(name: boat.constant.modelFile) {
-            // set the entity
+            // set the entity (The initial position will be set.)
             boat.setEntity(entity: entity)
             // add CollisionComponent and PhysicsBodyComponent
             boat.addPhysics()
             // place it in the AR world
-            anchor.addChild(entity)
+//            anchor.addChild(entity)
+            stageEntity.addChild(entity)
         }
     }
 
