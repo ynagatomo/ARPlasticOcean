@@ -10,7 +10,8 @@ import SwiftUI
 import RealityKit
 
 struct DevView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    // @Environment(\.dismiss) private var dismiss // iOS 15.0+
     @EnvironmentObject var appStateController: AppStateController
 
     @State private var cleanupCountText = ""
@@ -33,60 +34,64 @@ struct DevView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: dismiss.callAsFunction) {
+                Button(action: dismiss) { //  dismiss.callAsFunction) { // iOS 15.0+
                     Image(systemName: "xmark.circle")
                         .font(.title)
                         .padding(10)
                 }
-                .tint(.orange)
+                // .tint(.orange) // iOS 15.0+
                 Spacer()
             }
             List {
-                Section("Count [0...]") {
-                    TextField(currentCleanupCountText,
-                              text: $cleanupCountText,
-                              onCommit: {
-                        if let count = Int(cleanupCountText) {
-                            appStateController.setCleanupCount(count)
-                        } else {
-                            cleanupCountText = ""
-                        }
-                    })
-                        .textFieldStyle(.roundedBorder)
-                }
-                Section("Assets") {
-                    HStack {
-                        Text("Model")
-                        Spacer()
-                        Picker(selection: $dumpAsset, label: Text("Model")) {
-                            ForEach(0 ..< assetNames.count) {
-                                Text(assetNames[$0])
+                Section(content: { // Section("Count [0...]") { // iOS 15.0+
+                        TextField(currentCleanupCountText,
+                                  text: $cleanupCountText,
+                                  onCommit: {
+                            if let count = Int(cleanupCountText) {
+                                appStateController.setCleanupCount(count)
+                            } else {
+                                cleanupCountText = ""
                             }
-                        }
-                        //  .pickerStyle(SegmentedPickerStyle())
-                        .pickerStyle(MenuPickerStyle())
-                    }
-                    HStack {
-                        Spacer()
-                        Button(action: { dump(assetName: assetNames[dumpAsset]) },
-                               label: {
-                            Text("  Dump  ")
                         })
-                    }
-                }
-                Section("Setting A") {
-                    Toggle("Option A", isOn: $isOnToggleA)
-                    Toggle("Option B", isOn: $isOnToggleB)
-                    Toggle("Option C", isOn: $isOnToggleC)
-                }
-                .tint(.orange)
+                        .textFieldStyle(.roundedBorder)
+                    }, header: {Text("Count [0...]")})
+                Section(content: { // Section("Assets") { // iOS 15.0+
+                        HStack {
+                            Text("Model")
+                            Spacer()
+                            Picker(selection: $dumpAsset, label: Text("Model")) {
+                                ForEach(0 ..< assetNames.count) {
+                                    Text(assetNames[$0])
+                                }
+                            }
+                            //  .pickerStyle(SegmentedPickerStyle())
+                            .pickerStyle(MenuPickerStyle())
+                        }
+                        HStack {
+                            Spacer()
+                            Button(action: { dump(assetName: assetNames[dumpAsset]) },
+                                   label: {
+                                Text("  Dump  ")
+                            })
+                        }
+                    }, header: { Text("Assets") })
+                Section(content: { // Section("Setting A") { // iSO 15.0+
+                        Toggle("Option A", isOn: $isOnToggleA)
+                        Toggle("Option B", isOn: $isOnToggleB)
+                        Toggle("Option C", isOn: $isOnToggleC)
+                    }, header: { Text("Setting A") })
+                // .tint(.orange) // iOS 15.0+
                 // .listRowSeparator(.hidden) // iOS 15+
             } // List
             .listStyle(SidebarListStyle()) // iOS 14+
-            .buttonStyle(.bordered) // iOS 15+
+            // .buttonStyle(.bordered) // iOS 15+
         } // VStack
         .padding()
     } // View
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct DevView_Previews: PreviewProvider {

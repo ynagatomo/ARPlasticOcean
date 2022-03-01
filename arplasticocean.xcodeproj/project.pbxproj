@@ -44,6 +44,7 @@
 		BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376327C3A3A3005FA7DE /* InfoPlist.strings */; };
 		BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376627C3A3A3005FA7DE /* Localizable.strings */; };
 		BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */; };
+		BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		BAAD376927C3A45B005FA7DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BAAD376A27C3A45B005FA7DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,7 @@
 		BAAD376B27C3A945005FA7DE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BAF185FE27CDA57F007EC130 /* Common */,
 				BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */,
 				BA74B29027C4780700D79775 /* HomeView.swift */,
 				BA74B29427C47F1A00D79775 /* NoteView.swift */,
@@ -305,6 +308,14 @@
 				BAAD376327C3A3A3005FA7DE /* InfoPlist.strings */,
 			);
 			path = AppProperties;
+			sourceTree = "<group>";
+		};
+		BAF185FE27CDA57F007EC130 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +463,7 @@
 				BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */,
 				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
 				BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */,
+				BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */,
 				BA74B28427C474C000D79775 /* RealityDump.swift in Sources */,
 				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,
 				BA74B29127C4780700D79775 /* HomeView.swift in Sources */,
@@ -558,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -613,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

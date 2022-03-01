@@ -10,7 +10,8 @@ import ARKit
 import RealityKit
 
 struct OceanView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    // @Environment(\.dismiss) private var dismiss // iOS 15.0+
     //    @EnvironmentObject var stateController: StateController
 
     var body: some View {
@@ -21,22 +22,28 @@ struct OceanView: View {
             // Buttons
             VStack {
                 HStack {
-                    Button(action: dismiss.callAsFunction) {
+                    Button(action: dismiss) { // dismiss.callAsFunction) { // iOS 15.0+
                         Image(systemName: "house")
-                            .font(.title)
-                            .padding(22)
+                            .font(.largeTitle)
+                            .padding(4)
                     }
-                    .tint(.orange)
+                    .foregroundColor(.white)
+                    // .tint(.orange) // iOS 15.0+
                     Spacer()
                 }
                 Spacer()
             } // VStack
-            .padding(.vertical, 44)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 32)
         } // ZStack
         .ignoresSafeArea()
         .onAppear {
             debugLog("OceanView: onAppear() was called.")
         }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

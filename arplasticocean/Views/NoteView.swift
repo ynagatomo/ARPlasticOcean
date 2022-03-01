@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NoteView: View {
-    @Environment(\.dismiss) private var dismiss
+    //     @Environment(\.dismiss) private var dismiss  // iOS 15.0+
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ZStack {
@@ -17,12 +18,12 @@ struct NoteView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 // Top Bar
                 HStack {
-                    Button(action: dismiss.callAsFunction) {
+                    Button(action: dismiss) { //  dismiss.callAsFunction) { // iOS 15.0+
                         Image(systemName: "xmark.circle")
                             .font(.title)
                             .padding(10)
                     }
-                    .tint(.yellow)
+                    // .tint(.yellow) // iOS 15.0+
                     Spacer()
                 } // HStack
 
@@ -32,39 +33,59 @@ struct NoteView: View {
                     .padding(4)
 
                 // Usage
-                UsageView()
-                    .padding(16)
-                    .background(Color("UsageBackgroundColor"),
-                                in: RoundedRectangle(cornerRadius: 20.0))
-                    .padding(.bottom, 16)
+                ZStack { // TODO: rethink
+                    RoundedRectangle(cornerRadius: 20.0)
+                        .foregroundColor(Color("UsageBackgroundColor"))
+                    UsageView()
+                        .padding(16)
+                        //    .background(Color("UsageBackgroundColor"),  // iOS 15.0+
+                        //                in: RoundedRectangle(cornerRadius: 20.0))
+                        .padding(.bottom, 16)
+                }
 
                 // Support
-                SupportView()
-                    .padding(16)
-                    .background(Color("SupportBackgroundColor"),
-                                in: RoundedRectangle(cornerRadius: 20.0))
-                    .padding(.bottom, 16)
+                ZStack { // TODO: rethink
+                    RoundedRectangle(cornerRadius: 20.0)
+                        .foregroundColor(Color("SupportBackgroundColor"))
+                    SupportView()
+                        .padding(16)
+                    //    .background(Color("SupportBackgroundColor"), // iOS 15.0+
+                    //                in: RoundedRectangle(cornerRadius: 20.0))
+                        .padding(.bottom, 16)
+                }
 
                 // Explanation
-                ExplanationView()
-                    .padding(16)
-                    .background(Color("ExplanationBackgroundColor"),
-                                in: RoundedRectangle(cornerRadius: 20.0))
-                    .padding(.bottom, 16)
+                ZStack { // TODO: rethink
+                    RoundedRectangle(cornerRadius: 20.0)
+                        .foregroundColor(Color("ExplanationBackgroundColor"))
+                    ExplanationView()
+                        .padding(16)
+                    //    .background(Color("ExplanationBackgroundColor"), // iOS 15.0+
+                    //                in: RoundedRectangle(cornerRadius: 20.0))
+                        .padding(.bottom, 16)
+                }
 
             } // ScrollView
             .foregroundColor(.white)
             .padding()
         } // ZStack
     }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
 struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteView()
+        if #available(iOS 15, *) {
+            NoteView()
             .previewInterfaceOrientation(.portrait)
-        NoteView()
+            NoteView()
             .previewInterfaceOrientation(.landscapeRight)
+        } else {
+            NoteView()
+        }
     }
 }
 

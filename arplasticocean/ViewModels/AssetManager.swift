@@ -46,9 +46,12 @@ class AssetManager {
 
         setEntityEnable(materialSetting)
 
-        if materialSetting.textureName != loadedStageTexture {
-            loadStageTexture(materialSetting: materialSetting)
-            loadedStageTexture = materialSetting.textureName
+        // When iOS 15.0+, the image texture of the stage will be changed.
+        if #available(iOS 15, *) {
+            if materialSetting.textureName != loadedStageTexture {
+                loadStageTexture(materialSetting: materialSetting)
+                loadedStageTexture = materialSetting.textureName
+            }
         }
 
         return loadedStageEntity
@@ -66,6 +69,7 @@ class AssetManager {
         }
     }
 
+    @available(iOS 15, *)
     private func loadStageTexture(materialSetting: MaterialSetting) {
         guard let stageEntity = loadedStageEntity  else { return }
         // Do nothing when textureName is nil. The material will be kept current one.
@@ -73,7 +77,7 @@ class AssetManager {
 
         var material = UnlitMaterial()
         if let textureResource = try? TextureResource.load(named: textureFileName) {
-            material.color.texture = PhysicallyBasedMaterial.Texture(textureResource)
+            material.color.texture = PhysicallyBasedMaterial.Texture(textureResource) // color property : iOS 15.0+
 
             if let domeEntity = stageEntity.findEntity(named: materialSetting.domeEntityName) {
                 if let domeModelEntity = domeEntity as? ModelEntity {

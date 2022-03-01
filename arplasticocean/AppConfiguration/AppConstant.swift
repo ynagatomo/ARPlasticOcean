@@ -9,12 +9,17 @@ import Foundation
 
 class AppConstant {
     // Support page URL
-    static let supportURLstring = String(localized: "https://www.atarayosd.com/apo/support.html",
-                                         comment: "Support page URL.")
+    static let supportURLstring = NSLocalizedString("https://www.atarayosd.com/apo/support.html",
+                                             comment: "Support page URL.")
+    //               String(localized: "https://www.atarayosd.com/apo/support.html", // iOS 15.0+
+    //                      comment: "Support page URL.")
+
     // App Review URL
     // TODO: replace the app ID with AR Plastic Ocean app's one
-    static let reviewURLstring = String(localized: "https://apps.apple.com/app/id1564570252?action=write-review",
-                                        comment: "App Review URL.")
+    static let reviewURLstring = NSLocalizedString("https://apps.apple.com/app/id1564570252?action=write-review",
+                                       comment: "App Review URL.")
+    //               String(localized: "https://apps.apple.com/app/id1564570252?action=write-review", // iOS 15.0+
+    //                                 comment: "App Review URL.")
 
     // App Review
     static let appReviewInterval = 27 // cleanup count interval

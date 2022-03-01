@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="arplasticocean/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="arplasticocean/AppProperties/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
@@ -22,14 +22,149 @@
       </trans-unit>
     </body>
   </file>
-  <file original="arplasticocean/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="arplasticocean/AppProperties/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
+      <trans-unit id="  Dump  " xml:space="preserve">
+        <source>  Dump  </source>
+        <target>  Dump  </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld" xml:space="preserve">
+        <source>%lld</source>
+        <target>%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="AR Plastic Ocean" xml:space="preserve">
+        <source>AR Plastic Ocean</source>
+        <target>AR Plastic Ocean</target>
+        <note>App Name</note>
+      </trans-unit>
+      <trans-unit id="Assets" xml:space="preserve">
+        <source>Assets</source>
+        <target>Assets</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Begin" xml:space="preserve">
+        <source>Begin</source>
+        <target>Begin</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Count [0...]" xml:space="preserve">
+        <source>Count [0...]</source>
+        <target>Count [0...]</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="HELLO, WORLD!" xml:space="preserve">
         <source>Hello, World!</source>
         <target>Hello, World!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Hold your iPhone / iPad in front of your chest and press the start button." xml:space="preserve">
+        <source>Hold your iPhone / iPad in front of your chest and press the start button.</source>
+        <target>Hold your iPhone / iPad in front of your chest and press the start button.</target>
+        <note>How to begin.</note>
+      </trans-unit>
+      <trans-unit id="Model" xml:space="preserve">
+        <source>Model</source>
+        <target>Model</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Option A" xml:space="preserve">
+        <source>Option A</source>
+        <target>Option A</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Option B" xml:space="preserve">
+        <source>Option B</source>
+        <target>Option B</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Option C" xml:space="preserve">
+        <source>Option C</source>
+        <target>Option C</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Setting A" xml:space="preserve">
+        <source>Setting A</source>
+        <target>Setting A</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Tap the plastic refuses to collect them." xml:space="preserve">
+        <source>Tap the plastic refuses to collect them.</source>
+        <target>Tap the plastic refuses to collect them.</target>
+        <note>How to collect refuses.</note>
+      </trans-unit>
+      <trans-unit id="explanation" xml:space="preserve">
+        <source>explanation</source>
+        <target>explanation</target>
+        <note>Explanation title.</note>
+      </trans-unit>
+      <trans-unit id="https://apps.apple.com/app/id1564570252?action=write-review" xml:space="preserve">
+        <source>https://apps.apple.com/app/id1564570252?action=write-review</source>
+        <target>https://apps.apple.com/app/id1564570252?action=write-review</target>
+        <note>App Review URL.</note>
+      </trans-unit>
+      <trans-unit id="https://www.atarayosd.com/apo/support.html" xml:space="preserve">
+        <source>https://www.atarayosd.com/apo/support.html</source>
+        <target>https://www.atarayosd.com/apo/support.html</target>
+        <note>Support page URL.</note>
+      </trans-unit>
+      <trans-unit id="medal approval alert" xml:space="preserve">
+        <source>medal approval alert</source>
+        <target>medal approval alert</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="note explanation" xml:space="preserve">
+        <source>note explanation</source>
+        <target>note explanation</target>
+        <note>Explanation about the plastic pollution.</note>
+      </trans-unit>
+      <trans-unit id="note lives" xml:space="preserve">
+        <source>note lives</source>
+        <target>note lives</target>
+        <note>Explanation about damage to sea creatures.</note>
+      </trans-unit>
+      <trans-unit id="note recycle" xml:space="preserve">
+        <source>note recycle</source>
+        <target>note recycle</target>
+        <note>Explanation about reduce, reuse, and recycle.</note>
+      </trans-unit>
+      <trans-unit id="note refuses" xml:space="preserve">
+        <source>note refuses</source>
+        <target>note refuses</target>
+        <note>Explanation about plastic refuses.</note>
+      </trans-unit>
+      <trans-unit id="ok" xml:space="preserve">
+        <source>ok</source>
+        <target>ok</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="please visit the support website to find the further information and updates about the app." xml:space="preserve">
+        <source>please visit the support website to find the further information and updates about the app.</source>
+        <target>please visit the support website to find the further information and updates about the app.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="support" xml:space="preserve">
+        <source>support</source>
+        <target>support</target>
+        <note>Support title.</note>
+      </trans-unit>
+      <trans-unit id="support website" xml:space="preserve">
+        <source>support website</source>
+        <target>support website</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="usage" xml:space="preserve">
+        <source>usage</source>
+        <target>usage</target>
+        <note>Usage title.</note>
+      </trans-unit>
+      <trans-unit id="write a review" xml:space="preserve">
+        <source>write a review</source>
+        <target>write a review</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>

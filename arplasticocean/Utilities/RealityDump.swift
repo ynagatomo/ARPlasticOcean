@@ -137,7 +137,14 @@ private func entityToStrings(_ entity: Entity, detail: Int, nesting: Int) -> [St
     return strings
 }
 
-// swiftlint:disable cyclomatic_complexity
+/// Transform component's value to strings
+/// - Parameters:
+///   - components: component set
+///   - detail: detail level
+/// - Returns: strings
+///
+/// - Warning: CharacterControllerComponent and CharacterControllerStateComponent are not be handled.
+///            They are supported on iOS 15+.
 private func componentsToStrings(_ components: Entity.ComponentSet, detail: Int) -> [String] {
     let componentTypes: [Component.Type] = [
         Transform.self,
@@ -146,9 +153,9 @@ private func componentsToStrings(_ components: Entity.ComponentSet, detail: Int)
         ModelComponent.self,
         CollisionComponent.self,
         PhysicsBodyComponent.self,
-        PhysicsMotionComponent.self,
-        CharacterControllerComponent.self,
-        CharacterControllerStateComponent.self
+        PhysicsMotionComponent.self
+        // CharacterControllerComponent.self,      // iOS 15.0+
+        // CharacterControllerStateComponent.self  // iOS 15.0+
     ]
     var strings = [String]()
 
@@ -168,10 +175,10 @@ private func componentsToStrings(_ components: Entity.ComponentSet, detail: Int)
                 strings += physicsBodyComponentToStrings(theComponent, detail: detail)
             } else if let theComponent = component as? PhysicsMotionComponent {
                 strings += physicsMotionComponentToStrings(theComponent, detail: detail)
-            } else if let theComponent = component as? CharacterControllerComponent {
-                strings += characterControllerComponentToStrings(theComponent, detail: detail)
-            } else if let theComponent = component as? CharacterControllerStateComponent {
-                strings += characterControllerStateComponentToStrings(theComponent, detail: detail)
+            //    } else if let theComponent = component as? CharacterControllerComponent {  // iOS 15.0+
+            //        strings += characterControllerComponentToStrings(theComponent, detail: detail)
+            //    } else if let theComponent = component as? CharacterControllerStateComponent {  // iOS 15.0+
+            //        strings += characterControllerStateComponentToStrings(theComponent, detail: detail)
             } else {
                 strings.append("  |     +-- \(component)")
             }
@@ -212,12 +219,16 @@ private func modelComponentToStrings(_ component: ModelComponent, detail: Int) -
     var strings = [String]()
     strings.append("  |     +-- \(keywords[8].0)") // "Model Component"
     if detail > 0 {
-        strings.append("  |     |     +-- bounding Box Margin: \(component.boundsMargin)")
+        if #available(iOS 15, *) {
+            strings.append("  |     |     +-- bounding Box Margin: \(component.boundsMargin)")  // iOS 15.0+
+        }
         strings.append("  |     |     +-- mesh")
         strings.append("  |     |     |    +-- expected Material Count: \(component.mesh.expectedMaterialCount)")
         strings.append("  |     |     |    +-- bounding Box - center: \(component.mesh.bounds.center)")
-        strings.append("  |     |     |    +-- resource - instances - count : \(component.mesh.contents.instances.count)")
-        strings.append("  |     |     |    +-- resource - models - count : \(component.mesh.contents.models.count)")
+        if #available(iOS 15, *) {
+            strings.append("  |     |     |    +-- resource - instances - count : \(component.mesh.contents.instances.count)") // iOS 15.0+
+            strings.append("  |     |     |    +-- resource - models - count : \(component.mesh.contents.models.count)") // iOS 15.0+
+        }
         strings.append("  |     |     +-- material")
         strings.append("  |     |     |    +-- number of materials: \(component.materials.count)")
         component.materials.forEach { material in
@@ -260,6 +271,7 @@ private func physicsMotionComponentToStrings(_ component: PhysicsMotionComponent
     return strings
 }
 
+@available(iOS 15, *)
 private func characterControllerComponentToStrings(_ component: CharacterControllerComponent, detail: Int) -> [String] {
     var strings = [String]()
     strings.append("  |     +-- \(keywords[12].0)") // "CharacterController Component"
@@ -268,6 +280,8 @@ private func characterControllerComponentToStrings(_ component: CharacterControl
     }
     return strings
 }
+
+@available(iOS 15, *)
 private func characterControllerStateComponentToStrings(_ component: CharacterControllerStateComponent, detail: Int) -> [String] {
     var strings = [String]()
     strings.append("  |     +-- \(keywords[13].0)") // "CharacterControllerState Component"
