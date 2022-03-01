@@ -15,13 +15,14 @@ struct AssetConstant {
         // Room Stage
         StageAssetConstant(name: "Room",
                    modelFile: "stage1.usdz",
+                   modelTexture: "daytimeTexture",
                    topLevelModelEntityName: "StageSurface",
                    surfaceEntityName: "StageSurface",
                    domeShowing: false,
                    domeEntityName: "StageDome",
                    baseShowing: false,
                    baseEntityName: "StageBase",
-                   textureName: nil,
+                   textureName: "daytimeTexture",
                    radius: 1.5,
                    surface: 0.2,
                    offset: 0.75,
@@ -36,6 +37,7 @@ struct AssetConstant {
         // Daytime Stage
         StageAssetConstant(name: "Daytime",
                    modelFile: "stage1.usdz",
+                   modelTexture: "daytimeTexture",
                    topLevelModelEntityName: "StageSurface",
                    surfaceEntityName: "StageSurface",
                    domeShowing: true,
@@ -182,6 +184,7 @@ struct SceneConstant {
 struct StageAssetConstant {
     let name: String
     let modelFile: String   // USDZ fine name with ext.
+    let modelTexture: String    // texture image name in the USDZ file
     let topLevelModelEntityName: String     // top level Model Entity name
     let surfaceEntityName: String
     let domeShowing: Bool   // showing?

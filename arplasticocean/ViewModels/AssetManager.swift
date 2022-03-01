@@ -32,16 +32,17 @@ class AssetManager {
         let baseEntityName: String
     }
 
-    func loadStageEntity(name: String, materialSetting: MaterialSetting) -> Entity? {
+    func loadStageEntity(name: String, textureName: String, materialSetting: MaterialSetting) -> Entity? {
         if name != loadedStageName {
             if let entity = try? Entity.load(named: name) {
                 loadedStageName = name
                 loadedStageEntity = entity
+                loadedStageTexture = textureName
             } else {
                 loadedStageName = ""
                 loadedStageEntity = nil
+                loadedStageTexture = nil
             }
-            loadedStageTexture = nil    // reset every time
         }
 
         setEntityEnable(materialSetting)

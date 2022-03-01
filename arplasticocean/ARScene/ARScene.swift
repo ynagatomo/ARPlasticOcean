@@ -70,7 +70,8 @@ class ARScene {
             baseShowing: stage.constant.baseShowing,
             baseEntityName: stage.constant.baseEntityName)
         if let entity = assetManager.loadStageEntity(
-            name: stage.constant.modelFile,
+            name: stage.constant.modelFile,             // stage USDZ file name
+            textureName: stage.constant.modelTexture,   // texture image name in the USDZ file
             materialSetting: materialSetting
         ) {
             // adjust position and scale

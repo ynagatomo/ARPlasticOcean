@@ -33,37 +33,37 @@ struct NoteView: View {
                     .padding(4)
 
                 // Usage
-                ZStack { // TODO: rethink
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .foregroundColor(Color("UsageBackgroundColor"))
-                    UsageView()
-                        .padding(16)
-                        //    .background(Color("UsageBackgroundColor"),  // iOS 15.0+
-                        //                in: RoundedRectangle(cornerRadius: 20.0))
-                        .padding(.bottom, 16)
-                }
+                UsageView()
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .foregroundColor(Color("UsageBackgroundColor"))
+                    )
+                    //    .background(Color("UsageBackgroundColor"),  // iOS 15.0+
+                    //                in: RoundedRectangle(cornerRadius: 20.0))
+                    .padding(.bottom, 16)
 
                 // Support
-                ZStack { // TODO: rethink
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .foregroundColor(Color("SupportBackgroundColor"))
-                    SupportView()
-                        .padding(16)
+                SupportView()
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .foregroundColor(Color("SupportBackgroundColor"))
+                    )
                     //    .background(Color("SupportBackgroundColor"), // iOS 15.0+
                     //                in: RoundedRectangle(cornerRadius: 20.0))
-                        .padding(.bottom, 16)
-                }
+                    .padding(.bottom, 16)
 
                 // Explanation
-                ZStack { // TODO: rethink
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .foregroundColor(Color("ExplanationBackgroundColor"))
-                    ExplanationView()
-                        .padding(16)
+                ExplanationView()
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20.0)
+                            .foregroundColor(Color("ExplanationBackgroundColor"))
+                    )
                     //    .background(Color("ExplanationBackgroundColor"), // iOS 15.0+
                     //                in: RoundedRectangle(cornerRadius: 20.0))
-                        .padding(.bottom, 16)
-                }
+                    .padding(.bottom, 16)
 
             } // ScrollView
             .foregroundColor(.white)
