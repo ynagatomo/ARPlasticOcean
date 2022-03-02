@@ -139,6 +139,21 @@ struct SceneConstant {
     static let refuseRestMargine: Int = 5
     static let refuseVolumeRadius: Float = 0.075 // [m]
 
+    static let refuseRoutes: [RefuseRouteConstant] = [
+        RefuseRouteConstant(origin: SIMD3<Float>([0.0, -0.225, 0.0]), // Route 1
+                            radius: 1.0,
+                            angularVelocity: 2.0 * Float.pi / 8.0, // [rad/sec]
+                            initPosYRange: 0.15,
+                            initPosXZRange: 0.2,
+                            movingPosYRange: 0.15),
+        RefuseRouteConstant(origin: SIMD3<Float>([0.0, 0.225, 0.0]), // Route 2
+                            radius: 1.2,
+                            angularVelocity: 2.0 * Float.pi / 16.0, // [rad/sec]
+                            initPosYRange: 0.15,
+                            initPosXZRange: 0.2,
+                            movingPosYRange: 0.15)
+    ]
+
     static let stageConstants: [StageConstant] = [
         // Room Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
@@ -256,6 +271,15 @@ struct StageConstant {
     let boatAssetIndex: Int
 
     let fishNumber: Int
+}
+
+struct RefuseRouteConstant {
+    let origin: SIMD3<Float>
+    let radius: Float   // [m]
+    let angularVelocity: Float  // [rad/sec] on X-Z plane
+    let initPosYRange: Float    // [m] +/- on Y axis
+    let initPosXZRange: Float   // [m] +/- on X-Z plane
+    let movingPosYRange: Float  // [m] +/- on Y axis
 }
 
 struct FishPropertyConstant {

@@ -143,6 +143,11 @@ class Boat {
 
                 // calculate the offset based on the `Boat` Object position
                 let boxes: [(size: SIMD3<Float>, offset: SIMD3<Float>)] = [
+                    // bottom (y+) collision box
+                    (size: SIMD3<Float>([constant.volume.x, constant.thickness, constant.volume.z]),
+                     offset: SIMD3<Float>([constant.position.x,
+                                           constant.position.y + constant.volume.y,
+                                           constant.position.z])),
                     // bottom (y-) collision box
                     (size: SIMD3<Float>([constant.volume.x, constant.thickness, constant.volume.z]),
                      offset: SIMD3<Float>([constant.position.x,
@@ -192,9 +197,53 @@ class Boat {
 }
 
 class Fish {
+    enum State {
+        case fine
+        case weak
+        case recovery
+    }
+    private(set) var state: State = .fine
 
+    let constant: FishAssetConstant
+    private(set) var entity: Entity?
+    private(set) var topLevelModelEntity: ModelEntity?
+
+    init(constant: FishAssetConstant) {
+        self.constant = constant
+    }
+
+    func setEntity(entity: Entity) {
+        self.entity = entity
+    }
+
+    func addPhysics() {
+        guard let entity = entity else { return }
+    }
 }
 
 class Refuse {
+    enum State {
+        case drifting
+        case trapped
+        case disappear
+        case collecting
+        case collected
+    }
+    private(set) var state: State = .drifting
 
+    let constant: RefuseAssetConstant
+    private(set) var entity: Entity?
+    private(set) var topLevelModelEntity: ModelEntity?
+
+    init(constant: RefuseAssetConstant) {
+        self.constant = constant
+    }
+
+    func setEntity(entity: Entity) {
+        self.entity = entity
+    }
+
+    func addPhysics() {
+        guard let entity = entity else { return }
+    }
 }

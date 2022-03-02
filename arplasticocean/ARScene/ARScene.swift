@@ -7,6 +7,7 @@
 
 import Foundation
 import RealityKit
+import Combine
 
 class ARScene {
     private(set) var isCleaned = false
@@ -20,6 +21,8 @@ class ARScene {
     private var arView: ARView!
     private var anchor: AnchorEntity!
     private var stageEntity: Entity!
+    private var renderLoopSubscription: Cancellable?
+    private var animationPlaybackControllers: [AnimationPlaybackController] = []
 
     private var stage: Stage!
     private var boat: Boat!
@@ -45,6 +48,12 @@ class ARScene {
     }
 
     func startSession() {
+        renderLoopSubscription = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
+            DispatchQueue.main.async {
+                self.updateScene(deltaTime: event.deltaTime)
+            }
+        }
+
         // start playing entity's animations
         // start playing sounds
         // start handling gestures
@@ -52,16 +61,53 @@ class ARScene {
     }
 
     func stopSession() {
+        renderLoopSubscription?.cancel()
+
         // stop handling AR runloop
         // stop handling gestures
         // stop playing sounds
         // stop playing entity's animations
     }
 
+    func tapped(_ tappedEntity: Entity) {
+        // TODO: check the Entity's name to confirm refuse entities or fish entities.
+        // TODO: check the Entity's state to prevent duplicated tap responses.
+        debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
+
+        if let modelEntity = tappedEntity as? ModelEntity {
+            let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
+                                      rotation: simd_quatf(angle: 0.0, axis: SIMD3<Float>([0.0, 1.0, 0.0])),
+                                      translation: SIMD3<Float>([Float.random(in: -0.3...0.3) ,
+                                                                 1.75,
+                                                                 Float.random(in: -0.3...0.3)]))
+            animationPlaybackControllers.append(modelEntity.move(to: transform,
+                              relativeTo: stageEntity,
+                              duration: 1))
+        }
+    }
+
+    private func updateScene(deltaTime: Double) {
+        // When completed, change the physics mode to dynamic.
+        animationPlaybackControllers.forEach { animationController in
+            if animationController.isComplete {
+                if let entity = animationController.entity {
+                    if let model = entity as? ModelEntity {
+                        model.physicsBody?.mode = .dynamic
+                    }
+                }
+            }
+        }
+
+        // remove completed controllers
+        animationPlaybackControllers.removeAll(where: {
+            $0.isComplete
+        })
+    }
+
     private func prepareStage() {
         // instantiate the stage object
         stage = Stage(constant: AssetConstant.stageAssets[stageIndex])
-        // load the entity
+        // prepare the material settings
         let materialSetting = AssetManager.MaterialSetting(
             textureName: stage.constant.textureName,
             domeShowing: stage.constant.domeShowing,
@@ -69,7 +115,8 @@ class ARScene {
             surfaceEntityName: stage.constant.surfaceEntityName,
             baseShowing: stage.constant.baseShowing,
             baseEntityName: stage.constant.baseEntityName)
-        if let entity = assetManager.loadStageEntity(
+        // load and clone the entity
+        if let entity = assetManager.loadAndCloneStageEntity(
             name: stage.constant.modelFile,             // stage USDZ file name
             textureName: stage.constant.modelTexture,   // texture image name in the USDZ file
             materialSetting: materialSetting
@@ -101,7 +148,6 @@ class ARScene {
             // add CollisionComponent and PhysicsBodyComponent
             boat.addPhysics()
             // place it in the AR world
-//            anchor.addChild(entity)
             stageEntity.addChild(entity)
         }
     }
@@ -116,8 +162,26 @@ class ARScene {
     }
 
     private func prepareRefuses() {
-        // choose fish (type and number)
-        // instantiate the fish objects
+        // TODO: remove after testing
+        let mesh = MeshResource.generateSphere(radius: 0.075)
+        let material = SimpleMaterial(color: .red, isMetallic: false)
+        let collisionShape = ShapeResource.generateSphere(radius: 0.075)
+        let entity = ModelEntity(mesh: mesh,
+                                 materials: [material],
+                                 collisionShape: collisionShape,
+                                 mass: 1.0)
+        entity.physicsBody?.mode = .static
+        stageEntity.addChild(entity)
+
+        let entity2 = ModelEntity(mesh: mesh,
+                                 materials: [material],
+                                 collisionShape: collisionShape,
+                                 mass: 1.0)
+        entity2.physicsBody?.mode = .static
+        stageEntity.addChild(entity2)
+
+        // choose refuse (number of each type)
+        // instantiate the refuse objects
         // load and clone their entities
         // add a collision shape each refuse
         // set position

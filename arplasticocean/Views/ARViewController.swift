@@ -11,6 +11,7 @@ import RealityKit
 
 class ARViewController: UIViewController {
     var appStateController: AppStateController
+    private var arView: ARView!
     private var arScene: ARScene!
 
     init(appStateController: AppStateController) {
@@ -24,11 +25,14 @@ class ARViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         debugLog("ARViewController: viewDidAppear(_:) was called.")
-        let arView = ARView(frame: .zero)
+        arView = ARView(frame: .zero)
         #if DEBUG
         arView.debugOptions = [.showPhysics]
         #endif
         view = arView
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
+        view.addGestureRecognizer(tap)
 
         let anchorEntity = AnchorEntity()
         arView.scene.addAnchor(anchorEntity)
@@ -52,6 +56,13 @@ class ARViewController: UIViewController {
         debugLog("ARViewController: viewDidDisappear(_:) was called.")
         if arScene.isCleaned {
             appStateController.setCleaned() // This stage has been cleaned.
+        }
+    }
+
+    @objc func tapHandler(_ sender: UITapGestureRecognizer? = nil) {
+        guard let touchInView = sender?.location(in: view) else { return }
+        if let tappedEntity = arView.entity(at: touchInView) {
+            arScene.tapped(tappedEntity)
         }
     }
 }

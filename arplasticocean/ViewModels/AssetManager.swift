@@ -32,7 +32,17 @@ class AssetManager {
         let baseEntityName: String
     }
 
-    func loadStageEntity(name: String, textureName: String, materialSetting: MaterialSetting) -> Entity? {
+    func loadAndCloneStageEntity(name: String, textureName: String, materialSetting: MaterialSetting)
+    -> Entity? {
+        guard let stageEntity = loadStageEntity(name: name, textureName: textureName,
+                                                materialSetting: materialSetting)
+        else { return nil }
+
+        return stageEntity.clone(recursive: true)
+    }
+
+    private func loadStageEntity(name: String, textureName: String, materialSetting: MaterialSetting)
+    -> Entity? {
         if name != loadedStageName {
             if let entity = try? Entity.load(named: name) {
                 loadedStageName = name
