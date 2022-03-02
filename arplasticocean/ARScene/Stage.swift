@@ -222,8 +222,8 @@ class Refuse {
         case drifting
         case trapped
         case disappear
-        case collecting
-        case collected
+//        case collecting
+//        case collected
     }
     private(set) var state: State = .drifting
 
@@ -235,14 +235,17 @@ class Refuse {
     let angularVelocity: Float  // [radian/sec]
     let initialPosition: SIMD3<Float>
     let movingPosYRange: Float  // [m]
+    let movingRate: Float   // [1.0...] rate of moving up and down
 
     init(constant: RefuseAssetConstant, entity: Entity,
-         position: SIMD3<Float>, velocity: Float, movingPosYRange: Float) {
+         position: SIMD3<Float>, velocity: Float,
+         movingPosYRange: Float, movingRate: Float) {
         self.constant = constant
         self.entity = entity
         self.initialPosition = position
         self.angularVelocity = velocity
         self.movingPosYRange = movingPosYRange
+        self.movingRate = movingRate
     }
 
     func addPhysics() {

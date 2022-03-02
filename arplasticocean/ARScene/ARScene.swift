@@ -71,7 +71,7 @@ class ARScene {
 
     func tapped(_ tappedEntity: Entity) {
         debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
-
+        // Respond to the only tap to the Refuse Entities.
         if tappedEntity.findEntity(named: "Refuse") != nil {
             let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
                      rotation: simd_quatf(),
@@ -93,11 +93,12 @@ class ARScene {
             // rotate deltaAngular on the X-Z plane
             // TODO: modify to the simd operation
             let xInit = refuse.initialPosition.x
-            let yInit = refuse.initialPosition.y
             let zInit = refuse.initialPosition.z
             let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
-            let yNext = yInit + sinf(refuse.angle) * refuse.movingPosYRange
             let zNext = xInit * sinf(refuse.angle) + zInit * cosf(refuse.angle)
+            // move up and down on the Y-axis
+            let yInit = refuse.initialPosition.y
+            let yNext = yInit + sinf(refuse.angle * refuse.movingRate) * refuse.movingPosYRange
             refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
         }
 
@@ -208,13 +209,19 @@ class ARScene {
             if let entity = assetManager.loadAndCloneEntity(
                 name: refuseAssetConstant.modelFile) {
 
-                // instantiate the refuse objects with initial position and angular velocity
+                //  choose the route and calc the initial position on the route
                 let posAndRouteIndex = calcRefuseInitialPosition(index: index)
+                //  calc the moving rate, up and down
+                let movingRate = 4.0 + Float.random(in: -2.0...2.0)
+                // instantiate the refuse objects with initial position and angular velocity
                 let refuse = Refuse(constant: refuseAssetConstant,
                                     entity: entity,
                                     position: posAndRouteIndex.position,
-                  velocity: SceneConstant.refuseRoutes[posAndRouteIndex.routeIndex].angularVelocity,
-                  movingPosYRange: SceneConstant.refuseRoutes[posAndRouteIndex.routeIndex].movingPosYRange)
+                                    velocity: SceneConstant.refuseRoutes[
+                                        posAndRouteIndex.routeIndex].angularVelocity,
+                                    movingPosYRange: SceneConstant.refuseRoutes[
+                                        posAndRouteIndex.routeIndex].movingPosYRange,
+                                    movingRate: movingRate)
 
                 // modify the Entity position and orientation
                 let orientation = calcRefuseInitialOrientation()
@@ -265,12 +272,16 @@ class ARScene {
     }
 
     private func calcRefuseInitialOrientation() -> simd_quatf {
-        simd_quatf(angle: 2.0 * Float.pi * Float.random(in: 0 ..< 1.0),
-                   axis: SIMD3<Float>([
-                    Float.random(in: 0 ... 1.0),
-                    Float.random(in: 0 ... 1.0),
-                    Float.random(in: 0 ... 1.0)
-                   ]))
+        // choose the one axis, X or Z
+        var axisX: Float = 0.0
+        var axisZ: Float = 0.0
+        if Bool.random() {
+            axisX = 1.0
+        } else {
+            axisZ = 1.0
+        }
+        return simd_quatf(angle: 2.0 * Float.pi * Float.random(in: 0 ..< 1.0),
+                   axis: SIMD3<Float>([ axisX, 0.0, axisZ ]))
     }
 
     private func selectRefuses() -> [RefuseAssetConstant] {
