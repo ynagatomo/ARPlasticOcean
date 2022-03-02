@@ -21,7 +21,7 @@ class AssetManager {
     private var loadedBoatName: String = ""     // load one entity at once
     private var loadedBoatEntity: Entity?
     private var loadedNames: [String] = []      // load any entities permanently
-    private var loadedEntities: [Entity] = []
+    private var loadedEntities: [Entity] = []   // (refuses and fish)
 
     struct MaterialSetting {
         let textureName: String?
@@ -125,7 +125,14 @@ class AssetManager {
         return loadedBoatEntity
     }
 
-    func loadEntity(name: String) -> Entity? {
+    func loadAndCloneEntity(name: String) -> Entity? {
+        // load the Entity with the file name
+        guard let entity = loadEntity(name: name) else { return nil }
+        // clone it
+        return entity.clone(recursive: true)
+    }
+
+    private func loadEntity(name: String) -> Entity? {
         var resultEntity: Entity?
         if !loadedNames.contains(name) {
             if let entity = try? Entity.load(named: name) {

@@ -70,11 +70,41 @@ struct AssetConstant {
         case bag = 0, bottle, net, debris1, debris2
     }
     static let refuseAssets: [RefuseAssetConstant] = [
-        RefuseAssetConstant(name: "bag", modelFile: "bag.usdz", volumeRadius: 0.075),
-        RefuseAssetConstant(name: "bottle", modelFile: "bottle.usdz", volumeRadius: 0.075),
-        RefuseAssetConstant(name: "net", modelFile: "net.usdz", volumeRadius: 0.075),
-        RefuseAssetConstant(name: "debris1", modelFile: "debris1.usdz", volumeRadius: 0.075),
-        RefuseAssetConstant(name: "debris2", modelFile: "debris2.usdz", volumeRadius: 0.075)
+        RefuseAssetConstant(name: "bag",
+                            modelFile: "bag.usdz",
+                            modelEntityName: "Refuse",
+                            volumeRadius: 0.075,
+                            physicsMass: 1.0,
+                            physicsFriction: 0.1,
+                            physicsRestitution: 0.1),
+        RefuseAssetConstant(name: "bottle",
+                            modelFile: "bottle.usdz",
+                            modelEntityName: "Refuse",
+                            volumeRadius: 0.075,
+                            physicsMass: 1.0,
+                            physicsFriction: 0.1,
+                            physicsRestitution: 0.1),
+        RefuseAssetConstant(name: "net",
+                            modelFile: "net.usdz",
+                            modelEntityName: "Refuse",
+                            volumeRadius: 0.075,
+                            physicsMass: 1.0,
+                            physicsFriction: 0.1,
+                            physicsRestitution: 0.1),
+        RefuseAssetConstant(name: "debris1",
+                            modelFile: "debris1.usdz",
+                            modelEntityName: "Refuse",
+                            volumeRadius: 0.075,
+                            physicsMass: 1.0,
+                            physicsFriction: 0.1,
+                            physicsRestitution: 0.1),
+        RefuseAssetConstant(name: "debris2",
+                            modelFile: "debris2.usdz",
+                            modelEntityName: "Refuse",
+                            volumeRadius: 0.075,
+                            physicsMass: 1.0,
+                            physicsFriction: 0.1,
+                            physicsRestitution: 0.1)
     ]
 
     enum BoatAssetIndex: Int {
@@ -138,17 +168,19 @@ struct SceneConstant {
     static let refuseNumberMultiplier: Float = 2.0
     static let refuseRestMargine: Int = 5
     static let refuseVolumeRadius: Float = 0.075 // [m]
+    static let gazeXZ: Float = 0.2 // [m]
+    static let collectingYPosition: Float = 1.6 // [m]
 
     static let refuseRoutes: [RefuseRouteConstant] = [
         RefuseRouteConstant(origin: SIMD3<Float>([0.0, -0.225, 0.0]), // Route 1
                             radius: 1.0,
-                            angularVelocity: 2.0 * Float.pi / 8.0, // [rad/sec]
+                            angularVelocity: 2.0 * Float.pi / 40.0, // [rad/sec]
                             initPosYRange: 0.15,
                             initPosXZRange: 0.2,
                             movingPosYRange: 0.15),
         RefuseRouteConstant(origin: SIMD3<Float>([0.0, 0.225, 0.0]), // Route 2
                             radius: 1.2,
-                            angularVelocity: 2.0 * Float.pi / 16.0, // [rad/sec]
+                            angularVelocity: -2.0 * Float.pi / 50.0, // [rad/sec]
                             initPosYRange: 0.15,
                             initPosXZRange: 0.2,
                             movingPosYRange: 0.15)
@@ -165,14 +197,20 @@ struct SceneConstant {
                                      probability: 1.0, threshold: 2)
                       ],
                       refuseProperties: [
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bag.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bottle.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.net.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris1.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris2.rawValue, rate: 0.2)
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.net.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
                       ],
                       boatAssetIndex: 0,
-                      fishNumber: 0),
+                      fishNumber: 0,
+                      refuseNumbers: [20, 25]),
         // Daytime Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
                       secondSoundIndex: AssetConstant.MusicAssetIndex.nukumori.rawValue,
@@ -183,14 +221,20 @@ struct SceneConstant {
                                      probability: 1.0, threshold: 2)
                       ],
                       refuseProperties: [
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bag.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.bottle.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.net.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris1.rawValue, rate: 0.2),
-                        RefusePropertyConstant(assetIndex: AssetConstant.RefuseAssetIndex.debris2.rawValue, rate: 0.2)
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.net.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
                       ],
                       boatAssetIndex: 0,
-                      fishNumber: 0)
+                      fishNumber: 0,
+                      refuseNumbers: [20, 25])
     ]
 
     static var stageCount: Int { stageConstants.count }
@@ -237,7 +281,11 @@ struct FishAssetConstant {
 struct RefuseAssetConstant {
     let name: String
     let modelFile: String   // USDZ file name with ext.
+    let modelEntityName: String // one of the ModelEntity names
     let volumeRadius: Float // radius [m]
+    let physicsMass: Float          // mass [kg]
+    let physicsFriction: Float      // [0, infinity)
+    let physicsRestitution: Float   // [0, 1]
 }
 
 struct BoatAssetConstant {
@@ -271,6 +319,7 @@ struct StageConstant {
     let boatAssetIndex: Int
 
     let fishNumber: Int
+    let refuseNumbers: [Int]   // the number of refuses in each route
 }
 
 struct RefuseRouteConstant {
@@ -295,5 +344,4 @@ struct FishPropertyConstant {
 
 struct RefusePropertyConstant {
     let assetIndex: Int
-    let rate: Float
 }

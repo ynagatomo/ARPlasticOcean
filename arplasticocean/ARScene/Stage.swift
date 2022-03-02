@@ -205,19 +205,15 @@ class Fish {
     private(set) var state: State = .fine
 
     let constant: FishAssetConstant
-    private(set) var entity: Entity?
+    let entity: Entity
     private(set) var topLevelModelEntity: ModelEntity?
 
-    init(constant: FishAssetConstant) {
+    init(constant: FishAssetConstant, entity: Entity) {
         self.constant = constant
-    }
-
-    func setEntity(entity: Entity) {
         self.entity = entity
     }
 
     func addPhysics() {
-        guard let entity = entity else { return }
     }
 }
 
@@ -232,18 +228,50 @@ class Refuse {
     private(set) var state: State = .drifting
 
     let constant: RefuseAssetConstant
-    private(set) var entity: Entity?
-    private(set) var topLevelModelEntity: ModelEntity?
+    let entity: Entity
+    private(set) var oneModelEntity: ModelEntity?
 
-    init(constant: RefuseAssetConstant) {
+    var angle: Float = 0 // [radian] difference from the initial angular
+    let angularVelocity: Float  // [radian/sec]
+    let initialPosition: SIMD3<Float>
+    let movingPosYRange: Float  // [m]
+
+    init(constant: RefuseAssetConstant, entity: Entity,
+         position: SIMD3<Float>, velocity: Float, movingPosYRange: Float) {
         self.constant = constant
-    }
-
-    func setEntity(entity: Entity) {
         self.entity = entity
+        self.initialPosition = position
+        self.angularVelocity = velocity
+        self.movingPosYRange = movingPosYRange
     }
 
     func addPhysics() {
-        guard let entity = entity else { return }
+        // find the Model Entity
+        if let theEntity = entity.findEntity(named: constant.modelEntityName) {
+            debugLog("DEBUG: Refuse: found a model-entity.")
+            if let modelEntity = theEntity as? ModelEntity {
+                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
+                oneModelEntity = modelEntity
+
+                // Don't add physics if the model-entity already has them.
+                // The model-entity can have physics because the entity is reused with the AssetManager.
+                // However, in the almost cases, it does not have one because it was cloned newly.
+                guard modelEntity.collision == nil else {
+                    assert(modelEntity.physicsBody != nil)
+                    // This ModelEntity already has CollisionComponent and PhysicsBodyComponent.
+                    debugLog("DEBUG: This boat Entity already has CollisionComponent and PhysicsBodyComponent.")
+                    return
+                }
+
+                let shape = ShapeResource.generateSphere(radius: constant.volumeRadius)
+                modelEntity.collision = CollisionComponent(shapes: [shape])
+                modelEntity.physicsBody = PhysicsBodyComponent(shapes: [shape],
+                                                               mass: constant.physicsMass,
+                                            material: PhysicsMaterialResource.generate(
+                                                friction: constant.physicsFriction,
+                                                restitution: constant.physicsRestitution))
+                modelEntity.physicsBody?.mode = .static
+            }
+        }
     }
 }

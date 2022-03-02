@@ -70,38 +70,55 @@ class ARScene {
     }
 
     func tapped(_ tappedEntity: Entity) {
-        // TODO: check the Entity's name to confirm refuse entities or fish entities.
-        // TODO: check the Entity's state to prevent duplicated tap responses.
         debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
 
-        if let modelEntity = tappedEntity as? ModelEntity {
+        if tappedEntity.findEntity(named: "Refuse") != nil {
             let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
-                                      rotation: simd_quatf(angle: 0.0, axis: SIMD3<Float>([0.0, 1.0, 0.0])),
-                                      translation: SIMD3<Float>([Float.random(in: -0.3...0.3) ,
-                                                                 1.75,
-                                                                 Float.random(in: -0.3...0.3)]))
-            animationPlaybackControllers.append(modelEntity.move(to: transform,
-                              relativeTo: stageEntity,
-                              duration: 1))
+                     rotation: simd_quatf(),
+                     translation: SIMD3<Float>([
+                        Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ) ,
+                        SceneConstant.collectingYPosition,
+                        Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ)]))
+            animationPlaybackControllers.append(tappedEntity.move(to: transform,
+                              relativeTo: stageEntity, duration: 1))
         }
     }
 
-    private func updateScene(deltaTime: Double) {
-        // When completed, change the physics mode to dynamic.
-        animationPlaybackControllers.forEach { animationController in
-            if animationController.isComplete {
-                if let entity = animationController.entity {
-                    if let model = entity as? ModelEntity {
-                        model.physicsBody?.mode = .dynamic
+    private func updateScene(deltaTime: Double) {   // deltaTime [sec] (about 0.016)
+        // play the rolling animations of refuses
+        refuses.forEach { refuse in
+            // angular is reversed (+/-) because z axis upside down
+            refuse.angle -= refuse.angularVelocity * Float(deltaTime)
+            refuse.angle = Float.normalize(radian: refuse.angle)  // -2Pi...2Pi [radian]
+            // rotate deltaAngular on the X-Z plane
+            // TODO: modify to the simd operation
+            let xInit = refuse.initialPosition.x
+            let yInit = refuse.initialPosition.y
+            let zInit = refuse.initialPosition.z
+            let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
+            let yNext = yInit + sinf(refuse.angle) * refuse.movingPosYRange
+            let zNext = xInit * sinf(refuse.angle) + zInit * cosf(refuse.angle)
+            refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
+        }
+
+        // play the collecting animations
+        if !animationPlaybackControllers.isEmpty {
+            // When completed, change the physics mode to dynamic.
+            animationPlaybackControllers.forEach { animationController in
+                if animationController.isComplete {
+                    if let entity = animationController.entity {
+                        if let model = entity as? ModelEntity {
+                            model.physicsBody?.mode = .dynamic
+                        }
                     }
                 }
             }
-        }
 
-        // remove completed controllers
-        animationPlaybackControllers.removeAll(where: {
-            $0.isComplete
-        })
+            // remove completed controllers
+            animationPlaybackControllers.removeAll(where: {
+                $0.isComplete
+            })
+        }
     }
 
     private func prepareStage() {
@@ -161,30 +178,117 @@ class ARScene {
         // place them in the AR world (add as a stage's child)
     }
 
+    // MARK: - Prepare Refuse
+
     private func prepareRefuses() {
-        // TODO: remove after testing
-        let mesh = MeshResource.generateSphere(radius: 0.075)
-        let material = SimpleMaterial(color: .red, isMetallic: false)
-        let collisionShape = ShapeResource.generateSphere(radius: 0.075)
-        let entity = ModelEntity(mesh: mesh,
-                                 materials: [material],
-                                 collisionShape: collisionShape,
-                                 mass: 1.0)
-        entity.physicsBody?.mode = .static
-        stageEntity.addChild(entity)
+//        let mesh = MeshResource.generateSphere(radius: 0.075)
+//        let material = SimpleMaterial(color: .red, isMetallic: false)
+//        let collisionShape = ShapeResource.generateSphere(radius: 0.075)
+//        let entity = ModelEntity(mesh: mesh,
+//                                 materials: [material],
+//                                 collisionShape: collisionShape,
+//                                 mass: 1.0)
+//        entity.physicsBody?.mode = .static
+//        stageEntity.addChild(entity)
+//
+//        let entity2 = ModelEntity(mesh: mesh,
+//                                 materials: [material],
+//                                 collisionShape: collisionShape,
+//                                 mass: 1.0)
+//        entity2.physicsBody?.mode = .static
+//        stageEntity.addChild(entity2)
 
-        let entity2 = ModelEntity(mesh: mesh,
-                                 materials: [material],
-                                 collisionShape: collisionShape,
-                                 mass: 1.0)
-        entity2.physicsBody?.mode = .static
-        stageEntity.addChild(entity2)
+        // choose refuse for the stage
+        let refuseAssetConstants: [RefuseAssetConstant] = selectRefuses()
+        // create refuse objects
+        for index in 0 ..< refuseAssetConstants.count {
+            let refuseAssetConstant = refuseAssetConstants[index]
 
-        // choose refuse (number of each type)
-        // instantiate the refuse objects
-        // load and clone their entities
-        // add a collision shape each refuse
-        // set position
-        // place them in the AR world (add as a stage's child)
+            // load and clone their entities
+            if let entity = assetManager.loadAndCloneEntity(
+                name: refuseAssetConstant.modelFile) {
+
+                // instantiate the refuse objects with initial position and angular velocity
+                let posAndRouteIndex = calcRefuseInitialPosition(index: index)
+                let refuse = Refuse(constant: refuseAssetConstant,
+                                    entity: entity,
+                                    position: posAndRouteIndex.position,
+                  velocity: SceneConstant.refuseRoutes[posAndRouteIndex.routeIndex].angularVelocity,
+                  movingPosYRange: SceneConstant.refuseRoutes[posAndRouteIndex.routeIndex].movingPosYRange)
+
+                // modify the Entity position and orientation
+                let orientation = calcRefuseInitialOrientation()
+                entity.orientation = orientation
+                entity.position = posAndRouteIndex.position
+
+                // add a collision shape each refuse
+                refuse.addPhysics()
+
+                // place them in the AR world (add as a stage's child)
+                stageEntity.addChild(entity)
+                refuses.append(refuse) // keep the Refuse object
+            }
+        }
+    }
+
+    private func calcRefuseInitialPosition(index: Int)
+    -> (position: SIMD3<Float>, routeIndex: Int) {
+        // which route?
+        var routeIndex = -1
+        var routeCapacity = 0
+        for numberIndex in 0 ..< SceneConstant.stageConstants[stageIndex].refuseNumbers.count {
+            routeCapacity += SceneConstant.stageConstants[stageIndex].refuseNumbers[numberIndex]
+            if index < routeCapacity {
+                routeIndex = numberIndex
+                break
+            }
+        }
+        assert(routeIndex != -1, "Failed to decide the route index.")
+        assert(routeIndex < SceneConstant.refuseRoutes.count)
+
+        let indexOntheRoute = index - routeCapacity // index on the each route
+        let angularUnit = 2.0 * Float.pi // divide the 2Pi for each refuse equally
+            / Float(SceneConstant.stageConstants[stageIndex].refuseNumbers[routeIndex])
+        let angular = angularUnit * Float(indexOntheRoute)
+
+        let eachX = SceneConstant.refuseRoutes[routeIndex].radius * cosf(angular)
+        let eachZ = -SceneConstant.refuseRoutes[routeIndex].radius * sinf(angular)
+        let diffX = Float.random(in: 0 ..< SceneConstant.refuseRoutes[routeIndex].initPosXZRange)
+        let diffZ = Float.random(in: 0 ..< SceneConstant.refuseRoutes[routeIndex].initPosXZRange)
+        let posX = SceneConstant.refuseRoutes[routeIndex].origin.x + eachX + diffX
+        let posZ = SceneConstant.refuseRoutes[routeIndex].origin.z + eachZ + diffZ
+
+        let diffY = Float.random(in: 0 ..< SceneConstant.refuseRoutes[routeIndex].initPosYRange)
+        let posY = SceneConstant.refuseRoutes[routeIndex].origin.y + diffY
+
+        return (position: SIMD3<Float>([posX, posY, posZ]), routeIndex: routeIndex)
+    }
+
+    private func calcRefuseInitialOrientation() -> simd_quatf {
+        simd_quatf(angle: 2.0 * Float.pi * Float.random(in: 0 ..< 1.0),
+                   axis: SIMD3<Float>([
+                    Float.random(in: 0 ... 1.0),
+                    Float.random(in: 0 ... 1.0),
+                    Float.random(in: 0 ... 1.0)
+                   ]))
+    }
+
+    private func selectRefuses() -> [RefuseAssetConstant] {
+        // The number of refuses in the stage (adding number of each route)
+        var refuseNumber = 0
+        SceneConstant.stageConstants[stageIndex].refuseNumbers.forEach {
+            refuseNumber += $0
+        }
+        // The indexes of the refuse assets in the stage
+        let indexes: [Int] = SceneConstant.stageConstants[stageIndex].refuseProperties.map({
+            $0.assetIndex
+        })
+        // Select refuse assets and collect their constant
+        var assetConstants: [RefuseAssetConstant] = []
+        for _ in 0 ..< refuseNumber {
+            let refuseAssetIndex = indexes[ Int.random(in: 0 ..< indexes.count) ]
+            assetConstants.append(AssetConstant.refuseAssets[refuseAssetIndex])
+        }
+        return assetConstants
     }
 }
