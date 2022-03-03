@@ -42,6 +42,7 @@ class ARViewController: UIViewController {
 
         arScene = ARScene(stageIndex: appStateController.stageIndex,
                           assetManager: appStateController.assetManager,
+                          soundManager: appStateController.soundManager,
                           cleanedImageView: cleanedImageView)
         arScene.prepare(arView: arView, anchor: anchorEntity)
 

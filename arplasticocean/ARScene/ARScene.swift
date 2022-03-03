@@ -19,6 +19,7 @@ class ARScene {
     private(set) var state: State = .collecting
     private let stageIndex: Int
     private let assetManager: AssetManager
+    private let soundManager: SoundManager
     private let cleanedImageView: UIImageView?
     private var arView: ARView!
     private var anchor: AnchorEntity!
@@ -30,14 +31,18 @@ class ARScene {
     private var boat: Boat!
     private var fishes: [Fish] = []
     private var refuses: [Refuse] = []
+    private var soundIDCollecting: SoundManager.SoundID = 0
+    private var soundIDCollected: SoundManager.SoundID = 0
 
     private var showingCleanedView: Bool = false
     private var showingCleanedViewTime: Float = 0.0
 
-    init(stageIndex: Int, assetManager: AssetManager, cleanedImageView: UIImageView?) {
+    init(stageIndex: Int, assetManager: AssetManager, soundManager: SoundManager,
+         cleanedImageView: UIImageView?) {
         self.stageIndex = stageIndex
         self.assetManager = assetManager
         self.cleanedImageView = cleanedImageView
+        self.soundManager = soundManager
     }
 
     func prepare(arView: ARView, anchor: AnchorEntity) {
@@ -54,25 +59,23 @@ class ARScene {
     }
 
     func startSession() {
+        // start handling AR RunLoop
         renderLoopSubscription = arView.scene.subscribe(to: SceneEvents.Update.self) { event in
             DispatchQueue.main.async {
                 self.updateScene(deltaTime: event.deltaTime)
             }
         }
 
-        // start playing entity's animations
         // start playing sounds
-        // start handling gestures
-        // start handling AR runloop
+        soundManager.play(soundID: soundIDCollecting)
     }
 
     func stopSession() {
+        // stop handling AR RunLoop
         renderLoopSubscription?.cancel()
 
-        // stop handling AR runloop
-        // stop handling gestures
         // stop playing sounds
-        // stop playing entity's animations
+        soundManager.stopAll()
     }
 
     func tapped(_ tappedEntity: Entity) {
@@ -87,6 +90,7 @@ class ARScene {
                         Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ)]))
             animationPlaybackControllers.append(tappedEntity.move(to: transform,
                               relativeTo: stageEntity, duration: 1))
+            soundManager.play(soundID: SoundManager.collectSoundID)
         }
     }
 
@@ -129,6 +133,7 @@ class ARScene {
                         stage.cleaned()
                         showingCleanedView = true
                         cleanedImageView?.isHidden = false
+                        startCleanedSound()
                     }
                 }
             }
@@ -144,8 +149,18 @@ class ARScene {
             if showingCleanedViewTime > AppConstant.showingCleanedMessageTime {
                 showingCleanedView = false
                 cleanedImageView?.isHidden = true
+                startCleanedMusic()
             }
         }
+    }
+
+    private func startCleanedSound() {
+        soundManager.stop(soundID: soundIDCollecting)   // stop stage music
+        soundManager.play(soundID: SoundManager.cleanedSound)   // play default sound
+    }
+
+    private func startCleanedMusic() {
+        soundManager.play(soundID: soundIDCollected)    // play stage music
     }
 
     private func prepareStage() {
@@ -176,6 +191,22 @@ class ARScene {
             anchor.addChild(entity)
             stageEntity = entity
         }
+        // prepare stage sounds
+        prepareStageSounds()
+    }
+
+    private func prepareStageSounds() {
+        let firstIndex = SceneConstant.stageConstants[stageIndex].firstSoundIndex
+        let name1 = AssetConstant.musicAssets[firstIndex].soundFile
+        let ext1 = AssetConstant.musicAssets[firstIndex].soundFileExt
+
+        let secondIndex = SceneConstant.stageConstants[stageIndex].secondSoundIndex
+        let name2 = AssetConstant.musicAssets[secondIndex].soundFile
+        let ext2 = AssetConstant.musicAssets[secondIndex].soundFileExt
+
+        // sounds that Sound Manager already has will be reused. (infinite loop)
+        soundIDCollecting = soundManager.register(name: name1, ext: ext1, loop: -1)
+        soundIDCollected = soundManager.register(name: name2, ext: ext2, loop: -1)
     }
 
     private func prepareBoat() {

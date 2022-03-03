@@ -18,7 +18,11 @@ struct CleanupMedal {
 class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
-    @AppStorage("soundEnable") var soundEnable = true
+    @AppStorage("soundEnable") var soundEnable = true {
+        didSet {
+            soundManager.enable = soundEnable
+        }
+    }
     @Published private(set) var cleanupCount = 0
 //    @Published var isSoundEnable = true {
 //        didSet {
@@ -30,7 +34,7 @@ class AppStateController: ObservableObject {
         cleanupCount % SceneConstant.stageCount
     }
     let assetManager: AssetManager = AssetManager()
-    private let soundManager: SoundManager = SoundManager()
+    let soundManager: SoundManager = SoundManager()
 
     var cleanupMedal: CleanupMedal? {
         var medal: CleanupMedal?
@@ -52,6 +56,7 @@ class AppStateController: ObservableObject {
 
     init() {
         cleanupCount = savedCleanupCount
+        soundManager.enable = soundEnable
     }
 
     /// Set the stage cleaned and move to the next stage
@@ -89,14 +94,12 @@ class AppStateController: ObservableObject {
     }
 }
 
-// MARK: - Sound
-
-extension AppStateController {
-    func play(soundID: SoundManager.SoundID) {
-        soundManager.play(soundID: soundID, enable: soundEnable)
-    }
-
-    func stop(soundID: SoundManager.SoundID) {
-        soundManager.stop(soundID: soundID)
-    }
-}
+//    extension AppStateController {
+//        func play(soundID: SoundManager.SoundID) {
+//            soundManager.play(soundID: soundID, enable: soundEnable)
+//        }
+//
+//        func stop(soundID: SoundManager.SoundID) {
+//            soundManager.stop(soundID: soundID)
+//        }
+//    }

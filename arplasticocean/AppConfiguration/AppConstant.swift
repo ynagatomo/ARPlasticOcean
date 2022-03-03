@@ -24,15 +24,15 @@ class AppConstant {
     // App Review
     static let appReviewInterval = 27 // cleanup count interval
 
-    // Sound Effect: getting Medal
-    static let soundMedalName = "medal1"
-    static let soundMedalExt = "mp3"
-    // Sound Effect: finished cleanup
-    static let soundCleanupName = "cleanup1"
-    static let soundCleanupExt = "mp3"
-    // Sound Effect: collecting refuse
-    static let soundCollectingName = "collect1"
-    static let soundCollectingExt = "mp3"
+//    // Sound Effect: getting Medal
+//    static let soundMedalName = "medal1"
+//    static let soundMedalExt = "mp3"
+//    // Sound Effect: finished cleanup
+//    static let soundCleanupName = "cleanup1"
+//    static let soundCleanupExt = "mp3"
+//    // Sound Effect: collecting refuse
+//    static let soundCollectingName = "collect1"
+//    static let soundCollectingExt = "mp3"
 
     static let cleanedMessageImageName: String = "cleaned" // image file name in bundle
     static let showingCleanedMessageTime: Float = 5.0 // [sec]

@@ -154,7 +154,7 @@ struct HomeView: View {
 
     // Play the Sound Effect to approve getting a new Medal.
     private func playMedalSound() {
-        appStateController.play(soundID: SoundManager.MedalSoundID)
+        appStateController.soundManager.play(soundID: SoundManager.medalSoundID)
     }
 }
 
