@@ -13,6 +13,7 @@ class ARViewController: UIViewController {
     var appStateController: AppStateController
     private var arView: ARView!
     private var arScene: ARScene!
+    private var cleanedImageView: UIImageView?
 
     init(appStateController: AppStateController) {
         self.appStateController = appStateController
@@ -31,6 +32,8 @@ class ARViewController: UIViewController {
         #endif
         view = arView
 
+        setupCleanedImage()
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
         view.addGestureRecognizer(tap)
 
@@ -38,7 +41,8 @@ class ARViewController: UIViewController {
         arView.scene.addAnchor(anchorEntity)
 
         arScene = ARScene(stageIndex: appStateController.stageIndex,
-                          assetManager: appStateController.assetManager)
+                          assetManager: appStateController.assetManager,
+                          cleanedImageView: cleanedImageView)
         arScene.prepare(arView: arView, anchor: anchorEntity)
 
         let config = ARWorldTrackingConfiguration()
@@ -63,6 +67,30 @@ class ARViewController: UIViewController {
         guard let touchInView = sender?.location(in: view) else { return }
         if let tappedEntity = arView.entity(at: touchInView) {
             arScene.tapped(tappedEntity)
+        }
+    }
+
+    private func setupCleanedImage() {
+        if let image: UIImage = appStateController.assetManager.cleanedImage {
+            cleanedImageView = UIImageView(image: image)
+
+            let screenWidth: CGFloat = view.frame.size.width
+            let screenHeight: CGFloat = view.frame.size.height
+            let minWidth = min(screenWidth, screenHeight)
+
+            let imageWidth: CGFloat = image.size.width
+            let imageHeight: CGFloat = image.size.height
+
+            let scale: CGFloat = minWidth / imageWidth
+            let scaledWidth = imageWidth * scale
+            let scaledHeight = imageHeight * scale
+            let rect: CGRect =
+                CGRect(x: 0, y: 0, width: scaledWidth, height: scaledHeight)
+
+            cleanedImageView?.frame = rect
+//            imageView.center = CGPoint(x: scaledWidth / 2.0, y: scaledHeight / 2.0)
+            cleanedImageView?.isHidden = true
+            view.addSubview(cleanedImageView!)
         }
     }
 }

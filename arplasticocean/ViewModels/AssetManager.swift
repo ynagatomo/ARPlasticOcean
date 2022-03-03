@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import RealityKit
 
 /// Manage assets
@@ -23,6 +24,8 @@ class AssetManager {
     private var loadedNames: [String] = []      // load any entities permanently
     private var loadedEntities: [Entity] = []   // (refuses and fish)
 
+    let cleanedImage: UIImage?
+
     struct MaterialSetting {
         let textureName: String?
         let domeShowing: Bool
@@ -30,6 +33,10 @@ class AssetManager {
         let surfaceEntityName: String
         let baseShowing: Bool
         let baseEntityName: String
+    }
+
+    init() {
+        cleanedImage = UIImage(named: AppConstant.cleanedMessageImageName)
     }
 
     func loadAndCloneStageEntity(name: String, textureName: String, materialSetting: MaterialSetting)

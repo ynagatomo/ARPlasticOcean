@@ -18,13 +18,26 @@ class Stage {
     let constant: StageAssetConstant
     private(set) var entity: Entity?
     private(set) var topLevelModelEntity: ModelEntity?
+    private(set) var collectedRefuseNumber: Int = 0 // number of collected refuses
 
     init(constant: StageAssetConstant) {
         self.constant = constant
     }
 
-    func setEntity(entity: Entity) {
+    func setEntity(entity: Entity) { // TODO: merge into init()
         self.entity = entity
+    }
+
+    // A refuse was collected.
+    func collectedRefuse() {
+        collectedRefuseNumber += 1
+    }
+
+    // The stage was cleaned.
+    func cleaned() {
+        assert(state == .collecting)
+        state = .cleaned
+        debugPrint("DEBUG: The stage just cleaned!!!!!!!!!!!!1!")
     }
 
     // swiftlint:disable function_body_length
@@ -219,13 +232,11 @@ class Fish {
 
 class Refuse {
     enum State {
-        case drifting
+        case free
         case trapped
         case disappear
-//        case collecting
-//        case collected
     }
-    private(set) var state: State = .drifting
+    private(set) var state: State = .free
 
     let constant: RefuseAssetConstant
     let entity: Entity
@@ -236,6 +247,10 @@ class Refuse {
     let initialPosition: SIMD3<Float>
     let movingPosYRange: Float  // [m]
     let movingRate: Float   // [1.0...] rate of moving up and down
+
+    static func freeNumber(refuses: [Refuse]) -> Int {
+        return refuses.filter({ $0.state == .free }).count
+    }
 
     init(constant: RefuseAssetConstant, entity: Entity,
          position: SIMD3<Float>, velocity: Float,

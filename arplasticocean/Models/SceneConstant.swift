@@ -113,7 +113,7 @@ struct AssetConstant {
     static let boatAssets: [BoatAssetConstant] = [
         BoatAssetConstant(name: "Utsuro", modelFile: "boat1.usdz",
                           topLevelModelEntityName: "Pole",
-                          volume: SIMD3<Float>([0.8, 1.0, 0.8]),
+                          volume: SIMD3<Float>([0.6, 1.0, 0.6]),
                           thickness: 0.04,
                           position: SIMD3<Float>([0.0, 0.2, 0.0]),
                           physicsMass: 1.0,
@@ -166,9 +166,9 @@ struct SceneConstant {
     static let origin = SIMD3<Float>([0.0, 0.0, -0.75])
     static let scale = SIMD3<Float>([1.0, 1.0, 1.0])
     static let refuseNumberMultiplier: Float = 2.0
-    static let refuseRestMargine: Int = 5
+    // static let refuseRestMargine: Int = 5
     static let refuseVolumeRadius: Float = 0.075 // [m]
-    static let gazeXZ: Float = 0.2 // [m]
+    static let gazeXZ: Float = 0.15 // [m] position range +/-
     static let collectingYPosition: Float = 1.6 // [m]
 
     static let refuseRoutes: [RefuseRouteConstant] = [
@@ -234,7 +234,8 @@ struct SceneConstant {
                       ],
                       boatAssetIndex: 0,
                       fishNumber: 0,
-                      refuseNumbers: [20, 25])
+                      refuseNumbers: [1, 1]) // TODO: remove
+//        refuseNumbers: [20, 25])
     ]
 
     static var stageCount: Int { stageConstants.count }

@@ -33,4 +33,7 @@ class AppConstant {
     // Sound Effect: collecting refuse
     static let soundCollectingName = "collect1"
     static let soundCollectingExt = "mp3"
+
+    static let cleanedMessageImageName: String = "cleaned" // image file name in bundle
+    static let showingCleanedMessageTime: Float = 5.0 // [sec]
 }

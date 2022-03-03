@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import RealityKit
 import Combine
 
@@ -18,6 +19,7 @@ class ARScene {
     private(set) var state: State = .collecting
     private let stageIndex: Int
     private let assetManager: AssetManager
+    private let cleanedImageView: UIImageView?
     private var arView: ARView!
     private var anchor: AnchorEntity!
     private var stageEntity: Entity!
@@ -29,9 +31,13 @@ class ARScene {
     private var fishes: [Fish] = []
     private var refuses: [Refuse] = []
 
-    init(stageIndex: Int, assetManager: AssetManager) {
+    private var showingCleanedView: Bool = false
+    private var showingCleanedViewTime: Float = 0.0
+
+    init(stageIndex: Int, assetManager: AssetManager, cleanedImageView: UIImageView?) {
         self.stageIndex = stageIndex
         self.assetManager = assetManager
+        self.cleanedImageView = cleanedImageView
     }
 
     func prepare(arView: ARView, anchor: AnchorEntity) {
@@ -91,7 +97,6 @@ class ARScene {
             refuse.angle -= refuse.angularVelocity * Float(deltaTime)
             refuse.angle = Float.normalize(radian: refuse.angle)  // -2Pi...2Pi [radian]
             // rotate deltaAngular on the X-Z plane
-            // TODO: modify to the simd operation
             let xInit = refuse.initialPosition.x
             let zInit = refuse.initialPosition.z
             let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
@@ -102,15 +107,28 @@ class ARScene {
             refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
         }
 
-        // play the collecting animations
+        // check the completion of collecting animations and change the physics mode
         if !animationPlaybackControllers.isEmpty {
             // When completed, change the physics mode to dynamic.
             animationPlaybackControllers.forEach { animationController in
                 if animationController.isComplete {
+                    // change the physics mode: static -> dynamic
                     if let entity = animationController.entity {
                         if let model = entity as? ModelEntity {
                             model.physicsBody?.mode = .dynamic
                         }
+                    }
+                    // collected the refuse
+                    stage.collectedRefuse()
+
+                    // check the completion of stage clean
+                    let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
+                    let restRefuseNumber = freeRefuseNumber - stage.collectedRefuseNumber
+                    assert(restRefuseNumber >= 0)
+                    if restRefuseNumber == 0 {
+                        stage.cleaned()
+                        showingCleanedView = true
+                        cleanedImageView?.isHidden = false
                     }
                 }
             }
@@ -119,6 +137,14 @@ class ARScene {
             animationPlaybackControllers.removeAll(where: {
                 $0.isComplete
             })
+        }
+
+        if showingCleanedView {
+            showingCleanedViewTime += Float(deltaTime)
+            if showingCleanedViewTime > AppConstant.showingCleanedMessageTime {
+                showingCleanedView = false
+                cleanedImageView?.isHidden = true
+            }
         }
     }
 
