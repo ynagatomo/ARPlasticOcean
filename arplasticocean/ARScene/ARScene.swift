@@ -342,6 +342,12 @@ class ARScene {
     }
 
     private func selectRefuses() -> [RefuseAssetConstant] {
+        #if DEBUG
+        if devConfiguration.singleRefuse {
+            return [AssetConstant.refuseAssets[0]]
+        }
+        #endif
+
         // The number of refuses in the stage (adding number of each route)
         var refuseNumber = 0
         SceneConstant.stageConstants[stageIndex].refuseNumbers.forEach {

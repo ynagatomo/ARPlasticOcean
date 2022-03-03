@@ -18,3 +18,7 @@ struct ARPlasticOceanApp: App {
         }
     }
 }
+
+#if DEBUG
+var devConfiguration = DevConfiguration()
+#endif

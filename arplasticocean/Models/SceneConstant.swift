@@ -210,8 +210,7 @@ struct SceneConstant {
                       ],
                       boatAssetIndex: 0,
                       fishNumber: 0,
-                      refuseNumbers: [3, 3]), // TODO: remove
-//        refuseNumbers: [20, 25]),
+                      refuseNumbers: [20, 25]),
         // Daytime Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
                       secondSoundIndex: AssetConstant.MusicAssetIndex.nukumori.rawValue,
@@ -235,8 +234,7 @@ struct SceneConstant {
                       ],
                       boatAssetIndex: 0,
                       fishNumber: 0,
-                      refuseNumbers: [1, 1]) // TODO: remove
-//        refuseNumbers: [20, 25])
+                      refuseNumbers: [20, 25])
     ]
 
     static var stageCount: Int { stageConstants.count }

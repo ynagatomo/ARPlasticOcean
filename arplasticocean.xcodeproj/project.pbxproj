@@ -14,6 +14,7 @@
 		BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */; };
 		BA6A404827D0544D002AE540 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA6A404727D0544D002AE540 /* boat1.usdz */; };
 		BA6A404A27D06BDA002AE540 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A404927D06BDA002AE540 /* SoundManager.swift */; };
+		BA6A404C27D0C652002AE540 /* DevConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A404B27D0C652002AE540 /* DevConfiguration.swift */; };
 		BA74B28227C4749800D79775 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28127C4749800D79775 /* Log.swift */; };
 		BA74B28427C474C000D79775 /* RealityDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28327C474C000D79775 /* RealityDump.swift */; };
 		BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
@@ -72,6 +73,7 @@
 		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		BA6A404727D0544D002AE540 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
 		BA6A404927D06BDA002AE540 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		BA6A404B27D0C652002AE540 /* DevConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfiguration.swift; sourceTree = "<group>"; };
 		BA74B28127C4749800D79775 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BA74B28327C474C000D79775 /* RealityDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityDump.swift; sourceTree = "<group>"; };
 		BA74B28D27C4778100D79775 /* AppStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				BA74B29B27C4898E00D79775 /* AppConstant.swift */,
+				BA6A404B27D0C652002AE540 /* DevConfiguration.swift */,
 			);
 			path = AppConfiguration;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
 				BA92B5FE27CF5AAE008C61FA /* Float_Extension.swift in Sources */,
 				BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */,
+				BA6A404C27D0C652002AE540 /* DevConfiguration.swift in Sources */,
 				BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */,
 				BA74B28427C474C000D79775 /* RealityDump.swift in Sources */,
 				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,

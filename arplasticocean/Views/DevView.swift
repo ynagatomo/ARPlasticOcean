@@ -15,9 +15,7 @@ struct DevView: View {
     @EnvironmentObject var appStateController: AppStateController
 
     @State private var cleanupCountText = ""
-    @State private var isOnToggleA = false
-    @State private var isOnToggleB = false
-    @State private var isOnToggleC = false
+    @State private var singleRefuse = false
 
     let assetNames = ["stage1.usdz",
                       "boat1.usdz",
@@ -76,15 +74,21 @@ struct DevView: View {
                             Spacer()
                             Button(action: { dump(assetName: assetNames[dumpAsset]) },
                                    label: {
-                                Text("  Dump  ")
+                                Text("Dump")
                             })
                         }
                     }, header: { Text("Assets") })
                 Section(content: { // Section("Setting A") { // iSO 15.0+
-                        Toggle("Option A", isOn: $isOnToggleA)
-                        Toggle("Option B", isOn: $isOnToggleB)
-                        Toggle("Option C", isOn: $isOnToggleC)
-                    }, header: { Text("Setting A") })
+                        HStack {
+                            Button(action: {
+                                singleRefuse.toggle()
+                                devConfiguration.singleRefuse.toggle()
+                            }) {
+                                Text("Single Refuse : ")
+                            }
+                            Text(singleRefuse ? "ON" : "OFF")
+                        }
+                    }, header: { Text("Dev Configuration") })
                 // .tint(.orange) // iOS 15.0+
                 // .listRowSeparator(.hidden) // iOS 15+
             } // List
