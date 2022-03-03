@@ -43,6 +43,11 @@ struct DevView: View {
                 Spacer()
             }
             List {
+                Section(content: {
+                    Text("Saved Cleaned Count = \(appStateController.savedCleanupCount)")
+                    Text("Last App Review Cleaned Count = \(appStateController.lastAppReviewCleanupCount)")
+                    Text("Approved Medal Level = \(appStateController.approvedMedalLevel)")
+                }, header: { Text("UserDefaults") })
                 Section(content: { // Section("Count [0...]") { // iOS 15.0+
                         TextField(currentCleanupCountText,
                                   text: $cleanupCountText,

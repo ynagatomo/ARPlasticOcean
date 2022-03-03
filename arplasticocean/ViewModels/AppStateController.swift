@@ -16,19 +16,21 @@ struct CleanupMedal {
 
 // @MainActor
 class AppStateController: ObservableObject {
+    #if DEBUG // not private
+    @AppStorage("savedCleanupCount") var savedCleanupCount = 0
+    @AppStorage("lastAppReviewCleanupCount") var lastAppReviewCleanupCount = 0
+    @AppStorage("approvedMedalLevel") var approvedMedalLevel = 0 // 0: no medal
+    #else // private
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
+    @AppStorage("approvedMedalLevel") private var approvedMedalLevel = 0 // 0: no medal
+    #endif
     @AppStorage("soundEnable") var soundEnable = true {
         didSet {
             soundManager.enable = soundEnable
         }
     }
     @Published private(set) var cleanupCount = 0
-//    @Published var isSoundEnable = true {
-//        didSet {
-//                soundManager.enable = isSoundEnable
-//        }
-//    }
 
     var stageIndex: Int {     // index of the next stage which will be cleaned
         cleanupCount % SceneConstant.stageCount
@@ -50,21 +52,30 @@ class AppStateController: ObservableObject {
         return medal
     }
 
-//    var nextStageIndex: Int {
-//        stageIndex == SceneConstant.stageCount - 1 ? 0 : stageIndex + 1
-//    }
-
     init() {
         cleanupCount = savedCleanupCount
         soundManager.enable = soundEnable
+    }
+
+    func shouldApproveNewMedal() -> Bool {
+        guard let medal = cleanupMedal else { return false }
+
+        var result = false
+        if approvedMedalLevel != medal.level {
+            result = true
+        }
+        return result
+    }
+
+    func approvedNewMedal() {
+        guard let medal = cleanupMedal else { return }
+        approvedMedalLevel = medal.level
     }
 
     /// Set the stage cleaned and move to the next stage
     func setCleaned() {
         // cleanup count ++
         setCleanupCount(cleanupCount + 1)
-//        // move to the next stage
-//        stageIndex = nextStageIndex
     }
 
     /// Set the cleanup count.

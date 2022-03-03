@@ -16,11 +16,7 @@ struct HomeView: View {
     @State private var showingDevView = false
     @State private var showingMedalApproval = false
 
-    @State private var medal: CleanupMedal?
-
-//    private let medalSoundPlayer = try! AVAudioPlayer(
-//        contentsOf: Bundle.main.url(forResource: AppConstant.soundMedalName,
-//                                    withExtension: AppConstant.soundMedalExt)!)
+//    @State private var medal: CleanupMedal?
 
     private let roundedOrangeButtonStyle: CustomButtonStyle = .init(isEnabled: true,
                                                       cornerRadius: 10,
@@ -130,18 +126,23 @@ struct HomeView: View {
     }
 
     private func update() {
-        debugPrint("DEBUG: update() was called.")
         // got a new medal?
-        if let latestMedal = appStateController.cleanupMedal {
-            if medal == nil || medal?.count != latestMedal.count {
-                debugPrint("DEBUG: medal was updated.")
-                medal = appStateController.cleanupMedal
-                showingMedalApproval = true
-                playMedalSound()
-            }
-        } else {
-            medal = nil // should be reset for testing with DevView
+        if appStateController.shouldApproveNewMedal() {
+            appStateController.approvedNewMedal()
+            showingMedalApproval = true
+            playMedalSound()
         }
+
+//        if let latestMedal = appStateController.cleanupMedal {
+//            if medal == nil || medal?.count != latestMedal.count {
+//                debugPrint("DEBUG: medal was updated.")
+//                medal = appStateController.cleanupMedal
+//                showingMedalApproval = true
+//                playMedalSound()
+//            }
+//        } else {
+//            medal = nil // should be reset for testing with DevView
+//        }
 
         // show the AppReview in app?
         if appStateController.isShowingAppReview() {
