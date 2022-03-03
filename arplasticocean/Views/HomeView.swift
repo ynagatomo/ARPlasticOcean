@@ -18,10 +18,9 @@ struct HomeView: View {
 
     @State private var medal: CleanupMedal?
 
-    // swiftlint:disable force_try
-    private let medalSoundPlayer = try! AVAudioPlayer(
-        contentsOf: Bundle.main.url(forResource: AppConstant.soundMedalName,
-                                    withExtension: AppConstant.soundMedalExt)!)
+//    private let medalSoundPlayer = try! AVAudioPlayer(
+//        contentsOf: Bundle.main.url(forResource: AppConstant.soundMedalName,
+//                                    withExtension: AppConstant.soundMedalExt)!)
 
     private let roundedOrangeButtonStyle: CustomButtonStyle = .init(isEnabled: true,
                                                       cornerRadius: 10,
@@ -60,9 +59,11 @@ struct HomeView: View {
 
                     // Sound Button
                     Button(action: {
-                        appStateController.isSoundEnable.toggle()
+                        appStateController.soundEnable.toggle()
+//                        appStateController.isSoundEnable.toggle()
                     }, label: {
-                        if appStateController.isSoundEnable {
+                        if appStateController.soundEnable {
+//                        if appStateController.isSoundEnable {
                             Image(systemName: "speaker.wave.2.fill")
                                 .font(.largeTitle)
                                 .padding(4)
@@ -129,13 +130,17 @@ struct HomeView: View {
     }
 
     private func update() {
+        debugPrint("DEBUG: update() was called.")
         // got a new medal?
         if let latestMedal = appStateController.cleanupMedal {
             if medal == nil || medal?.count != latestMedal.count {
+                debugPrint("DEBUG: medal was updated.")
                 medal = appStateController.cleanupMedal
                 showingMedalApproval = true
                 playMedalSound()
             }
+        } else {
+            medal = nil // should be reset for testing with DevView
         }
 
         // show the AppReview in app?
@@ -149,11 +154,7 @@ struct HomeView: View {
 
     // Play the Sound Effect to approve getting a new Medal.
     private func playMedalSound() {
-        if appStateController.isSoundEnable {
-            medalSoundPlayer.stop()
-            medalSoundPlayer.currentTime = 0.0
-            medalSoundPlayer.play()
-        }
+        appStateController.play(soundID: SoundManager.MedalSoundID)
     }
 }
 

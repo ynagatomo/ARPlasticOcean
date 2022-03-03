@@ -18,13 +18,19 @@ struct CleanupMedal {
 class AppStateController: ObservableObject {
     @AppStorage("savedCleanupCount") private var savedCleanupCount = 0
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
+    @AppStorage("soundEnable") var soundEnable = true
     @Published private(set) var cleanupCount = 0
-    @Published var isSoundEnable = true
+//    @Published var isSoundEnable = true {
+//        didSet {
+//                soundManager.enable = isSoundEnable
+//        }
+//    }
 
     var stageIndex: Int {     // index of the next stage which will be cleaned
         cleanupCount % SceneConstant.stageCount
     }
     let assetManager: AssetManager = AssetManager()
+    private let soundManager: SoundManager = SoundManager()
 
     var cleanupMedal: CleanupMedal? {
         var medal: CleanupMedal?
@@ -80,5 +86,17 @@ class AppStateController: ObservableObject {
             isShowing = true
         }
         return isShowing
+    }
+}
+
+// MARK: - Sound
+
+extension AppStateController {
+    func play(soundID: SoundManager.SoundID) {
+        soundManager.play(soundID: soundID, enable: soundEnable)
+    }
+
+    func stop(soundID: SoundManager.SoundID) {
+        soundManager.stop(soundID: soundID)
     }
 }

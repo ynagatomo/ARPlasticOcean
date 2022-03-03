@@ -13,6 +13,7 @@
 		BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA727CB01C3003C7152 /* Stage.swift */; };
 		BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */; };
 		BA6A404827D0544D002AE540 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA6A404727D0544D002AE540 /* boat1.usdz */; };
+		BA6A404A27D06BDA002AE540 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A404927D06BDA002AE540 /* SoundManager.swift */; };
 		BA74B28227C4749800D79775 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28127C4749800D79775 /* Log.swift */; };
 		BA74B28427C474C000D79775 /* RealityDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28327C474C000D79775 /* RealityDump.swift */; };
 		BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B28D27C4778100D79775 /* AppStateController.swift */; };
@@ -70,6 +71,7 @@
 		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		BA6A404727D0544D002AE540 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
+		BA6A404927D06BDA002AE540 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BA74B28127C4749800D79775 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BA74B28327C474C000D79775 /* RealityDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityDump.swift; sourceTree = "<group>"; };
 		BA74B28D27C4778100D79775 /* AppStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				BA74B28D27C4778100D79775 /* AppStateController.swift */,
 				BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */,
+				BA6A404927D06BDA002AE540 /* SoundManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				BA74B28227C4749800D79775 /* Log.swift in Sources */,
 				BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */,
 				BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */,
+				BA6A404A27D06BDA002AE540 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
