@@ -10,6 +10,8 @@ import UIKit
 import RealityKit
 import Combine
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 class ARScene {
     private(set) var isCleaned = false
     enum State {
@@ -29,7 +31,7 @@ class ARScene {
 
     private var stage: Stage!
     private var boat: Boat!
-    private var fishes: [Fish] = []
+    private var fishGroups: [FishGroup] = []
     private var refuses: [Refuse] = []
     private var soundIDCollecting: SoundManager.SoundID = 0
     private var soundIDCollected: SoundManager.SoundID = 0
@@ -95,6 +97,11 @@ class ARScene {
     }
 
     private func updateScene(deltaTime: Double) {   // deltaTime [sec] (about 0.016)
+        // move fish
+        fishGroups.forEach { fishGroup in
+            fishGroup.update(deltaTime: deltaTime)
+        }
+
         // play the rolling animations of refuses
         refuses.forEach { refuse in
             // angular is reversed (+/-) because z axis upside down
@@ -227,35 +234,77 @@ class ARScene {
         }
     }
 
+    // MARK: - Prepare Fish
+
     private func prepareFishes() {
-        // choose fish (type and number)
-        // instantiate the fish objects
-        // load and clone their entities
-        // add a collision shape each fish
-        // set position
-        // place them in the AR world (add as a stage's child)
+        // create fish-group objects
+        SceneConstant.stageConstants[stageIndex].fishGroups.forEach { constant in
+            let fishGroup = FishGroup(constant: constant)
+            fishGroups.append(fishGroup)
+
+            // prepare
+            fishGroup.prepare()
+            // set fish entities
+            var entities: [Entity?] = []
+            for _ in 0 ..< constant.fishNumber {
+                entities.append(assetManager.loadAndCloneEntity(name: fishGroup.modelFileName))
+            }
+            fishGroup.setEntities(entities) // set entities and assign initial position
+
+            // add collision shapes
+            fishGroup.addPhysics()
+            // place them in the AR world (add as a stage's child)
+            entities.forEach { entity in
+                if let entity = entity {
+                    stageEntity.addChild(entity)
+                }
+            }
+
+            #if DEBUG
+            if devConfiguration.showingFishTargets {
+                // set target entities
+                let targetEntities = createTargetEntities(number: constant.fishNumber)
+                fishGroup.setTargetEntities(targetEntities)
+                targetEntities.forEach { entity in
+                    stageEntity.addChild(entity)
+                }
+            }
+            #endif
+        }
     }
+
+    #if DEBUG
+    private func createTargetEntities(number: Int) -> [ModelEntity] {
+        var entities: [ModelEntity] = []
+        for _ in 0 ..< number {
+            entities.append(createTargetEntity())
+        }
+        return entities
+    }
+    #endif
+
+    #if DEBUG
+    private func createTargetEntity(color: UIColor = .green, radius: Float = 0.05) -> ModelEntity {
+        let mesh = MeshResource.generateSphere(radius: radius)
+        let material = SimpleMaterial(color: color, isMetallic: false)
+        let entity = ModelEntity(mesh: mesh, materials: [material])
+        return entity
+    }
+    #endif
+
+    #if DEBUG
+    // TODO: imple
+    private func createRouteEntity(color: UIColor = .yellow, radius: Float = 0.01) -> Entity {
+        let mesh = MeshResource.generateSphere(radius: radius)
+        let material = SimpleMaterial(color: color, isMetallic: false)
+        let entity = ModelEntity(mesh: mesh, materials: [material])
+        return entity
+    }
+    #endif
 
     // MARK: - Prepare Refuse
 
     private func prepareRefuses() {
-//        let mesh = MeshResource.generateSphere(radius: 0.075)
-//        let material = SimpleMaterial(color: .red, isMetallic: false)
-//        let collisionShape = ShapeResource.generateSphere(radius: 0.075)
-//        let entity = ModelEntity(mesh: mesh,
-//                                 materials: [material],
-//                                 collisionShape: collisionShape,
-//                                 mass: 1.0)
-//        entity.physicsBody?.mode = .static
-//        stageEntity.addChild(entity)
-//
-//        let entity2 = ModelEntity(mesh: mesh,
-//                                 materials: [material],
-//                                 collisionShape: collisionShape,
-//                                 mass: 1.0)
-//        entity2.physicsBody?.mode = .static
-//        stageEntity.addChild(entity2)
-
         // choose refuse for the stage
         let refuseAssetConstants: [RefuseAssetConstant] = selectRefuses()
         // create refuse objects

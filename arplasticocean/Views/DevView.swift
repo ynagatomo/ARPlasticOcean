@@ -15,7 +15,10 @@ struct DevView: View {
     @EnvironmentObject var appStateController: AppStateController
 
     @State private var cleanupCountText = ""
-    @State private var singleRefuse = false
+    @State private var showingARDebugOptions = true
+    @State private var singleRefuse = true
+    @State private var showingFishRoutes = true
+    @State private var showingFishTargets = true
 
     let assetNames = ["stage1.usdz",
                       "boat1.usdz",
@@ -42,10 +45,10 @@ struct DevView: View {
             }
             List {
                 Section(content: {
-                    Text("Saved Cleaned Count = \(appStateController.savedCleanupCount)")
-                    Text("Last App Review Cleaned Count = \(appStateController.lastAppReviewCleanupCount)")
-                    Text("Approved Medal Level = \(appStateController.approvedMedalLevel)")
-                }, header: { Text("UserDefaults") })
+                    Text(String("Saved Cleaned Count = \(appStateController.savedCleanupCount)"))
+                    Text(String("Last App Review Cleaned Count = \(appStateController.lastAppReviewCleanupCount)"))
+                    Text(String("Approved Medal Level = \(appStateController.approvedMedalLevel)"))
+                }, header: { Text(String("UserDefaults")) })
                 Section(content: { // Section("Count [0...]") { // iOS 15.0+
                         TextField(currentCleanupCountText,
                                   text: $cleanupCountText,
@@ -57,10 +60,10 @@ struct DevView: View {
                             }
                         })
                         .textFieldStyle(.roundedBorder)
-                    }, header: {Text("Count [0...]")})
+                    }, header: {Text(String("Count [0...]"))})
                 Section(content: { // Section("Assets") { // iOS 15.0+
                         HStack {
-                            Text("Model")
+                            Text(String("Model"))
                             Spacer()
                             Picker(selection: $dumpAsset, label: Text("Model")) {
                                 ForEach(0 ..< assetNames.count) {
@@ -74,21 +77,33 @@ struct DevView: View {
                             Spacer()
                             Button(action: { dump(assetName: assetNames[dumpAsset]) },
                                    label: {
-                                Text("Dump")
+                                Text(String("Dump"))
+                                    .foregroundColor(Color.white)
+                                    .padding(4)
+                                    .padding(.horizontal)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
                             })
                         }
-                    }, header: { Text("Assets") })
+                    }, header: { Text(String("Assets")) })
                 Section(content: { // Section("Setting A") { // iSO 15.0+
-                        HStack {
-                            Button(action: {
-                                singleRefuse.toggle()
-                                devConfiguration.singleRefuse.toggle()
-                            }) {
-                                Text("Single Refuse : ")
-                            }
-                            Text(singleRefuse ? "ON" : "OFF")
+                    Toggle(String("AR Debug Options"), isOn: $showingARDebugOptions)
+                        .onChange(of: showingARDebugOptions) { value in
+                            devConfiguration.showingARDebugOptions = value
                         }
-                    }, header: { Text("Dev Configuration") })
+                    Toggle(String("Single Refuse"), isOn: $singleRefuse)
+                        .onChange(of: singleRefuse) { value in
+                            devConfiguration.singleRefuse = value
+                        }
+                    Toggle(String("Show fish routes"), isOn: $showingFishRoutes)
+                        .onChange(of: showingFishRoutes) { value in
+                            devConfiguration.showingFishRoutes = value
+                        }
+                    Toggle(String("Show fish targets"), isOn: $showingFishTargets)
+                        .onChange(of: showingFishTargets) { value in
+                            devConfiguration.showingFishTargets = value
+                        }
+                    }, header: { Text(String("Dev Configuration")) })
                 // .tint(.orange) // iOS 15.0+
                 // .listRowSeparator(.hidden) // iOS 15+
             } // List

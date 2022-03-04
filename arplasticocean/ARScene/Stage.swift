@@ -8,6 +8,8 @@
 import Foundation
 import RealityKit
 
+// swiftlint:disable file_length
+
 class Stage {
     enum State {
         case collecting // collecting refuses
@@ -209,6 +211,126 @@ class Boat {
     }
 }
 
+class FishGroup {
+    let fishGroupConstant: FishGroupConstant
+    let fishRouteConstant: FishRouteConstant
+    var fishAssetConstant: FishAssetConstant!
+    var fishes: [Fish] = []
+
+    var modelFileName: String {
+        fishAssetConstant.modelFile
+    }
+
+    init(constant: FishGroupConstant) {
+        self.fishGroupConstant = constant
+        fishRouteConstant = SceneConstant.fishRoutes[constant.fishRouteIndex]
+    }
+
+    func prepare() {
+        // choose one fish-property-constant index
+        let fishPropertyConstantIndex = chooseFish()
+        assert(fishPropertyConstantIndex < SceneConstant.fishProperties.count)
+        let fishPropertyConstant = SceneConstant.fishProperties[fishPropertyConstantIndex]
+        let fishAssetIndex = fishPropertyConstant.assetIndex
+        fishAssetConstant = AssetConstant.fishAssets[fishAssetIndex]
+
+        // create Fish objects
+        var angle: Float = 0.0
+        for _ in 0 ..< fishGroupConstant.fishNumber {
+            let fish = Fish(constant: fishAssetConstant,
+                            angleOffset: angle,
+                            positionDiff: fishGroupConstant.fishDiffMax)
+            fishes.append( fish )
+            angle += Float.random(in: fishGroupConstant.fishAngleGap.min
+                                  ... fishGroupConstant.fishAngleGap.max)
+        }
+    }
+
+    func setEntities(_ entities: [Entity?]) {
+        assert(entities.count == fishes.count)
+        for index in 0 ..< entities.count {
+            fishes[index].setEntity(entities[index])
+            // set initial position
+            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+            entities[index]?.position = position
+        }
+    }
+
+    #if DEBUG
+    func setTargetEntities(_ entities: [ModelEntity]) {
+        assert(entities.count == fishes.count)
+        for index in 0 ..< entities.count {
+            fishes[index].setTargetEntity(entities[index])
+            // set initial position
+            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+            entities[index].position = position
+        }
+    }
+    #endif
+
+    func addPhysics() {
+        fishes.forEach { $0.addPhysics() }
+    }
+
+    func update(deltaTime: Double) {
+        #if DEBUG
+        if devConfiguration.showingFishTargets {
+            for index in 0 ..< fishes.count {
+                let position = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
+                fishes[index].targetEntity?.position = position
+            }
+        }
+        #endif
+    }
+
+    private func calcFishPosition(fishIndex: Int, deltaTime: Double) -> SIMD3<Float> {
+        let time = fishes[fishIndex].time + Float(deltaTime)
+        fishes[fishIndex].time = time   // update
+        let angleOffset = fishes[fishIndex].angleOffset
+
+        // multiply -1 to adopt right-hand system
+        let angle = -(fishGroupConstant.fishVelocity * time + angleOffset)
+        // an ellipse shape
+        let xPos = fishRouteConstant.radiusX * cosf(angle)
+                    + fishRouteConstant.origin.x
+        let zPos = fishRouteConstant.radiusZ * sinf(angle)
+                    + fishRouteConstant.origin.z
+        // sin
+        let angle2 = fishGroupConstant.fishVelocity * time / fishRouteConstant.cycleRateY
+                    + angleOffset
+        let yPos = fishRouteConstant.radiusY * sinf(angle2)
+                    + fishRouteConstant.origin.y
+
+        // rotate on the X-Z plane
+        let angle3 = angle * fishRouteConstant.cycleMulRateXZ
+                           / fishRouteConstant.cycleDivRateXZ
+        let xPos2 = xPos * cosf(angle3) - zPos * sinf(angle3)
+        let zPos2 = xPos * sinf(angle3) + zPos * cosf(angle3)
+
+        // shift positon (x, y, z) slightly
+        let position = SIMD3<Float>([xPos2, yPos, zPos2]) + fishes[fishIndex].positionDiff
+        return position
+    }
+
+    /// Choose one fish from the candidates
+    /// - Returns: chosen index of FishPropertyConstant
+    ///
+    /// It is chosen based on the probability of each fish
+    /// When all fish are not chosen, index 0 will be chosen by default.
+    private func chooseFish() -> Int {
+        var chosenIndex: Int = 0    // default chosen index = 0
+        for index in fishGroupConstant.fishPropertyIndexes {
+            assert(index < SceneConstant.fishProperties.count)
+            let fishPropertyConstant = SceneConstant.fishProperties[index]
+            if fishPropertyConstant.selectProbability > Float.random(in: 0 ..< 1.0) {
+                chosenIndex = index
+                break
+            }
+        }
+        return chosenIndex
+    }
+}
+
 class Fish {
     enum State {
         case fine
@@ -218,15 +340,52 @@ class Fish {
     private(set) var state: State = .fine
 
     let constant: FishAssetConstant
-    let entity: Entity
+    var entity: Entity?
     private(set) var topLevelModelEntity: ModelEntity?
+    var time: Float = 0.0   // [sec]
+    let angleOffset: Float   // [radian]
+    let positionDiff: SIMD3<Float>  // [m] position difference (gap)
+    #if DEBUG
+    var targetEntity: ModelEntity?
+    #endif
 
-    init(constant: FishAssetConstant, entity: Entity) {
+    init(constant: FishAssetConstant, angleOffset: Float, positionDiff: Float) {
         self.constant = constant
+        self.angleOffset = angleOffset
+        self.positionDiff = SIMD3<Float>([
+            Float.random(in: -positionDiff ... positionDiff),
+            Float.random(in: -positionDiff ... positionDiff),
+            Float.random(in: -positionDiff ... positionDiff)
+        ])
+    }
+
+    func setEntity(_ entity: Entity?) {
         self.entity = entity
     }
 
+    #if DEBUG
+    func setTargetEntity(_ entity: ModelEntity) {
+        self.targetEntity = entity
+    }
+    #endif
+
     func addPhysics() {
+        // find the ModelEntity
+        if let theEntity = entity?.findEntity(named: constant.modelEntityName) {
+            debugLog("DEBUG: Fish: found a model-entity.")
+            if let modelEntity = theEntity as? ModelEntity {
+                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
+
+                let shape = ShapeResource.generateBox(size: constant.volume)
+                modelEntity.collision = CollisionComponent(shapes: [shape])
+                modelEntity.physicsBody = PhysicsBodyComponent(shapes: [shape],
+                                                               mass: constant.physicsMass,
+                                            material: PhysicsMaterialResource.generate(
+                                                friction: constant.physicsFriction,
+                                                restitution: constant.physicsRestitution))
+                modelEntity.physicsBody?.mode = .static
+            }
+        }
     }
 }
 

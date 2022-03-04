@@ -28,7 +28,9 @@ class ARViewController: UIViewController {
         debugLog("ARViewController: viewDidAppear(_:) was called.")
         arView = ARView(frame: .zero)
         #if DEBUG
-        arView.debugOptions = [.showPhysics]
+        if devConfiguration.showingARDebugOptions {
+            arView.debugOptions = [.showPhysics]
+        }
         #endif
         view = arView
 
