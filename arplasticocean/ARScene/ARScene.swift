@@ -239,7 +239,10 @@ class ARScene {
     private func prepareFishes() {
         // create fish-group objects
         SceneConstant.stageConstants[stageIndex].fishGroups.forEach { constant in
-            let fishGroup = FishGroup(constant: constant)
+            let bottomY = -(AssetConstant.stageAssets[stageIndex].radius
+                            - AssetConstant.stageAssets[stageIndex].offset)
+                          + AssetConstant.stageAssets[stageIndex].thickness / 2.0
+            let fishGroup = FishGroup(constant: constant, bottomY: bottomY)
             fishGroups.append(fishGroup)
 
             // prepare

@@ -67,7 +67,7 @@ struct AssetConstant {
         FishAssetConstant(name: "Umeiromodoki",
                           modelFile: "umeiromodoki.usdz",
                           volume: SIMD3<Float>([0.2, 0.04, 0.03]),
-                          modelEntityName: "Born",
+                          modelEntityName: "Bone",
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
                           physicsRestitution: 0.1)
@@ -210,28 +210,48 @@ struct SceneConstant {
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0),
+                          cycleMulRateXZ: 1.0,
+                         fishInitPosition: SIMD3<Float>([
+                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
+                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
+                         ])),
         // #1 : route for middle fish
         FishRouteConstant(radiusX: 1.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.3, 0.0, 0.0]),
                           offsetTheta: Float.pi / 2.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0),
+                          cycleMulRateXZ: 1.0,
+                          fishInitPosition: SIMD3<Float>([
+                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
+                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
+                          ])),
         // #2 : route for large fish
         FishRouteConstant(radiusX: 2.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.0, 0.0, 1.0]),
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0),
+                          cycleMulRateXZ: 1.0,
+                          fishInitPosition: SIMD3<Float>([
+                                -2.0, // out of Dome
+                                 // Y: bottom / 2.0
+                                 -0.75 / 2.0,
+                                 -2.0   // out of Dome
+                          ])),
         // #3 : route for large fish (no rotation)
         FishRouteConstant(radiusX: 2.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.0, 0.0, 1.0]),
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 0.0)
+                          cycleMulRateXZ: 0.0,
+                          fishInitPosition: SIMD3<Float>([
+                                -2.0, // out of Dome
+                                 // Y: bottom / 2.0
+                                 -0.75 / 2.0,
+                                 -2.0   // out of Dome
+                          ]))
     ]
 
     static let stageConstants: [StageConstant] = [
@@ -449,6 +469,7 @@ struct FishRouteConstant {
     let cycleRateY: Float   // cycle modifier for moving Y axis
     let cycleDivRateXZ: Float // cycle division modifier on XZ plane
     let cycleMulRateXZ: Float // cycle multiply modifier on XZ plane {0.0 or 1.0}
+    let fishInitPosition: SIMD3<Float>  // fish init position for all fish
 }
 
 struct FishGroupConstant {

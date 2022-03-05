@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */; };
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
-		BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */; };
 		BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA727CB01C3003C7152 /* Stage.swift */; };
 		BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */; };
 		BA6A404827D0544D002AE540 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA6A404727D0544D002AE540 /* boat1.usdz */; };
@@ -33,6 +32,7 @@
 		BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */; };
 		BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AF27C4DA7300D79775 /* hidamari.m4a */; };
 		BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2B127C4DA8600D79775 /* needbetter.m4a */; };
+		BA77395127D2E88900394BDD /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA77395027D2E88900394BDD /* umeiromodoki.usdz */; };
 		BA92B5FE27CF5AAE008C61FA /* Float_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA92B5FD27CF5AAE008C61FA /* Float_Extension.swift */; };
 		BA92B5FF27CF6103008C61FA /* Float_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA92B5FD27CF5AAE008C61FA /* Float_Extension.swift */; };
 		BA92B60027CF654B008C61FA /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
@@ -68,7 +68,6 @@
 /* Begin PBXFileReference section */
 		BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
-		BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
 		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
 		BA6A404727D0544D002AE540 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nukumori.m4a; sourceTree = "<group>"; };
 		BA74B2AF27C4DA7300D79775 /* hidamari.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hidamari.m4a; sourceTree = "<group>"; };
 		BA74B2B127C4DA8600D79775 /* needbetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = needbetter.m4a; sourceTree = "<group>"; };
+		BA77395027D2E88900394BDD /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
 		BA92B5FD27CF5AAE008C61FA /* Float_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float_Extension.swift; sourceTree = "<group>"; };
 		BA92B60427CF83FD008C61FA /* bag.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bag.usdz; sourceTree = "<group>"; };
 		BA92B60627CF877E008C61FA /* bottle.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bottle.usdz; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		BA74B28927C4766F00D79775 /* Fish */ = {
 			isa = PBXGroup;
 			children = (
-				BA3C5AA527CA0EAD003C7152 /* umeiromodoki.usdz */,
+				BA77395027D2E88900394BDD /* umeiromodoki.usdz */,
 			);
 			path = Fish;
 			sourceTree = "<group>";
@@ -426,12 +426,12 @@
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,
 				BA74B2A727C4D94E00D79775 /* medal1.mp3 in Resources */,
 				BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */,
+				BA77395127D2E88900394BDD /* umeiromodoki.usdz in Resources */,
 				BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */,
 				BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */,
 				BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */,
 				BA92B60D27CF8C21008C61FA /* debris1.usdz in Resources */,
 				BA6A404827D0544D002AE540 /* boat1.usdz in Resources */,
-				BA3C5AA627CA0EAD003C7152 /* umeiromodoki.usdz in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
 				BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,

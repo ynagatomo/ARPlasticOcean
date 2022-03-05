@@ -216,14 +216,16 @@ class FishGroup {
     let fishRouteConstant: FishRouteConstant
     var fishAssetConstant: FishAssetConstant!
     var fishes: [Fish] = []
+    let bottomY: Float   // sea bottom position on Y axis [m]
 
     var modelFileName: String {
         fishAssetConstant.modelFile
     }
 
-    init(constant: FishGroupConstant) {
+    init(constant: FishGroupConstant, bottomY: Float) {
         self.fishGroupConstant = constant
         fishRouteConstant = SceneConstant.fishRoutes[constant.fishRouteIndex]
+        self.bottomY = bottomY
     }
 
     func prepare() {
@@ -250,9 +252,14 @@ class FishGroup {
         assert(entities.count == fishes.count)
         for index in 0 ..< entities.count {
             fishes[index].setEntity(entities[index])
-            // set initial position
-            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
-            entities[index]?.position = position
+            // set initial position (set position before adding physics in dynamic mode)
+//            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+//            let position = fishRouteConstant.fishInitPosition
+//            entities[index]?.position = position
+            // set initial target position
+            let targetPosition = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+//            fishes[index].targetPosition = targetPosition
+            fishes[index].setInitialPosition(targetPosition: targetPosition, bottomY: bottomY)
         }
     }
 
@@ -262,8 +269,9 @@ class FishGroup {
         for index in 0 ..< entities.count {
             fishes[index].setTargetEntity(entities[index])
             // set initial position
-            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
-            entities[index].position = position
+            fishes[index].updateTargetEntity()
+//            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+//            entities[index].position = position
         }
     }
     #endif
@@ -273,11 +281,19 @@ class FishGroup {
     }
 
     func update(deltaTime: Double) {
+        for index in 0 ..< fishes.count {
+            // update each target positions
+            let targetPosition = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
+            fishes[index].targetPosition = targetPosition
+            fishes[index].update()
+        }
+
         #if DEBUG
         if devConfiguration.showingFishTargets {
             for index in 0 ..< fishes.count {
-                let position = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
-                fishes[index].targetEntity?.position = position
+//                let position = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
+//                fishes[index].targetEntity?.position = position
+                fishes[index].updateTargetEntity()
             }
         }
         #endif
@@ -341,10 +357,11 @@ class Fish {
 
     let constant: FishAssetConstant
     var entity: Entity?
-    private(set) var topLevelModelEntity: ModelEntity?
-    var time: Float = 0.0   // [sec]
+    private var modelEntity: ModelEntity? // top level ModelEntity
+    var time: Float = 0.0   // [sec] accumulated time during swiming
     let angleOffset: Float   // [radian]
     let positionDiff: SIMD3<Float>  // [m] position difference (gap)
+    var targetPosition = SIMD3<Float>.zero    // [m] target position
     #if DEBUG
     var targetEntity: ModelEntity?
     #endif
@@ -360,7 +377,28 @@ class Fish {
     }
 
     func setEntity(_ entity: Entity?) {
+        // keep the Entity
         self.entity = entity
+        // find the ModelEntity
+        if let entity = entity,
+           let theEntity = entity.findEntity(named: constant.modelEntityName),
+           let model = theEntity as? ModelEntity {
+            debugLog("DEBUG: found fish ModelEntity.")
+            modelEntity = model
+        }
+    }
+
+    func setInitialPosition(targetPosition: SIMD3<Float>, bottomY: Float) {
+        self.targetPosition = targetPosition
+        let position = SIMD3<Float>([
+            targetPosition.x,
+            bottomY + constant.volume.y / 2.0 + 0.01,  // 0.01 : margine
+            targetPosition.z
+        ])
+        entity?.position = position
+    }
+
+    func update() {
     }
 
     #if DEBUG
@@ -369,23 +407,28 @@ class Fish {
     }
     #endif
 
-    func addPhysics() {
-        // find the ModelEntity
-        if let theEntity = entity?.findEntity(named: constant.modelEntityName) {
-            debugLog("DEBUG: Fish: found a model-entity.")
-            if let modelEntity = theEntity as? ModelEntity {
-                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
+    #if DEBUG
+    func updateTargetEntity() {
+        targetEntity?.position = targetPosition
+    }
+    #endif
 
-                let shape = ShapeResource.generateBox(size: constant.volume)
-                modelEntity.collision = CollisionComponent(shapes: [shape])
-                modelEntity.physicsBody = PhysicsBodyComponent(shapes: [shape],
-                                                               mass: constant.physicsMass,
-                                            material: PhysicsMaterialResource.generate(
-                                                friction: constant.physicsFriction,
-                                                restitution: constant.physicsRestitution))
-                modelEntity.physicsBody?.mode = .static
-            }
-        }
+    func addPhysics() {
+//        // find the ModelEntity
+//        if let theEntity = entity?.findEntity(named: constant.modelEntityName) {
+//            debugLog("DEBUG: Fish: found a model-entity.")
+//            if let modelEntity = theEntity as? ModelEntity {
+//                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
+        let shape = ShapeResource.generateBox(size: constant.volume)
+        modelEntity?.collision = CollisionComponent(shapes: [shape])
+        modelEntity?.physicsBody = PhysicsBodyComponent(shapes: [shape],
+                                                       mass: constant.physicsMass,
+                                    material: PhysicsMaterialResource.generate(
+                                        friction: constant.physicsFriction,
+                                        restitution: constant.physicsRestitution))
+        modelEntity?.physicsBody?.mode = .dynamic
+//            }
+//        }
     }
 }
 
