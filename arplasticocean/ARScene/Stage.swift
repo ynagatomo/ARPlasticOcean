@@ -261,6 +261,10 @@ class FishGroup {
         }
     }
 
+    func startAnimation() {
+        fishes.forEach { $0.startAnimation() }
+    }
+
     #if DEBUG
     func setTargetEntities(_ entities: [ModelEntity]) {
         assert(entities.count == fishes.count)
@@ -456,6 +460,21 @@ class Fish {
            let model = theEntity as? ModelEntity {
             debugLog("DEBUG: found fish ModelEntity.")
             modelEntity = model
+        }
+    }
+
+    func startAnimation() {
+        guard let entity = entity else { return }
+
+        if let animation = entity.availableAnimations.first {
+            entity.playAnimation(animation.repeat(), transitionDuration: 0, startsPaused: false)
+            //    entity.playAnimation(animation.repeat())  // iOS 15.0+
+            //    entity.playAnimation(animation.repeat(),  // iOS 15.0+
+            //                         transitionDuration: 0,
+            //                         blendLayerOffset: 0,
+            //                         separateAnimatedValue: false,
+            //                         startsPaused: false,
+            //                         clock: nil)
         }
     }
 

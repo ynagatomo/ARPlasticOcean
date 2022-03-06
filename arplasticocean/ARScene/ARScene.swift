@@ -68,6 +68,9 @@ class ARScene {
             }
         }
 
+        // start fish animation
+        fishGroups.forEach { $0.startAnimation() }
+
         // start playing sounds
         soundManager.play(soundID: soundIDCollecting)
     }
@@ -253,7 +256,7 @@ class ARScene {
 
             //    // add collision shapes
             //    fishGroup.addPhysics()
-            
+
             // place them in the AR world (add as a stage's child)
             entities.forEach { entity in
                 if let entity = entity {
