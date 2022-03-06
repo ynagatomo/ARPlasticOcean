@@ -264,47 +264,46 @@ class ARScene {
                 }
             }
 
-            #if DEBUG
-            if devConfiguration.showingFishTargets {
-                // set target entities
-                let targetEntities = createTargetEntities(number: constant.fishNumber)
-                fishGroup.setTargetEntities(targetEntities)
-                targetEntities.forEach { entity in
-                    stageEntity.addChild(entity)
-                }
-            }
-            #endif
+            //    #if DEBUG
+            //    if devConfiguration.showingFishTargets {
+            //        // set target entities
+            //        let targetEntities = createTargetEntities(number: constant.fishNumber)
+            //        fishGroup.setTargetEntities(targetEntities)
+            //        targetEntities.forEach { entity in
+            //            stageEntity.addChild(entity)
+            //        }
+            //    }
+            //    #endif
         }
     }
 
-    #if DEBUG
-    private func createTargetEntities(number: Int) -> [ModelEntity] {
-        var entities: [ModelEntity] = []
-        for _ in 0 ..< number {
-            entities.append(createTargetEntity())
-        }
-        return entities
-    }
-    #endif
+    //    #if DEBUG
+    //    private func createTargetEntities(number: Int) -> [ModelEntity] {
+    //        var entities: [ModelEntity] = []
+    //        for _ in 0 ..< number {
+    //            entities.append(createTargetEntity())
+    //        }
+    //        return entities
+    //    }
+    //    #endif
 
-    #if DEBUG
-    private func createTargetEntity(color: UIColor = .green, radius: Float = 0.05) -> ModelEntity {
-        let mesh = MeshResource.generateSphere(radius: radius)
-        let material = SimpleMaterial(color: color, isMetallic: false)
-        let entity = ModelEntity(mesh: mesh, materials: [material])
-        return entity
-    }
-    #endif
+    //    #if DEBUG
+    //    private func createTargetEntity(color: UIColor = .green, radius: Float = 0.05) -> ModelEntity {
+    //        let mesh = MeshResource.generateSphere(radius: radius)
+    //        let material = SimpleMaterial(color: color, isMetallic: false)
+    //        let entity = ModelEntity(mesh: mesh, materials: [material])
+    //        return entity
+    //    }
+    //    #endif
 
-    #if DEBUG
-    // TODO: imple
-    private func createRouteEntity(color: UIColor = .yellow, radius: Float = 0.01) -> Entity {
-        let mesh = MeshResource.generateSphere(radius: radius)
-        let material = SimpleMaterial(color: color, isMetallic: false)
-        let entity = ModelEntity(mesh: mesh, materials: [material])
-        return entity
-    }
-    #endif
+    //    #if DEBUG
+    //    private func createRouteEntity(color: UIColor = .yellow, radius: Float = 0.01) -> Entity {
+    //        let mesh = MeshResource.generateSphere(radius: radius)
+    //        let material = SimpleMaterial(color: color, isMetallic: false)
+    //        let entity = ModelEntity(mesh: mesh, materials: [material])
+    //        return entity
+    //    }
+    //    #endif
 
     // MARK: - Prepare Refuse
 

@@ -26,7 +26,7 @@ class Stage {
         self.constant = constant
     }
 
-    func setEntity(entity: Entity) { // TODO: merge into init()
+    func setEntity(entity: Entity) {
         self.entity = entity
     }
 
@@ -265,22 +265,20 @@ class FishGroup {
         fishes.forEach { $0.startAnimation() }
     }
 
-    #if DEBUG
-    func setTargetEntities(_ entities: [ModelEntity]) {
-        assert(entities.count == fishes.count)
-        for index in 0 ..< entities.count {
-            fishes[index].setTargetEntity(entities[index])
-            // set initial position
-            fishes[index].updateTargetEntity()
-//            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
-//            entities[index].position = position
-        }
-    }
-    #endif
+    //    #if DEBUG
+    //    func setTargetEntities(_ entities: [ModelEntity]) {
+    //        assert(entities.count == fishes.count)
+    //        for index in 0 ..< entities.count {
+    //            fishes[index].setTargetEntity(entities[index])
+    //            // set initial position
+    //            fishes[index].updateTargetEntity()
+    //        }
+    //    }
+    //    #endif
 
-//    func addPhysics() {
-//        fishes.forEach { $0.addPhysics() }
-//    }
+    //    func addPhysics() {
+    //        fishes.forEach { $0.addPhysics() }
+    //    }
 
     func update(deltaTime: Double) {
         for index in 0 ..< fishes.count {
@@ -291,15 +289,13 @@ class FishGroup {
             fishes[index].update(deltaTime: Float(deltaTime)) // deltaTime: Float(deltaTime))
         }
 
-        #if DEBUG
-        if devConfiguration.showingFishTargets {
-            for index in 0 ..< fishes.count {
-//                let position = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
-//                fishes[index].targetEntity?.position = position
-                fishes[index].updateTargetEntity()
-            }
-        }
-        #endif
+        //    #if DEBUG
+        //    if devConfiguration.showingFishTargets {
+        //        for index in 0 ..< fishes.count {
+        //            fishes[index].updateTargetEntity()
+        //        }
+        //    }
+        //    #endif
     }
 
 //    private func calcFishPosition(fishIndex: Int, deltaTime: Double) -> SIMD3<Float> {
@@ -353,9 +349,6 @@ class FishGroup {
                            / fishRouteConstant.cycleDivRateXZ
         let xPos2 = posXZ.x * cosf(-angle3) - posXZ.z * sinf(-angle3)
         let zPos2 = posXZ.x * sinf(-angle3) + posXZ.z * cosf(-angle3)
-//        let angle3 = Float(0.0)
-//        let xPos2 = posXZ.x
-//        let zPos2 = posXZ.z
         let resultAngle = fishAngle + angle3
 
         // shift position (x, y, z) slightly
@@ -437,9 +430,9 @@ class Fish {
     let positionDiff: SIMD3<Float>  // [m] position difference (gap)
     var targetPosition = SIMD3<Float>.zero    // [m] target position
     var fishAngle: Float = 0.0
-    #if DEBUG
-    var targetEntity: ModelEntity?
-    #endif
+    //    #if DEBUG
+    //    var targetEntity: ModelEntity?
+    //    #endif
 
     init(constant: FishAssetConstant, angleOffset: Float, positionDiff: Float) {
         self.constant = constant
@@ -496,17 +489,17 @@ class Fish {
         entity.orientation = simd_quatf(angle: fishAngle, axis: SIMD3<Float>([0.0, 1.0, 0.0]))
     }
 
-    #if DEBUG
-    func setTargetEntity(_ entity: ModelEntity) {
-        self.targetEntity = entity
-    }
-    #endif
-
-    #if DEBUG
-    func updateTargetEntity() {
-        targetEntity?.position = targetPosition
-    }
-    #endif
+    //    #if DEBUG
+    //    func setTargetEntity(_ entity: ModelEntity) {
+    //        self.targetEntity = entity
+    //    }
+    //    #endif
+    //
+    //    #if DEBUG
+    //    func updateTargetEntity() {
+    //        targetEntity?.position = targetPosition
+    //    }
+    //    #endif
 
 //    func addPhysics() {
 //        let shape = ShapeResource.generateBox(size: constant.volume)

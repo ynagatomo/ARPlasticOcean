@@ -11,8 +11,8 @@ import Foundation
 class DevConfiguration {
     var showingARDebugOptions = true
     var singleRefuse = true
-    var showingFishRoutes = false
-    var showingFishTargets = false
+//    var showingFishRoutes = false
+//    var showingFishTargets = false
 }
 
 #endif
