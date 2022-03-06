@@ -216,16 +216,14 @@ class FishGroup {
     let fishRouteConstant: FishRouteConstant
     var fishAssetConstant: FishAssetConstant!
     var fishes: [Fish] = []
-    let bottomY: Float   // sea bottom position on Y axis [m]
 
     var modelFileName: String {
         fishAssetConstant.modelFile
     }
 
-    init(constant: FishGroupConstant, bottomY: Float) {
+    init(constant: FishGroupConstant) {
         self.fishGroupConstant = constant
         fishRouteConstant = SceneConstant.fishRoutes[constant.fishRouteIndex]
-        self.bottomY = bottomY
     }
 
     func prepare() {
@@ -243,8 +241,13 @@ class FishGroup {
                             angleOffset: angle,
                             positionDiff: fishGroupConstant.fishDiffMax)
             fishes.append( fish )
-            angle += Float.random(in: fishGroupConstant.fishAngleGap.min
-                                  ... fishGroupConstant.fishAngleGap.max)
+            let angleDiff = Float.random(in: fishGroupConstant.fishAngleGap.min
+                                         ... fishGroupConstant.fishAngleGap.max)
+            if fishGroupConstant.fishVelocity >= 0.0 { // + direction (Y axis) rotation
+                angle += angleDiff
+            } else { // - direction (Y axis) rotation
+                angle -= angleDiff
+            }
         }
     }
 
@@ -252,14 +255,9 @@ class FishGroup {
         assert(entities.count == fishes.count)
         for index in 0 ..< entities.count {
             fishes[index].setEntity(entities[index])
-            // set initial position (set position before adding physics in dynamic mode)
-//            let position = calcFishPosition(fishIndex: index, deltaTime: 0.0)
-//            let position = fishRouteConstant.fishInitPosition
-//            entities[index]?.position = position
             // set initial target position
-            let targetPosition = calcFishPosition(fishIndex: index, deltaTime: 0.0)
-//            fishes[index].targetPosition = targetPosition
-            fishes[index].setInitialPosition(targetPosition: targetPosition, bottomY: bottomY)
+            let result = calcFishPosition(fishIndex: index, deltaTime: 0.0)
+            fishes[index].setInitialPosition(position: result.position, angle: result.angle)
         }
     }
 
@@ -276,16 +274,17 @@ class FishGroup {
     }
     #endif
 
-    func addPhysics() {
-        fishes.forEach { $0.addPhysics() }
-    }
+//    func addPhysics() {
+//        fishes.forEach { $0.addPhysics() }
+//    }
 
     func update(deltaTime: Double) {
         for index in 0 ..< fishes.count {
             // update each target positions
-            let targetPosition = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
-            fishes[index].targetPosition = targetPosition
-            fishes[index].update()
+            let result = calcFishPosition(fishIndex: index, deltaTime: deltaTime)
+            fishes[index].targetPosition = result.position
+            fishes[index].fishAngle = result.angle
+            fishes[index].update(deltaTime: Float(deltaTime)) // deltaTime: Float(deltaTime))
         }
 
         #if DEBUG
@@ -299,18 +298,46 @@ class FishGroup {
         #endif
     }
 
-    private func calcFishPosition(fishIndex: Int, deltaTime: Double) -> SIMD3<Float> {
+//    private func calcFishPosition(fishIndex: Int, deltaTime: Double) -> SIMD3<Float> {
+//        let time = fishes[fishIndex].time + Float(deltaTime)
+//        fishes[fishIndex].time = time   // update
+//        let angleOffset = fishes[fishIndex].angleOffset
+//
+//        // multiply -1 to adopt right-hand system
+//        let angle = -(fishGroupConstant.fishVelocity * time + angleOffset)
+//        // an ellipse shape
+//        let xPos = fishRouteConstant.radiusX * cosf(angle)
+//                    + fishRouteConstant.origin.x
+//        let zPos = fishRouteConstant.radiusZ * sinf(angle)
+//                    + fishRouteConstant.origin.z
+//        // sin
+//        let angle2 = fishGroupConstant.fishVelocity * time / fishRouteConstant.cycleRateY
+//                    + angleOffset
+//        let yPos = fishRouteConstant.radiusY * sinf(angle2)
+//                    + fishRouteConstant.origin.y
+//
+//        // rotate on the X-Z plane
+//        let angle3 = angle * fishRouteConstant.cycleMulRateXZ
+//                           / fishRouteConstant.cycleDivRateXZ
+//        let xPos2 = xPos * cosf(angle3) - zPos * sinf(angle3)
+//        let zPos2 = xPos * sinf(angle3) + zPos * cosf(angle3)
+//
+//        // shift positon (x, y, z) slightly
+//        let position = SIMD3<Float>([xPos2, yPos, zPos2]) + fishes[fishIndex].positionDiff
+//        return position
+//    }
+
+    private func calcFishPosition(fishIndex: Int, deltaTime: Double)
+    -> (position: SIMD3<Float>, angle: Float) {
         let time = fishes[fishIndex].time + Float(deltaTime)
-        fishes[fishIndex].time = time   // update
+        fishes[fishIndex].time = time
         let angleOffset = fishes[fishIndex].angleOffset
 
-        // multiply -1 to adopt right-hand system
-        let angle = -(fishGroupConstant.fishVelocity * time + angleOffset)
-        // an ellipse shape
-        let xPos = fishRouteConstant.radiusX * cosf(angle)
-                    + fishRouteConstant.origin.x
-        let zPos = fishRouteConstant.radiusZ * sinf(angle)
-                    + fishRouteConstant.origin.z
+        // on an ellipse
+        let angle = fishGroupConstant.fishVelocity * time + angleOffset
+        let (position: posXZ, angle: fishAngle) = calcPositionOnEllipse(radiusX: fishRouteConstant.radiusX,
+                                           radiusZ: fishRouteConstant.radiusZ,
+                                           inAngle: angle)
         // sin
         let angle2 = fishGroupConstant.fishVelocity * time / fishRouteConstant.cycleRateY
                     + angleOffset
@@ -320,12 +347,55 @@ class FishGroup {
         // rotate on the X-Z plane
         let angle3 = angle * fishRouteConstant.cycleMulRateXZ
                            / fishRouteConstant.cycleDivRateXZ
-        let xPos2 = xPos * cosf(angle3) - zPos * sinf(angle3)
-        let zPos2 = xPos * sinf(angle3) + zPos * cosf(angle3)
+        let xPos2 = posXZ.x * cosf(-angle3) - posXZ.z * sinf(-angle3)
+        let zPos2 = posXZ.x * sinf(-angle3) + posXZ.z * cosf(-angle3)
+//        let angle3 = Float(0.0)
+//        let xPos2 = posXZ.x
+//        let zPos2 = posXZ.z
+        let resultAngle = fishAngle + angle3
 
-        // shift positon (x, y, z) slightly
+        // shift position (x, y, z) slightly
         let position = SIMD3<Float>([xPos2, yPos, zPos2]) + fishes[fishIndex].positionDiff
-        return position
+        return (position: position, angle: resultAngle)
+    }
+
+    private func calcPositionOnEllipse(radiusX: Float, radiusZ: Float, inAngle: Float)
+    -> (position: (x: Float, z: Float), angle: Float) {
+        var angle = inAngle
+        // normalize the angle to (-2PI,2PI) (not include -2PI, 2PI)
+        if inAngle >= Float.pi * 2.0 || inAngle <= -Float.pi * 2.0 {
+            angle = inAngle.truncatingRemainder(dividingBy: Float.pi * 2.0)
+        }
+        assert(angle > -Float.pi * 2.0 && angle < Float.pi * 2.0) // not equal to -2PI or 2PI
+
+        let positionX = radiusX * cosf(angle)
+        let positionZ = radiusZ * sinf(angle)
+
+        // an inclination of tangent
+        var resultAngle: Float = 0.0
+        if abs(positionZ) > 0.0001 { // > 0.1 mm
+            let inclination = -(radiusZ * radiusZ / radiusX / radiusX) * positionX / positionZ
+    //        print("angle = \(angle) k = \(inclination)")
+            resultAngle = atanf(inclination)
+        } else if positionZ >= 0.0 {
+            resultAngle = -Float.pi / 2.0
+        } else {
+            resultAngle = Float.pi / 2.0
+        }
+
+        // +PI : modify the result to be continuous
+        //       angle: 0 ... 2PI,  result: -(1/2)PI ... (3/4)PI
+        if angle >= Float.pi {
+            resultAngle += Float.pi
+        } else if angle <= -Float.pi {
+            resultAngle -= Float.pi
+        }
+
+        // +PI : modify to rotate PI for fish's up-side-down
+        resultAngle += Float.pi
+
+        // inverse y-position to fit the Z-axis
+        return (position: (x: positionX, z: -positionZ), angle: resultAngle)
     }
 
     /// Choose one fish from the candidates
@@ -358,10 +428,11 @@ class Fish {
     let constant: FishAssetConstant
     var entity: Entity?
     private var modelEntity: ModelEntity? // top level ModelEntity
-    var time: Float = 0.0   // [sec] accumulated time during swiming
-    let angleOffset: Float   // [radian]
+    var time: Float = 0.0   // [sec] accumulated time during swimming
+    let angleOffset: Float   // [radian] diff of each fish on the same route
     let positionDiff: SIMD3<Float>  // [m] position difference (gap)
     var targetPosition = SIMD3<Float>.zero    // [m] target position
+    var fishAngle: Float = 0.0
     #if DEBUG
     var targetEntity: ModelEntity?
     #endif
@@ -388,17 +459,22 @@ class Fish {
         }
     }
 
-    func setInitialPosition(targetPosition: SIMD3<Float>, bottomY: Float) {
-        self.targetPosition = targetPosition
-        let position = SIMD3<Float>([
-            targetPosition.x,
-            bottomY + constant.volume.y / 2.0 + 0.01,  // 0.01 : margine
-            targetPosition.z
-        ])
+    func setInitialPosition(position: SIMD3<Float>, angle: Float) {
+        self.targetPosition = position
+        self.fishAngle = angle
+        // set the position to Entity (not ModelEntity)
         entity?.position = position
+        entity?.orientation = simd_quatf(angle: angle, axis: SIMD3<Float>([0.0, 1.0, 0.0]))
     }
 
-    func update() {
+    func update(deltaTime: Float) {
+        guard state != .weak else { return }
+        guard // let modelEntity = modelEntity,
+              let entity = entity else { return }
+
+        // set the target-position to Entity (not ModelEntity)
+        entity.position = targetPosition
+        entity.orientation = simd_quatf(angle: fishAngle, axis: SIMD3<Float>([0.0, 1.0, 0.0]))
     }
 
     #if DEBUG
@@ -413,23 +489,182 @@ class Fish {
     }
     #endif
 
-    func addPhysics() {
-//        // find the ModelEntity
-//        if let theEntity = entity?.findEntity(named: constant.modelEntityName) {
-//            debugLog("DEBUG: Fish: found a model-entity.")
-//            if let modelEntity = theEntity as? ModelEntity {
-//                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
-        let shape = ShapeResource.generateBox(size: constant.volume)
-        modelEntity?.collision = CollisionComponent(shapes: [shape])
-        modelEntity?.physicsBody = PhysicsBodyComponent(shapes: [shape],
-                                                       mass: constant.physicsMass,
-                                    material: PhysicsMaterialResource.generate(
-                                        friction: constant.physicsFriction,
-                                        restitution: constant.physicsRestitution))
-        modelEntity?.physicsBody?.mode = .dynamic
-//            }
+//    func addPhysics() {
+//        let shape = ShapeResource.generateBox(size: constant.volume)
+//        modelEntity?.collision = CollisionComponent(shapes: [shape])
+//        modelEntity?.physicsBody = PhysicsBodyComponent(shapes: [shape],
+//                                                       mass: constant.physicsMass,
+//                                    material: PhysicsMaterialResource.generate(
+//                                        friction: constant.physicsFriction,
+//                                        restitution: constant.physicsRestitution))
+//        modelEntity?.physicsBody?.mode = .dynamic // .static
+//        modelEntity?.physicsBody?.isRotationLocked = (x: true, y: false, z: true)
+//        if let oldInertia = modelEntity?.physicsBody?.massProperties.inertia {
+//            let newInertia = SIMD3<Float>([
+//                oldInertia.x,
+//                oldInertia.y * 100.0,
+//                oldInertia.z
+//            ])
+//            modelEntity?.physicsBody?.massProperties.inertia = newInertia
 //        }
-    }
+//    }
+
+//    func update(deltaTime: Float) {
+//        guard state != .weak else { return }
+//        guard let modelEntity = modelEntity,
+//              let entity = entity else { return }
+//
+//        var showing = false
+//
+//        // need to add both of Entity and ModelEntity positions
+//        let currentPos = entity.position + modelEntity.position
+//        // remove
+//        if currentPos.x >= 0.0 && currentPos.z >= 0.0 {
+//            //            debugLog("DEBUG: currentPos = \(currentPos), angle = \(modelEntity.orientation.angle)")
+//            showing = true
+//        }
+//
+//        positions.append(currentPos)
+//        if positions.count > 10 {
+//            positions.remove(at: 0)
+//        }
+//        assert(positions.count <= 10)
+//
+//        let movingVect = targetPosition - currentPos
+//        if movingVect == .zero { return }
+//
+//        let dumping = Float(0.5) * deltaTime / 0.017  // dumping rate
+//        var forceY = Float(0.0)
+//        if movingVect.y < 0.0 {
+//            forceY = 9.8 - 0.05 * dumping  // movingVect.y * dumptimg // - 0.05
+//        } else {
+//            forceY = 9.8 + 0.05 * dumping // movingVect.y * dumptimg // + 0.05
+//        }
+//
+//        // Add force
+//
+//        // let amp = Float(1.0)    // amplify rate
+//        let forceX = movingVect.x // * amp
+//        let forceZ = movingVect.z // * amp
+//        let force = SIMD3<Float>([forceX, forceY, forceZ])
+//        modelEntity.addForce(force,
+//                             relativeTo: nil)
+//
+//        // Add torque
+//
+//        if positions.count == 10 {
+//            let vect = currentPos - positions.first!
+//            if vect.x != 0.0 || vect.z != 0.0 {
+//                if !modelEntity.orientation.axis.y.isNaN {
+//
+//                    var currentAngle = modelEntity.orientation.angle
+//                    if currentAngle < 0.0 {
+//                        currentAngle += Float.pi * 2.0
+//                    }
+//                    assert(currentAngle >= 0.0 && currentAngle <= Float.pi * 2.0)
+//                    let currentVect = SIMD3<Float>([
+//                        cosf(-currentAngle),
+//                        0.0,
+//                        sinf(-currentAngle)
+//                    ])
+//                    let angle = calcAngle(currentVect, vect)
+//                    let crossVect = crossVect(currentVect, vect)
+//
+//                    var torqueY = angle / 4.0 // 400.0
+//                    if crossVect.y < 0.0 {
+//                        torqueY *= -1.0
+//                    }
+//
+//                    if angle > Float.pi / 2.0 || angle < -Float.pi / 2.0 {
+//                        if previousAngle > Float.pi / 2.0 || previousAngle < -Float.pi / 2.0 {
+//                            torqueY = previousTorque
+//                        } else {
+//                            previousTorque = torqueY
+//                        }
+//                    } else {
+//                        previousTorque = torqueY
+//                    }
+//
+//                    previousAngle = angle
+//
+//    //                    let torqueY = calcTorqueY(entityAngle: modelEntity.orientation.angle,
+//    //                                vect: vect,
+//    //                                              showing: showing)
+//
+//                    if showing {
+//                        debugLog("DEBUG: torque = \(torqueY)")
+//                    }
+//
+//                    modelEntity.addTorque(SIMD3<Float>([
+//                            0.0, torqueY, 0.0
+//                        ]), relativeTo: nil)
+//                    //                    debugLog("DEBUG:    torque = \(torqueY)")
+//                }
+//            }
+//            //            positions.removeAll()
+//        }
+//    }
+
+//    private func calcAngle(_ vect1: SIMD3<Float>, _ vect2: SIMD3<Float>) -> Float {
+//        let a1 = vect1.x
+//        let a2 = vect1.z
+//        let b1 = vect2.x
+//        let b2 = vect2.z
+//        let cosAngle = (a1 * b1 + a2 * b2) / sqrtf(a1 * a1 + a2 * a2) / sqrtf(b1 * b1 + b2 * b2)
+//        let angle = acosf(cosAngle)
+//        return angle
+//    }
+
+//    private func crossVect(_ vect1: SIMD3<Float>, _ vect2: SIMD3<Float>) -> SIMD3<Float> {
+//        let a1 = vect1.x
+//        let a2 = vect1.y
+//        let a3 = vect1.z
+//        let b1 = vect2.x
+//        let b2 = vect2.y
+//        let b3 = vect2.z
+//        let vect = SIMD3<Float>([
+//            a2 * b3 - a3 * b2,
+//            a3 * b1 - a1 * b3,
+//            a1 * b2 - a2 * b1
+//        ])
+//        return vect
+//    }
+
+//    private func calcTorqueY(entityAngle: Float, vect: SIMD3<Float>, showing: Bool)
+//    -> Float {
+//        guard !vect.x.isNaN && !vect.y.isNaN && !vect.z.isNaN else { return 0.0 }
+//        assert(entityAngle <= Float.pi * 2.0 && entityAngle >= -Float.pi * 2.0)
+//
+//        // normalize 0...-2PI => 0...2PI
+//        var currentAngle = entityAngle
+//        if entityAngle < 0.0 { currentAngle += Float.pi * 2.0 }
+//        assert(currentAngle >= 0.0 && currentAngle <= Float.pi * 2.0)
+//
+//        let len = sqrtf(vect.x * vect.x + vect.z * vect.z)
+//        var targetAngle = acosf(vect.x / len)
+//        assert(targetAngle >= 0.0 && targetAngle <= Float.pi)
+//
+//        if vect.z >= 0.0 {
+//            targetAngle = Float.pi * 2.0 - targetAngle
+//        }
+//
+//        // both of currentAngle and targetAngle were normalized
+//        // between 0.0 and 2PI
+//        var diffAngle = targetAngle - currentAngle
+//        if diffAngle > Float.pi {
+//            diffAngle = -(Float.pi * 2.0 - diffAngle)
+//        } else if diffAngle < -Float.pi {
+//            diffAngle = Float.pi * 2.0 + diffAngle
+//        }
+//
+//        //        debugLog("DEBUG: diffAngle = \(diffAngle)")
+//        assert(diffAngle >= -Float.pi && diffAngle <= Float.pi)
+//        let torque = diffAngle / 100.0  // fix / 400.0
+//        if showing {
+//            debugLog("DEBUG:    diffAngle = \(diffAngle), torque = \(torque), vect = \(vect)")
+//        }
+//        return torque
+//    }
 }
 
 class Refuse {

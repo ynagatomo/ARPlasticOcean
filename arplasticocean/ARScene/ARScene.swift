@@ -239,10 +239,7 @@ class ARScene {
     private func prepareFishes() {
         // create fish-group objects
         SceneConstant.stageConstants[stageIndex].fishGroups.forEach { constant in
-            let bottomY = -(AssetConstant.stageAssets[stageIndex].radius
-                            - AssetConstant.stageAssets[stageIndex].offset)
-                          + AssetConstant.stageAssets[stageIndex].thickness / 2.0
-            let fishGroup = FishGroup(constant: constant, bottomY: bottomY)
+            let fishGroup = FishGroup(constant: constant)
             fishGroups.append(fishGroup)
 
             // prepare
@@ -254,8 +251,9 @@ class ARScene {
             }
             fishGroup.setEntities(entities) // set entities and assign initial position
 
-            // add collision shapes
-            fishGroup.addPhysics()
+            //    // add collision shapes
+            //    fishGroup.addPhysics()
+            
             // place them in the AR world (add as a stage's child)
             entities.forEach { entity in
                 if let entity = entity {

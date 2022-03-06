@@ -276,11 +276,11 @@ struct SceneConstant {
                       fishGroups: [
                         FishGroupConstant(
                             fishPropertyIndexes: [0],   // #0: Umeiromodoki
-                            fishNumber: 6,              // number of fish
+                            fishNumber: 6,   // number of fish
                             fishRouteIndex: 0,          // #0: route for small fish
-                            fishVelocity: Float.pi * -1.5 / 10.0,  // [radian/sec]
-                            routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            fishVelocity: -Float.pi * 2.0 / 20.0,  // [radian/sec]
+                            // routeRotationVelocity: 0.0, // Float.pi * 2.0 / 40.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -290,8 +290,8 @@ struct SceneConstant {
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 10.0,  // [radian/sec]
-                            routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -300,9 +300,9 @@ struct SceneConstant {
                             fishPropertyIndexes: [0],   // #0: Umeiromodoki
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 2,          // #2: route for large fish
-                            fishVelocity: Float.pi * 1.0 / 10.0,  // [radian/sec]
-                            routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            fishVelocity: Float.pi * 1.0 / 30.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -332,8 +332,8 @@ struct SceneConstant {
                             fishNumber: 6,
                             fishRouteIndex: 0,
                             fishVelocity: Float.pi * 2.0 / 10.0,
-                            routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            // routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -343,8 +343,8 @@ struct SceneConstant {
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 10.0,  // [radian/sec]
-                            routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -354,8 +354,8 @@ struct SceneConstant {
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 3,          // #3: route for large fish
                             fishVelocity: Float.pi * 1.0 / 10.0,  // [radian/sec]
-                            routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
-                            routeRotationOffset: 0.0,    // [radian]
+                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
                                            max: Float.pi / 6.0), // [radian]
                             fishDiffMax: 0.1 // [m]
@@ -477,8 +477,8 @@ struct FishGroupConstant {
     let fishNumber: Int             // number of fish
     let fishRouteIndex: Int         // route index
     let fishVelocity: Float         // velocity and direction [radian/sec]
-    let routeRotationVelocity: Float // velocity of route rotation [radian/sec]
-    let routeRotationOffset: Float  // [radian]
+    // let routeRotationVelocity: Float // velocity of route rotation [radian/sec]
+    // let routeRotationOffset: Float  // [radian]
     let fishAngleGap: (min: Float, max: Float)  // [radian] gap range on the route
     let fishDiffMax: Float  // [m] fish position difference max (x, y, z)
 }

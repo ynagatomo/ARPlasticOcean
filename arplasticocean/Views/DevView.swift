@@ -17,8 +17,8 @@ struct DevView: View {
     @State private var cleanupCountText = ""
     @State private var showingARDebugOptions = true
     @State private var singleRefuse = true
-    @State private var showingFishRoutes = true
-    @State private var showingFishTargets = true
+    @State private var showingFishRoutes = false
+    @State private var showingFishTargets = false
 
     let assetNames = ["stage1.usdz",
                       "boat1.usdz",
