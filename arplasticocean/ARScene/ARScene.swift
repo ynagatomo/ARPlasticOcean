@@ -84,9 +84,22 @@ class ARScene {
     }
 
     func tapped(_ tappedEntity: Entity) {
-        debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
+//        debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
         // Respond to the only tap to the Refuse Entities.
         if tappedEntity.findEntity(named: "Refuse") != nil {
+//            debugLog("DEBUG: tapped entity = \(tappedEntity)")
+            if let refuse = refuses.first(where: { refuse in
+                var result = false
+                if let model = refuse.oneModelEntity {
+                    result = model.id == tappedEntity.id // ModelEntity is tappable.
+                }
+                return result
+            }) {
+                refuse.collected()
+            } else {
+                assertionFailure("Could no be found the tapped refuse.")
+            }
+
             let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
                      rotation: simd_quatf(),
                      translation: SIMD3<Float>([
@@ -122,6 +135,9 @@ class ARScene {
 //            refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
         }
 
+        // handle collision between fish and refuses
+        handleCollision()
+
         // check the completion of collecting animations and change the physics mode
         if !animationPlaybackControllers.isEmpty {
             // When completed, change the physics mode to dynamic.
@@ -138,9 +154,12 @@ class ARScene {
 
                     // check the completion of stage clean
                     let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
-                    let restRefuseNumber = freeRefuseNumber - stage.collectedRefuseNumber
-                    assert(restRefuseNumber >= 0)
-                    if restRefuseNumber == 0 {
+// let restRefuseNumber = freeRefuseNumber - stage.collectedRefuseNumber
+// debugLog(
+// "DEBUG2: free = \(freeRefuseNumber) rest = \(restRefuseNumber) collected =
+// \(stage.collectedRefuseNumber) traped = \(refuses.filter({$0.state == .trapped}).count)")
+                    assert(freeRefuseNumber >= 0)
+                    if freeRefuseNumber == 0 {
                         stage.cleaned()
                         showingCleanedView = true
                         cleanedImageView?.isHidden = false
@@ -161,6 +180,21 @@ class ARScene {
                 showingCleanedView = false
                 cleanedImageView?.isHidden = true
                 startCleanedMusic()
+
+                hideTrappedRefuses()
+                recoverFish()
+            }
+        }
+    }
+
+    private func recoverFish() {
+        fishGroups.forEach { $0.recover() }
+    }
+
+    private func hideTrappedRefuses() {
+        refuses.forEach { refuse in
+            if refuse.state == .trapped {
+                refuse.disappear()
             }
         }
     }
@@ -417,5 +451,72 @@ class ARScene {
             assetConstants.append(AssetConstant.refuseAssets[refuseAssetIndex])
         }
         return assetConstants
+    }
+
+    // MARK: - Collision
+
+    struct Collision {
+        let fishGroupIndex: Int
+        let fishIndex: Int
+        let refuseIndex: Int
+    }
+
+    func handleCollision() {
+        // detect collisions
+        if let collisions = detectCollision() {
+            collisions.forEach { collision in
+                // The collided refuses will be trapped by the fish.
+                refuses[collision.refuseIndex].trapped()
+                let refuseEntity = refuses[collision.refuseIndex].entity
+                let refuseModelEntity = refuses[collision.refuseIndex].oneModelEntity
+                refuseEntity.position = .zero
+                refuseEntity.setParent(fishGroups[collision.fishGroupIndex].fishes[collision.fishIndex].entity)
+                refuseModelEntity?.collision = nil      // not respond to taps any more
+                refuseModelEntity?.physicsBody = nil
+                refuseModelEntity?.physicsMotion = nil
+                // The fish trapped the refuse.
+                fishGroups[collision.fishGroupIndex].fishes[collision.fishIndex].trapped()
+            }
+            // handle fish state
+            collisions.forEach { collision in
+                let fish = fishGroups[collision.fishGroupIndex].fishes[collision.fishIndex]
+                if fish.state == .weak {
+                    // The fish was just weakened by this collision because weak fish can not collide.
+                    let stageAssetIndex = SceneConstant.stageConstants[stageIndex].stageAssetIndex
+                    let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
+                                              rotation: simd_quatf(angle: fish.constant.weakAngleX,
+                                                                   axis: SIMD3<Float>([1.0, 0.0, 0.0])),
+                                              translation: SIMD3<Float>([fish.entity?.position.x ?? 0.0,
+                               -(AssetConstant.stageAssets[stageAssetIndex].radius    // sea bottom
+                                 - AssetConstant.stageAssets[stageAssetIndex].offset) + 0.05, // margine 5 cm
+                                                                         fish.entity?.position.z ?? 0.0]))
+                    fish.entity?.move(to: transform, relativeTo: nil, duration: 10.0) // 10 sec
+                }
+            }
+        }
+    }
+
+    private func detectCollision() -> [Collision]? {
+        var collisions: [Collision] = []
+
+        for fishGroupIndex in 0 ..< fishGroups.count {
+            let fishGroup = fishGroups[fishGroupIndex]
+
+            for refuseIndex in 0 ..< refuses.count {
+                let refuse = refuses[refuseIndex]
+
+                if refuse.state == .free {
+                    if let collidingFishIndexes = fishGroup.collisions(with: refuse) {
+                        collidingFishIndexes.forEach { fishIndex in
+                            collisions.append(Collision(fishGroupIndex: fishGroupIndex,
+                                                       fishIndex: fishIndex,
+                                                       refuseIndex: refuseIndex))
+                        }
+                    }
+                }
+            }
+        }
+
+        return collisions.isEmpty ? nil : collisions
     }
 }

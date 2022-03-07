@@ -67,10 +67,12 @@ struct AssetConstant {
         FishAssetConstant(name: "Umeiromodoki",
                           modelFile: "umeiromodoki.usdz",
                           volume: SIMD3<Float>([0.2, 0.04, 0.03]),
+                          collisionRadius: 0.02,
                           modelEntityName: "Bone",
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
-                          physicsRestitution: 0.1)
+                          physicsRestitution: 0.1,
+                          weakAngleX: Float.pi / 2.0)
     ]
 
     enum RefuseAssetIndex: Int {
@@ -199,8 +201,8 @@ struct SceneConstant {
         FishPropertyConstant(assetIndex:
                              AssetConstant.FishAssetIndex.umeiromodoki.rawValue,
                              selectProbability: 1.0,
-                             trapCapacity: 2,
-                             damageThreshold: 4)
+                             trapCapacity: 2)
+//                             damageThreshold: 4)
     ]
 
     static let fishRoutes: [FishRouteConstant] = [
@@ -402,10 +404,12 @@ struct FishAssetConstant {
     let name: String
     let modelFile: String   // USDZ file name with ext.
     let volume: SIMD3<Float>    // (width, hight, depth) (x, y, z)
+    let collisionRadius: Float  // radius of collision sphere [m]
     let modelEntityName: String // root ModelEntity name
     let physicsMass: Float          // mass [kg]
     let physicsFriction: Float      // [0, infinity)
     let physicsRestitution: Float   // [0, 1]
+    let weakAngleX: Float    // rotation angle (x axis) in weak state [radian]
 }
 
 struct RefuseAssetConstant {
@@ -492,7 +496,7 @@ struct FishPropertyConstant {
 //    let number: Int
     let selectProbability: Float  // [0...1]
     let trapCapacity: Int           // [0...]
-    let damageThreshold: Int       // [0...]
+//    let damageThreshold: Int       // [0...]
 }
 
 struct RefusePropertyConstant {

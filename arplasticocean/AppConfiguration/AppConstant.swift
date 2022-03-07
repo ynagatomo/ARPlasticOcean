@@ -36,9 +36,4 @@ class AppConstant {
 
     static let cleanedMessageImageName: String = "cleaned" // image file name in bundle
     static let showingCleanedMessageTime: Float = 5.0 // [sec]
-
-    #if DEBUG
-    static let showingARDebugOptions = true
-    static let singleRefuse = false
-    #endif
 }

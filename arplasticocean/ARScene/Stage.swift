@@ -238,6 +238,7 @@ class FishGroup {
         var angle: Float = 0.0
         for _ in 0 ..< fishGroupConstant.fishNumber {
             let fish = Fish(constant: fishAssetConstant,
+                            property: fishPropertyConstant,
                             angleOffset: angle,
                             positionDiff: fishGroupConstant.fishDiffMax)
             fishes.append( fish )
@@ -265,6 +266,10 @@ class FishGroup {
         fishes.forEach { $0.startAnimation() }
     }
 
+    func recover() {
+        fishes.forEach { $0.recover() }
+    }
+
     //    #if DEBUG
     //    func setTargetEntities(_ entities: [ModelEntity]) {
     //        assert(entities.count == fishes.count)
@@ -279,6 +284,18 @@ class FishGroup {
     //    func addPhysics() {
     //        fishes.forEach { $0.addPhysics() }
     //    }
+
+    func collisions(with refuse: Refuse) -> [Int]? {
+        var fishIndexes: [Int] = []
+
+        for fishIndex in 0 ..< fishes.count {
+            if fishes[fishIndex].isColliding(with: refuse) {
+                fishIndexes.append(fishIndex)
+            }
+        }
+
+        return fishIndexes.isEmpty ? nil : fishIndexes
+    }
 
     func update(deltaTime: Double) {
         for index in 0 ..< fishes.count {
@@ -423,6 +440,7 @@ class Fish {
     private(set) var state: State = .fine
 
     let constant: FishAssetConstant
+    let fishPropertyConstant: FishPropertyConstant
     var entity: Entity?
     private var modelEntity: ModelEntity? // top level ModelEntity
     var time: Float = 0.0   // [sec] accumulated time during swimming
@@ -430,12 +448,15 @@ class Fish {
     let positionDiff: SIMD3<Float>  // [m] position difference (gap)
     var targetPosition = SIMD3<Float>.zero    // [m] target position
     var fishAngle: Float = 0.0
+    var trapingRefuseNumber: Int = 0
     //    #if DEBUG
     //    var targetEntity: ModelEntity?
     //    #endif
 
-    init(constant: FishAssetConstant, angleOffset: Float, positionDiff: Float) {
+    init(constant: FishAssetConstant, property: FishPropertyConstant,
+         angleOffset: Float, positionDiff: Float) {
         self.constant = constant
+        self.fishPropertyConstant = property
         self.angleOffset = angleOffset
         self.positionDiff = SIMD3<Float>([
             Float.random(in: -positionDiff ... positionDiff),
@@ -487,6 +508,41 @@ class Fish {
         // set the target-position to Entity (not ModelEntity)
         entity.position = targetPosition
         entity.orientation = simd_quatf(angle: fishAngle, axis: SIMD3<Float>([0.0, 1.0, 0.0]))
+    }
+
+    func isColliding(with refuse: Refuse) -> Bool {
+        guard state == .fine else { return false }
+        guard let entity = entity else { return false }
+
+        var result = false
+        let diffX = entity.position.x - refuse.entity.position.x
+        let diffY = entity.position.y - refuse.entity.position.y
+        let diffZ = entity.position.z - refuse.entity.position.z
+
+        let distance = diffX * diffX + diffY * diffY + diffZ * diffZ
+        let threshold = constant.collisionRadius + refuse.constant.volumeRadius
+        if distance < threshold * threshold {
+            result = true
+        }
+
+        return result
+    }
+
+    func trapped() {
+        trapingRefuseNumber += 1
+        if trapingRefuseNumber >= fishPropertyConstant.trapCapacity {
+            state = .weak
+        }
+    }
+
+    func recover() {
+        if state == .weak {
+            state = .recovery
+            if let entity = entity {
+                entity.orientation = simd_quatf(angle: -constant.weakAngleX,
+                                                axis: SIMD3<Float>([1.0, 0.0, 0.0]))
+            }
+        }
     }
 
     //    #if DEBUG
@@ -684,6 +740,7 @@ class Refuse {
         case free
         case trapped
         case disappear
+        case collected
     }
     private(set) var state: State = .free
 
@@ -744,6 +801,8 @@ class Refuse {
     }
 
     func update(deltaTime: Double) {
+        guard state == .free else { return }
+
         accumulatedTime += Float(deltaTime)
         // angular is reversed (+/-) because z axis upside down
         let angle = -angularVelocity * accumulatedTime
@@ -759,5 +818,21 @@ class Refuse {
         let yInit = initialPosition.y
         let yNext = yInit + sinf(angle * movingRate) * movingPosYRange
         entity.position = SIMD3<Float>([xNext, yNext, zNext])
+    }
+
+    func trapped() {
+        assert(state == .free)
+        state = .trapped
+    }
+
+    func disappear() {
+        assert(state == .trapped)
+        state = .disappear
+        entity.isEnabled = false
+    }
+
+    func collected() {
+        assert(state == .free)
+        state = .collected
     }
 }
