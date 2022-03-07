@@ -43,6 +43,7 @@ struct DevView: View {
                 }
                 // .tint(.orange) // iOS 15.0+
                 Spacer()
+                // swiftlint:disable line_length
                 Text(String("\(Bundle.main.appName) Ver. \(Bundle.main.appVersion) Build \(Bundle.main.buildNumberValue)"))
             }
             List {
@@ -101,7 +102,6 @@ struct DevView: View {
                             devConfiguration.singleRefuse = value
                         }
                     Toggle(String("Show guide again"), isOn: $appStateController.showingGuideAgain)
-
 
                     //    Toggle(String("Show fish routes"), isOn: $showingFishRoutes)
                     //        .onChange(of: showingFishRoutes) { value in

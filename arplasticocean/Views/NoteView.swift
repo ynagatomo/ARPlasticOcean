@@ -135,6 +135,9 @@ struct SupportView: View {
             Link("write a review", destination: URL(string: AppConstant.reviewURLstring)!)
                 .foregroundColor(.orange)
                 .padding(4)
+            Link(String("Twitter: @ARPlasticOcean"), destination: URL(string: AppConstant.twitterURLstring)!)
+                .foregroundColor(.orange)
+                .padding(4)
         } // VStack
     }
 }
@@ -142,7 +145,6 @@ struct SupportView: View {
 struct ExplanationView: View {
     var body: some View {
         VStack {
-            // TODO: replace the explanation with the final one
             Text("explanation", comment: "Explanation title.")
                 .font(.title2)
                 .fontWeight(.bold)

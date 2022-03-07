@@ -21,6 +21,9 @@ class AppConstant {
     //               String(localized: "https://apps.apple.com/app/id1564570252?action=write-review", // iOS 15.0+
     //                                 comment: "App Review URL.")
 
+    // Twitter App Account URL (not localized)
+    static let twitterURLstring = "https://twitter.com/ARPlasticOcean"
+
     // App Review
     static let appReviewInterval = 27 // cleanup count interval
 
