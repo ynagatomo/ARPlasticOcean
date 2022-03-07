@@ -9,8 +9,8 @@
 import Foundation
 
 class DevConfiguration {
-    var showingARDebugOptions = true
-    var singleRefuse = true
+    var showingARDebugOptions = AppConstant.showingARDebugOptions
+    var singleRefuse = AppConstant.singleRefuse
 //    var showingFishRoutes = false
 //    var showingFishTargets = false
 }

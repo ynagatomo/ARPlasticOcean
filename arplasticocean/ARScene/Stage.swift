@@ -691,7 +691,8 @@ class Refuse {
     let entity: Entity
     private(set) var oneModelEntity: ModelEntity?
 
-    var angle: Float = 0 // [radian] difference from the initial angular
+//    var angle: Float = 0 // [radian] difference from the initial angular
+    var accumulatedTime: Float = 0.0
     let angularVelocity: Float  // [radian/sec]
     let initialPosition: SIMD3<Float>
     let movingPosYRange: Float  // [m]
@@ -740,5 +741,23 @@ class Refuse {
                 modelEntity.physicsBody?.mode = .static
             }
         }
+    }
+
+    func update(deltaTime: Double) {
+        accumulatedTime += Float(deltaTime)
+        // angular is reversed (+/-) because z axis upside down
+        let angle = -angularVelocity * accumulatedTime
+//        let angle = Float.normalize(radian: (-angularVelocity * accumulatedTime)) // -2PI...PI [rad]
+//        angle -= angularVelocity * Float(deltaTime)
+//        angle = Float.normalize(radian: angle)  // -2Pi...2Pi [radian]
+        // rotate deltaAngular on the X-Z plane
+        let xInit = initialPosition.x
+        let zInit = initialPosition.z
+        let xNext = xInit * cosf(angle) - zInit * sinf(angle)
+        let zNext = xInit * sinf(angle) + zInit * cosf(angle)
+        // move up and down on the Y-axis
+        let yInit = initialPosition.y
+        let yNext = yInit + sinf(angle * movingRate) * movingPosYRange
+        entity.position = SIMD3<Float>([xNext, yNext, zNext])
     }
 }

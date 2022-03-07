@@ -15,8 +15,8 @@ struct DevView: View {
     @EnvironmentObject var appStateController: AppStateController
 
     @State private var cleanupCountText = ""
-    @State private var showingARDebugOptions = true
-    @State private var singleRefuse = true
+    @State private var showingARDebugOptions = AppConstant.showingARDebugOptions
+    @State private var singleRefuse = AppConstant.singleRefuse
     // @State private var showingFishRoutes = false
     // @State private var showingFishTargets = false
 

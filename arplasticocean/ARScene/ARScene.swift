@@ -107,18 +107,19 @@ class ARScene {
 
         // play the rolling animations of refuses
         refuses.forEach { refuse in
-            // angular is reversed (+/-) because z axis upside down
-            refuse.angle -= refuse.angularVelocity * Float(deltaTime)
-            refuse.angle = Float.normalize(radian: refuse.angle)  // -2Pi...2Pi [radian]
-            // rotate deltaAngular on the X-Z plane
-            let xInit = refuse.initialPosition.x
-            let zInit = refuse.initialPosition.z
-            let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
-            let zNext = xInit * sinf(refuse.angle) + zInit * cosf(refuse.angle)
-            // move up and down on the Y-axis
-            let yInit = refuse.initialPosition.y
-            let yNext = yInit + sinf(refuse.angle * refuse.movingRate) * refuse.movingPosYRange
-            refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
+            refuse.update(deltaTime: deltaTime)
+//            // angular is reversed (+/-) because z axis upside down
+//            refuse.angle -= refuse.angularVelocity * Float(deltaTime)
+//            refuse.angle = Float.normalize(radian: refuse.angle)  // -2Pi...2Pi [radian]
+//            // rotate deltaAngular on the X-Z plane
+//            let xInit = refuse.initialPosition.x
+//            let zInit = refuse.initialPosition.z
+//            let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
+//            let zNext = xInit * sinf(refuse.angle) + zInit * cosf(refuse.angle)
+//            // move up and down on the Y-axis
+//            let yInit = refuse.initialPosition.y
+//            let yNext = yInit + sinf(refuse.angle * refuse.movingRate) * refuse.movingPosYRange
+//            refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
         }
 
         // check the completion of collecting animations and change the physics mode
