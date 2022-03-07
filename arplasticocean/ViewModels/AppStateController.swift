@@ -25,6 +25,14 @@ class AppStateController: ObservableObject {
     @AppStorage("lastAppReviewCleanupCount") private var lastAppReviewCleanupCount = 0
     @AppStorage("approvedMedalLevel") private var approvedMedalLevel = 0 // 0: no medal
     #endif
+
+    @AppStorage("showingGuideAgain") var showingGuideAgain = true   // true: will show the guide again
+    @AppStorage("showedPreviousBuild") var showedPreviousBuild: Int = 0
+    var willShowGuide: Bool {
+        showingGuideAgain
+        || showedPreviousBuild != Bundle.main.buildNumberValue
+    }
+
     @AppStorage("soundEnable") var soundEnable = true {
         didSet {
             soundManager.enable = soundEnable

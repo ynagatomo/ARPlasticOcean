@@ -44,6 +44,8 @@
 		BA92B60C27CF8C21008C61FA /* debris2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA92B60A27CF8C21008C61FA /* debris2.usdz */; };
 		BA92B60D27CF8C21008C61FA /* debris1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA92B60B27CF8C21008C61FA /* debris1.usdz */; };
 		BA92B60F27CF8D63008C61FA /* net.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA92B60E27CF8D63008C61FA /* net.usdz */; };
+		BA97F25527D5E07D00808F50 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA97F25427D5E07D00808F50 /* WelcomeView.swift */; };
+		BA97F25727D5E46900808F50 /* Bundle_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA97F25627D5E46900808F50 /* Bundle_extension.swift */; };
 		BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */; };
 		BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373C27C38994005FA7DE /* Assets.xcassets */; };
 		BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD373F27C38994005FA7DE /* Preview Assets.xcassets */; };
@@ -97,6 +99,8 @@
 		BA92B60A27CF8C21008C61FA /* debris2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = debris2.usdz; sourceTree = "<group>"; };
 		BA92B60B27CF8C21008C61FA /* debris1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = debris1.usdz; sourceTree = "<group>"; };
 		BA92B60E27CF8D63008C61FA /* net.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = net.usdz; sourceTree = "<group>"; };
+		BA97F25427D5E07D00808F50 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		BA97F25627D5E46900808F50 /* Bundle_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle_extension.swift; sourceTree = "<group>"; };
 		BAAD373527C38993005FA7DE /* arplasticocean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arplasticocean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAD373827C38993005FA7DE /* arplasticoceanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arplasticoceanApp.swift; sourceTree = "<group>"; };
 		BAAD373C27C38994005FA7DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				BA74B28127C4749800D79775 /* Log.swift */,
 				BA74B28327C474C000D79775 /* RealityDump.swift */,
 				BA92B5FD27CF5AAE008C61FA /* Float_Extension.swift */,
+				BA97F25627D5E46900808F50 /* Bundle_extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				BA74B29227C47EC500D79775 /* OceanView.swift */,
 				BA74B2A027C4971800D79775 /* ARViewController.swift */,
 				BA74B29627C47F8000D79775 /* DevView.swift */,
+				BA97F25427D5E07D00808F50 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */,
 				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
 				BA92B5FE27CF5AAE008C61FA /* Float_Extension.swift in Sources */,
+				BA97F25727D5E46900808F50 /* Bundle_extension.swift in Sources */,
 				BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */,
 				BA6A404C27D0C652002AE540 /* DevConfiguration.swift in Sources */,
 				BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */,
@@ -492,6 +499,7 @@
 				BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */,
 				BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */,
 				BA6A404A27D06BDA002AE540 /* SoundManager.swift in Sources */,
+				BA97F25527D5E07D00808F50 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

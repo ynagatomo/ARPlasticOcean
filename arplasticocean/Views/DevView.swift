@@ -17,6 +17,7 @@ struct DevView: View {
     @State private var cleanupCountText = ""
     @State private var showingARDebugOptions = DevConstant.showingARDebugOptions
     @State private var singleRefuse = DevConstant.singleRefuse
+    @State private var build100 = DevConstant.build100
     // @State private var showingFishRoutes = false
     // @State private var showingFishTargets = false
 
@@ -42,12 +43,16 @@ struct DevView: View {
                 }
                 // .tint(.orange) // iOS 15.0+
                 Spacer()
+                Text(String("\(Bundle.main.appName) Ver. \(Bundle.main.appVersion) Build \(Bundle.main.buildNumberValue)"))
             }
             List {
+                // UserDefault
                 Section(content: {
                     Text(String("Saved Cleaned Count = \(appStateController.savedCleanupCount)"))
                     Text(String("Last App Review Cleaned Count = \(appStateController.lastAppReviewCleanupCount)"))
                     Text(String("Approved Medal Level = \(appStateController.approvedMedalLevel)"))
+                    Text(String("Show guide again = \(appStateController.showingGuideAgain)"))
+                    Text(String("Showed guide build = \(appStateController.showedPreviousBuild)"))
                 }, header: { Text(String("UserDefaults")) })
                 Section(content: { // Section("Count [0...]") { // iOS 15.0+
                         TextField(currentCleanupCountText,
@@ -95,6 +100,9 @@ struct DevView: View {
                         .onChange(of: singleRefuse) { value in
                             devConfiguration.singleRefuse = value
                         }
+                    Toggle(String("Show guide again"), isOn: $appStateController.showingGuideAgain)
+
+
                     //    Toggle(String("Show fish routes"), isOn: $showingFishRoutes)
                     //        .onChange(of: showingFishRoutes) { value in
                     //            devConfiguration.showingFishRoutes = value

@@ -11,6 +11,7 @@ import Foundation
 struct DevConstant {
     static let showingARDebugOptions = true
     static let singleRefuse = false
+    static let build100 = false
 //    static let showingTrappedRefuseMark = true
 }
 

@@ -28,9 +28,13 @@ struct NoteView: View {
                 } // HStack
 
                 // Title
-                Text("AR Plastic Ocean", comment: "App Name")
-                    .font(.title)
-                    .padding(4)
+                Text(Bundle.main.appName)
+                    .font(.title.bold())
+                    .padding(8)
+                HStack {
+                    Text(String("Ver. \(Bundle.main.appVersion)"))
+                        .padding(.bottom, 8)
+                }
 
                 // Usage
                 UsageView()
@@ -65,6 +69,8 @@ struct NoteView: View {
                     //                in: RoundedRectangle(cornerRadius: 20.0))
                     .padding(.bottom, 16)
 
+//                Text(String("(Build: \(Bundle.main.buildNumber))"))
+                Text(String("Music: (C) HURT RECORD"))
             } // ScrollView
             .foregroundColor(.white)
             .padding()
@@ -96,18 +102,17 @@ struct UsageView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             HStack {
-                Image(systemName: "hand.tap.fill")
-                    .font(.largeTitle)
-                Text("Tap the plastic refuses to collect them.",
-                     comment: "How to collect refuses.")
-            }
-            .padding(4)
-
-            HStack {
                 Image(systemName: "iphone.landscape")
                     .font(.largeTitle)
                 Text("Hold your iPhone / iPad in front of your chest and press the start button.",
                      comment: "How to begin.")
+            }
+            .padding(4)
+            HStack {
+                Image(systemName: "hand.tap.fill")
+                    .font(.largeTitle)
+                Text("Tap the plastic refuses to collect them.",
+                     comment: "How to collect refuses.")
             }
             .padding(4)
         } // VStack

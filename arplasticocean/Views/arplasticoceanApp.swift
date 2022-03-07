@@ -11,10 +11,21 @@ import SwiftUI
 struct ARPlasticOceanApp: App {
     @StateObject var appStateController = AppStateController()
 
+    @State private var showingGuide = false
+
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environmentObject(appStateController)
+                .onAppear {
+                    showingGuide = appStateController.willShowGuide
+                }
+                .sheet(isPresented: $showingGuide) {
+                    WelcomeView(showingAgain: $appStateController.showingGuideAgain)
+                        .onAppear {
+                            appStateController.showedPreviousBuild = Bundle.main.buildNumberValue
+                        }
+                }
         }
     }
 }
