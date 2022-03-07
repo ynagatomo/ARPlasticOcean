@@ -161,6 +161,7 @@ class ARScene {
                     assert(freeRefuseNumber >= 0)
                     if freeRefuseNumber == 0 {
                         stage.cleaned()
+                        setCleaned()
                         showingCleanedView = true
                         cleanedImageView?.isHidden = false
                         startCleanedSound()
@@ -185,6 +186,11 @@ class ARScene {
                 recoverFish()
             }
         }
+    }
+
+    private func setCleaned() {
+        isCleaned = true
+        state = .cleaned
     }
 
     private func recoverFish() {
@@ -219,12 +225,13 @@ class ARScene {
             surfaceEntityName: stage.constant.surfaceEntityName,
             baseShowing: stage.constant.baseShowing,
             baseEntityName: stage.constant.baseEntityName)
+
         // load and clone the entity
         if let entity = assetManager.loadAndCloneStageEntity(
             name: stage.constant.modelFile,             // stage USDZ file name
             textureName: stage.constant.modelTexture,   // texture image name in the USDZ file
-            materialSetting: materialSetting
-        ) {
+            materialSetting: materialSetting ) {
+
             // adjust position and scale
             entity.position = SceneConstant.origin  // scene origin
             entity.scale = SceneConstant.scale      // scene scale
@@ -232,6 +239,10 @@ class ARScene {
             stage.setEntity(entity: entity)
             // add CollisionComponent and PhysicsBodyComponent
             stage.addPhysics()
+            // setup shader
+            if #available(iOS 15.0, *) {
+                stage.prepareShader(surfaceEntityName: stage.constant.surfaceEntityName)
+            }
             // place it in the AR world
             anchor.addChild(entity)
             stageEntity = entity

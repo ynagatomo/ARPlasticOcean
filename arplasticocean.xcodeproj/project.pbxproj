@@ -53,6 +53,7 @@
 		BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376327C3A3A3005FA7DE /* InfoPlist.strings */; };
 		BAAD376827C3A3A3005FA7DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376627C3A3A3005FA7DE /* Localizable.strings */; };
 		BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */; };
+		BAAED13227D63456003204FD /* CustomShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BAAED13127D63456003204FD /* CustomShader.metal */; };
 		BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */; };
 		BAF1860227CDE703007EC130 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAF1860127CDE703007EC130 /* stage1.usdz */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		BAAD376927C3A45B005FA7DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BAAD376A27C3A45B005FA7DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BAAED13127D63456003204FD /* CustomShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CustomShader.metal; sourceTree = "<group>"; };
 		BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		BAF1860127CDE703007EC130 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +282,7 @@
 				BA74B28B27C476BB00D79775 /* ViewModels */,
 				BA74B28C27C4770400D79775 /* Models */,
 				BA74B29D27C496E300D79775 /* ARScene */,
+				BAAED13027D63433003204FD /* Metal */,
 				BA74B28027C4747600D79775 /* Utilities */,
 				BA74B28527C4750B00D79775 /* Assets */,
 				BAAD373E27C38994005FA7DE /* Preview Content */,
@@ -328,6 +331,14 @@
 				BAAD376327C3A3A3005FA7DE /* InfoPlist.strings */,
 			);
 			path = AppProperties;
+			sourceTree = "<group>";
+		};
+		BAAED13027D63433003204FD /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				BAAED13127D63456003204FD /* CustomShader.metal */,
+			);
+			path = Metal;
 			sourceTree = "<group>";
 		};
 		BAF185FE27CDA57F007EC130 /* Common */ = {
@@ -491,6 +502,7 @@
 				BA74B29727C47F8000D79775 /* DevView.swift in Sources */,
 				BA74B29127C4780700D79775 /* HomeView.swift in Sources */,
 				BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */,
+				BAAED13227D63456003204FD /* CustomShader.metal in Sources */,
 				BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */,
 				BA74B29327C47EC500D79775 /* OceanView.swift in Sources */,
 				BAAD373927C38993005FA7DE /* arplasticoceanApp.swift in Sources */,

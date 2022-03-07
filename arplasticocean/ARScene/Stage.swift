@@ -7,6 +7,7 @@
 
 import Foundation
 import RealityKit
+import Metal
 
 // swiftlint:disable file_length
 
@@ -28,6 +29,27 @@ class Stage {
 
     func setEntity(entity: Entity) {
         self.entity = entity
+    }
+
+    @available(iOS 15, *)
+    func prepareShader(surfaceEntityName: String) {
+        if let theEntity = entity?.findEntity(named: surfaceEntityName),
+           let modelEntity = theEntity as? ModelEntity {
+            debugLog("DEBUG: surface entity \(surfaceEntityName) was found.")
+
+            guard let device = MTLCreateSystemDefaultDevice() else {
+                fatalError("Error: could not create the default metal device.")
+            }
+            let library = device.makeDefaultLibrary()!
+            let geometryModifier = CustomMaterial.GeometryModifier(named: "waveGeometryModifier", in: library)
+            guard let customMaterials = try? modelEntity.model?.materials.map({ material -> CustomMaterial in
+                try CustomMaterial(from: material, geometryModifier: geometryModifier)
+            }) else {
+                debugLog("DEBUG: failed to create surface geometry modifier.")
+                return
+            }
+            modelEntity.model?.materials = customMaterials
+        }
     }
 
     // A refuse was collected.
