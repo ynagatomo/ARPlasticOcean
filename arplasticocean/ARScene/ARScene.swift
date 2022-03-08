@@ -216,7 +216,8 @@ class ARScene {
 
     private func prepareStage() {
         // instantiate the stage object
-        stage = Stage(constant: AssetConstant.stageAssets[stageIndex])
+        let stageAssetIndex = SceneConstant.stageConstants[stageIndex].stageAssetIndex
+        stage = Stage(constant: AssetConstant.stageAssets[stageAssetIndex])
         // prepare the material settings
         let materialSetting = AssetManager.MaterialSetting(
             textureName: stage.constant.textureName,
@@ -241,7 +242,10 @@ class ARScene {
             stage.addPhysics()
             // setup shader
             if #available(iOS 15.0, *) {
-                stage.prepareShader(surfaceEntityName: stage.constant.surfaceEntityName)
+                if let geoShaderName = SceneConstant.stageConstants[stageIndex].waveGeometryShader {
+                    stage.prepareShader(surfaceEntityName: stage.constant.surfaceEntityName,
+                                        geometryShaderName: geoShaderName)
+                }
             }
             // place it in the AR world
             anchor.addChild(entity)
@@ -267,9 +271,10 @@ class ARScene {
 
     private func prepareBoat() {
         let boatAssetIndex = SceneConstant.stageConstants[stageIndex].boatAssetIndex
+        let stageAssetIndex = SceneConstant.stageConstants[stageIndex].stageAssetIndex
         // instantiate the boat object
-        let surfaceY = AssetConstant.stageAssets[stageIndex].offset
-                       - AssetConstant.stageAssets[stageIndex].surface
+        let surfaceY = AssetConstant.stageAssets[stageAssetIndex].offset
+                       - AssetConstant.stageAssets[stageAssetIndex].surface
         boat = Boat(constant: AssetConstant.boatAssets[boatAssetIndex],
                     position: SIMD3<Float>([0.0, surfaceY, 0.0])) // initial boat position
         // load the entity

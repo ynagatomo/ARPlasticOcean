@@ -37,7 +37,7 @@ using namespace metal;
 //    }
 
 [[visible]]
-void waveGeometryModifier(realitykit::geometry_parameters params)
+void highWaveGeometryModifier(realitykit::geometry_parameters params)
 {
     float3 pos = params.geometry().model_position();
     float3 offset = float3(0.0, cos(  3.14 * 2.0 * pos.x / 0.2

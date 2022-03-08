@@ -32,7 +32,7 @@ class Stage {
     }
 
     @available(iOS 15, *)
-    func prepareShader(surfaceEntityName: String) {
+    func prepareShader(surfaceEntityName: String, geometryShaderName: String) {
         if let theEntity = entity?.findEntity(named: surfaceEntityName),
            let modelEntity = theEntity as? ModelEntity {
             debugLog("DEBUG: surface entity \(surfaceEntityName) was found.")
@@ -41,8 +41,10 @@ class Stage {
                 fatalError("Error: could not create the default metal device.")
             }
             let library = device.makeDefaultLibrary()!
-            let geometryModifier = CustomMaterial.GeometryModifier(named: "waveGeometryModifier", in: library)
-            guard let customMaterials = try? modelEntity.model?.materials.map({ material -> CustomMaterial in
+            let geometryModifier = CustomMaterial.GeometryModifier(named: geometryShaderName,
+                                                                   in: library)
+            guard let customMaterials =
+                    try? modelEntity.model?.materials.map({ material -> CustomMaterial in
                 try CustomMaterial(from: material, geometryModifier: geometryModifier)
             }) else {
                 debugLog("DEBUG: failed to create surface geometry modifier.")
@@ -494,7 +496,7 @@ class Fish {
         if let entity = entity,
            let theEntity = entity.findEntity(named: constant.modelEntityName),
            let model = theEntity as? ModelEntity {
-            debugLog("DEBUG: found fish ModelEntity.")
+            // debugLog("DEBUG: found fish ModelEntity.")
             modelEntity = model
         }
     }
@@ -795,9 +797,9 @@ class Refuse {
     func addPhysics() {
         // find the Model Entity
         if let theEntity = entity.findEntity(named: constant.modelEntityName) {
-            debugLog("DEBUG: Refuse: found a model-entity.")
+            // debugLog("DEBUG: Refuse: found a model-entity.")
             if let modelEntity = theEntity as? ModelEntity {
-                debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
+                // debugLog("DEBUG: casted the Entity to a ModelEntity safely.")
                 oneModelEntity = modelEntity
 
                 // Don't add physics if the model-entity already has them.

@@ -26,7 +26,6 @@
 		BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29B27C4898E00D79775 /* AppConstant.swift */; };
 		BA74B29F27C496FC00D79775 /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B29E27C496FC00D79775 /* ARScene.swift */; };
 		BA74B2A127C4971800D79775 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA74B2A027C4971800D79775 /* ARViewController.swift */; };
-		BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A427C4D93900D79775 /* cleanup1.mp3 */; };
 		BA74B2A727C4D94E00D79775 /* medal1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A627C4D94E00D79775 /* medal1.mp3 */; };
 		BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2A827C4D95900D79775 /* collect1.mp3 */; };
 		BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA74B2AA27C4D96B00D79775 /* wave1.m4a */; };
@@ -56,6 +55,7 @@
 		BAAED13227D63456003204FD /* CustomShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BAAED13127D63456003204FD /* CustomShader.metal */; };
 		BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */; };
 		BAF1860227CDE703007EC130 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAF1860127CDE703007EC130 /* stage1.usdz */; };
+		BAF8219427D6D78A006FFFDA /* cleanup1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,6 @@
 		BA74B29B27C4898E00D79775 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		BA74B29E27C496FC00D79775 /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		BA74B2A027C4971800D79775 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
-		BA74B2A427C4D93900D79775 /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
 		BA74B2A627C4D94E00D79775 /* medal1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = medal1.mp3; sourceTree = "<group>"; };
 		BA74B2A827C4D95900D79775 /* collect1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collect1.mp3; sourceTree = "<group>"; };
 		BA74B2AA27C4D96B00D79775 /* wave1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = wave1.m4a; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 		BAAED13127D63456003204FD /* CustomShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CustomShader.metal; sourceTree = "<group>"; };
 		BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		BAF1860127CDE703007EC130 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
+		BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,7 +200,7 @@
 		BA74B28A27C4769200D79775 /* EffectSounds */ = {
 			isa = PBXGroup;
 			children = (
-				BA74B2A427C4D93900D79775 /* cleanup1.mp3 */,
+				BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */,
 				BA74B2A627C4D94E00D79775 /* medal1.mp3 */,
 				BA74B2A827C4D95900D79775 /* collect1.mp3 */,
 			);
@@ -433,11 +433,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAF1860227CDE703007EC130 /* stage1.usdz in Resources */,
+				BAF8219427D6D78A006FFFDA /* cleanup1.mp3 in Resources */,
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
 				BA92B60F27CF8D63008C61FA /* net.usdz in Resources */,
 				BA92B60C27CF8C21008C61FA /* debris2.usdz in Resources */,
 				BA74B2B027C4DA7300D79775 /* hidamari.m4a in Resources */,
-				BA74B2A527C4D93900D79775 /* cleanup1.mp3 in Resources */,
 				BA74B2A927C4D95900D79775 /* collect1.mp3 in Resources */,
 				BA92B60727CF877E008C61FA /* bottle.usdz in Resources */,
 				BAAD374027C38994005FA7DE /* Preview Assets.xcassets in Resources */,

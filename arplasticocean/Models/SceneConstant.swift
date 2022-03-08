@@ -212,105 +212,56 @@ struct SceneConstant {
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0,
-                         fishInitPosition: SIMD3<Float>([
-                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
-                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
-                         ])),
+                          cycleMulRateXZ: 1.0
+//                         fishInitPosition: SIMD3<Float>([
+//                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
+//                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
+//                         ])
+                         ),
         // #1 : route for middle fish
         FishRouteConstant(radiusX: 1.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.3, 0.0, 0.0]),
                           offsetTheta: Float.pi / 2.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0,
-                          fishInitPosition: SIMD3<Float>([
-                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
-                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
-                          ])),
+                          cycleMulRateXZ: 1.0
+//                          fishInitPosition: SIMD3<Float>([
+//                                // Y: (bottom + collision box/2) + (fish hight/2 + margin)
+//                                0.0, (-0.75 + 0.05) + (0.08 / 2.0 + 0.01), 0.0
+//                          ])
+                         ),
         // #2 : route for large fish
         FishRouteConstant(radiusX: 2.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.0, 0.0, 1.0]),
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 1.0,
-                          fishInitPosition: SIMD3<Float>([
-                                -2.0, // out of Dome
-                                 // Y: bottom / 2.0
-                                 -0.75 / 2.0,
-                                 -2.0   // out of Dome
-                          ])),
+                          cycleMulRateXZ: 1.0
+//                          fishInitPosition: SIMD3<Float>([
+//                                -2.0, // out of Dome
+//                                 // Y: bottom / 2.0
+//                                 -0.75 / 2.0,
+//                                 -2.0   // out of Dome
+//                          ])
+                         ),
         // #3 : route for large fish (no rotation)
         FishRouteConstant(radiusX: 2.0, radiusZ: 1.0, radiusY: 0.3,
                           origin: SIMD3<Float>([0.0, 0.0, 1.0]),
                           offsetTheta: 0.0,
                           cycleRateY: 2.0,
                           cycleDivRateXZ: 2.0,
-                          cycleMulRateXZ: 0.0,
-                          fishInitPosition: SIMD3<Float>([
-                                -2.0, // out of Dome
-                                 // Y: bottom / 2.0
-                                 -0.75 / 2.0,
-                                 -2.0   // out of Dome
-                          ]))
+                          cycleMulRateXZ: 0.0
+//                          fishInitPosition: SIMD3<Float>([
+//                                -2.0, // out of Dome
+//                                 // Y: bottom / 2.0
+//                                 -0.75 / 2.0,
+//                                 -2.0   // out of Dome
+//                          ])
+                         )
     ]
 
     static let stageConstants: [StageConstant] = [
-        // Room Stage
-        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
-                      secondSoundIndex: AssetConstant.MusicAssetIndex.needbetter.rawValue,
-                      stageAssetIndex: AssetConstant.StageAssetIndex.room.rawValue,
-                      refuseProperties: [
-                        RefusePropertyConstant(assetIndex:
-                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
-                        RefusePropertyConstant(assetIndex:
-                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
-                        RefusePropertyConstant(assetIndex:
-                                    AssetConstant.RefuseAssetIndex.net.rawValue),
-                        RefusePropertyConstant(assetIndex:
-                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
-                        RefusePropertyConstant(assetIndex:
-                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
-                      ],
-                      boatAssetIndex: 0,
-                      refuseNumbers: [20, 25],
-                      fishGroups: [
-                        FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
-                            fishNumber: 6,   // number of fish
-                            fishRouteIndex: 0,          // #0: route for small fish
-                            fishVelocity: -Float.pi * 2.0 / 20.0,  // [radian/sec]
-                            // routeRotationVelocity: 0.0, // Float.pi * 2.0 / 40.0, // [radian/sec]
-                            // routeRotationOffset: 0.0,    // [radian]
-                            fishAngleGap: (min: Float.pi / 8.0,
-                                           max: Float.pi / 6.0), // [radian]
-                            fishDiffMax: 0.1 // [m]
-                        ),
-                        FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
-                            fishNumber: 3,              // number of fish
-                            fishRouteIndex: 1,          // #1: route for midle fish
-                            fishVelocity: Float.pi * 2.0 / 10.0,  // [radian/sec]
-                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
-                            // routeRotationOffset: 0.0,    // [radian]
-                            fishAngleGap: (min: Float.pi / 8.0,
-                                           max: Float.pi / 6.0), // [radian]
-                            fishDiffMax: 0.1 // [m]
-                        ),
-                        FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
-                            fishNumber: 1,              // number of fish
-                            fishRouteIndex: 2,          // #2: route for large fish
-                            fishVelocity: Float.pi * 1.0 / 30.0,  // [radian/sec]
-                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
-                            // routeRotationOffset: 0.0,    // [radian]
-                            fishAngleGap: (min: Float.pi / 8.0,
-                                           max: Float.pi / 6.0), // [radian]
-                            fishDiffMax: 0.1 // [m]
-                        )
-                      ]),
-        // Daytime Stage
+        // #1 Daytime Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
                       secondSoundIndex: AssetConstant.MusicAssetIndex.nukumori.rawValue,
                       stageAssetIndex: AssetConstant.StageAssetIndex.daytime.rawValue,
@@ -327,13 +278,14 @@ struct SceneConstant {
                                     AssetConstant.RefuseAssetIndex.debris2.rawValue)
                       ],
                       boatAssetIndex: 0,
+                      waveGeometryShader: "highWaveGeometryModifier",
                       refuseNumbers: [20, 25],
                       fishGroups: [
                         FishGroupConstant(
                             fishPropertyIndexes: [0],
                             fishNumber: 6,
                             fishRouteIndex: 0,
-                            fishVelocity: Float.pi * 2.0 / 10.0,
+                            fishVelocity: Float.pi * 2.0 / 40.0,
                             // routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
@@ -344,7 +296,7 @@ struct SceneConstant {
                             fishPropertyIndexes: [0],   // #0: Umeiromodoki
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
-                            fishVelocity: Float.pi * 2.0 / 10.0,  // [radian/sec]
+                            fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
@@ -355,7 +307,115 @@ struct SceneConstant {
                             fishPropertyIndexes: [0],   // #0: Umeiromodoki
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 3,          // #3: route for large fish
-                            fishVelocity: Float.pi * 1.0 / 10.0,  // [radian/sec]
+                            fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        )
+                      ]),
+        // #2 Night Stage
+        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
+                      secondSoundIndex: AssetConstant.MusicAssetIndex.hidamari.rawValue,
+                      stageAssetIndex: AssetConstant.StageAssetIndex.daytime.rawValue,
+                      refuseProperties: [
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.net.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
+                      ],
+                      boatAssetIndex: 0,
+                      waveGeometryShader: nil,
+                      refuseNumbers: [20, 25],
+                      fishGroups: [
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],
+                            fishNumber: 6,
+                            fishRouteIndex: 0,
+                            fishVelocity: Float.pi * 2.0 / 40.0,
+                            // routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 3,              // number of fish
+                            fishRouteIndex: 1,          // #1: route for midle fish
+                            fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 1,              // number of fish
+                            fishRouteIndex: 3,          // #3: route for large fish
+                            fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        )
+                      ]),
+        // #3: Room Stage
+        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
+                      secondSoundIndex: AssetConstant.MusicAssetIndex.needbetter.rawValue,
+                      stageAssetIndex: AssetConstant.StageAssetIndex.room.rawValue,
+                      refuseProperties: [
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.net.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
+                      ],
+                      boatAssetIndex: 0,
+                      waveGeometryShader: "highWaveGeometryModifier",
+                      refuseNumbers: [20, 25],
+                      fishGroups: [
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 6,   // number of fish
+                            fishRouteIndex: 0,          // #0: route for small fish
+                            fishVelocity: -Float.pi * 2.0 / 40.0,  // [radian/sec]
+                            // routeRotationVelocity: 0.0, // Float.pi * 2.0 / 40.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 3,              // number of fish
+                            fishRouteIndex: 1,          // #1: route for midle fish
+                            fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 1,              // number of fish
+                            fishRouteIndex: 2,          // #2: route for large fish
+                            fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
                             fishAngleGap: (min: Float.pi / 8.0,
@@ -451,6 +511,10 @@ struct StageConstant {
     let refuseProperties: [RefusePropertyConstant]
     let boatAssetIndex: Int
 
+    // shader
+    let waveGeometryShader: String?
+
+    // characters
     let refuseNumbers: [Int]   // the number of refuses in each route
     let fishGroups: [FishGroupConstant]
 }
@@ -473,7 +537,7 @@ struct FishRouteConstant {
     let cycleRateY: Float   // cycle modifier for moving Y axis
     let cycleDivRateXZ: Float // cycle division modifier on XZ plane
     let cycleMulRateXZ: Float // cycle multiply modifier on XZ plane {0.0 or 1.0}
-    let fishInitPosition: SIMD3<Float>  // fish init position for all fish
+//    let fishInitPosition: SIMD3<Float>  // fish init position for all fish
 }
 
 struct FishGroupConstant {
