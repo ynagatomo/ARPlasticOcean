@@ -11,7 +11,7 @@ import Foundation
 
 struct AssetConstant {
     enum StageAssetIndex: Int {
-        case room = 0, daytime, night
+        case room = 0, daytime, night, evening
     }
 
     static let stageSurfaceModelName = "StageSurface"
@@ -55,6 +55,50 @@ struct AssetConstant {
                    baseShowing: true,
                    baseEntityName: stageBaseModelName, // "StageBase",
                    textureName: "daytimeTexture",
+                   radius: 1.5,
+                   surface: 0.2,
+                   offset: 0.75,
+                   edge: 6.0,
+                   thickness: 0.1,
+                   additionalCollisions: [
+                    StageCollisionConstant(shapeType: .sphere(radius: 0.36), // for a Rock
+                    position: SIMD3<Float>([0.0, -(1.5 - 0.75), 0.0]))], // 1.5: radius, 0.75: offset
+                   physicsMass: 1.0,
+                   physicsFriction: 0.1,
+                   physicsRestitution: 0.1),
+        // Night Stage
+        StageAssetConstant(name: "Night",
+                   modelFile: "stage1.usdz",
+                   modelTexture: "daytimeTexture", // texture image in the USDZ file
+                   topLevelModelEntityName: stageSurfaceModelName, // "StageSurface",
+                   surfaceEntityName: stageSurfaceModelName, // "StageSurface",
+                   domeShowing: true,
+                   domeEntityName: stageDomeModelName, // "StageDome",
+                   baseShowing: true,
+                   baseEntityName: stageBaseModelName, // "StageBase",
+                   textureName: "nightTexture", // texture image used for this stage
+                   radius: 1.5,
+                   surface: 0.2,
+                   offset: 0.75,
+                   edge: 6.0,
+                   thickness: 0.1,
+                   additionalCollisions: [
+                    StageCollisionConstant(shapeType: .sphere(radius: 0.36), // for a Rock
+                    position: SIMD3<Float>([0.0, -(1.5 - 0.75), 0.0]))], // 1.5: radius, 0.75: offset
+                   physicsMass: 1.0,
+                   physicsFriction: 0.1,
+                   physicsRestitution: 0.1),
+        // Evening Stage
+        StageAssetConstant(name: "Evening",
+                   modelFile: "stage1.usdz",
+                   modelTexture: "daytimeTexture", // texture image in the USDZ file
+                   topLevelModelEntityName: stageSurfaceModelName, // "StageSurface",
+                   surfaceEntityName: stageSurfaceModelName, // "StageSurface",
+                   domeShowing: true,
+                   domeEntityName: stageDomeModelName, // "StageDome",
+                   baseShowing: true,
+                   baseEntityName: stageBaseModelName, // "StageBase",
+                   textureName: "eveningTexture", // texture image used for this stage
                    radius: 1.5,
                    surface: 0.2,
                    offset: 0.75,
@@ -139,7 +183,7 @@ struct AssetConstant {
     ]
 
     enum MusicAssetIndex: Int {
-        case wave = 0, nukumori, hidamari, needbetter
+        case wave = 0, nukumori, hidamari, needbetter, aomuke
     }
     static let musicAssets: [SoundAssetConstant] = [
         SoundAssetConstant(name: "Wave",
@@ -157,7 +201,11 @@ struct AssetConstant {
         SoundAssetConstant(name: "Need-better",
                     soundFile: "needbetter",
                     soundFileExt: "m4a",
-                    duration: 63) // 1:03
+                    duration: 63), // 1:03
+        SoundAssetConstant(name: "Aomuke",
+                    soundFile: "aomuke",
+                    soundFileExt: "m4a",
+                    duration: 2 * 60 + 6) // 2:06
     ]
 
     enum SoundEffectAssetIndex: Int {
@@ -323,10 +371,10 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         )
                       ]),
-        // #2 Night Stage
-        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
-                      secondSoundIndex: AssetConstant.MusicAssetIndex.hidamari.rawValue,
-                      stageAssetIndex: AssetConstant.StageAssetIndex.daytime.rawValue,
+        // #2 Evening Stage
+        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,       // Wave
+                      secondSoundIndex: AssetConstant.MusicAssetIndex.aomuke.rawValue,    // Aomuke
+                      stageAssetIndex: AssetConstant.StageAssetIndex.evening.rawValue,    // Evening
                       refuseProperties: [
                         RefusePropertyConstant(assetIndex:
                                     AssetConstant.RefuseAssetIndex.bag.rawValue),
@@ -340,7 +388,7 @@ struct SceneConstant {
                                     AssetConstant.RefuseAssetIndex.debris2.rawValue)
                       ],
                       boatAssetIndex: 0,
-                      waveGeometryShader: nil,
+                      waveGeometryShader: "highWaveGeometryModifier",
                       refuseNumbers: [20, 25],
                       fishGroups: [
                         FishGroupConstant(
@@ -377,7 +425,61 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         )
                       ]),
-        // #3: Room Stage
+        // #3 Night Stage
+        StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,         // Wave
+                      secondSoundIndex: AssetConstant.MusicAssetIndex.hidamari.rawValue,    // Hidamari
+                      stageAssetIndex: AssetConstant.StageAssetIndex.night.rawValue,        // Night
+                      refuseProperties: [
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bag.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.bottle.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.net.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris1.rawValue),
+                        RefusePropertyConstant(assetIndex:
+                                    AssetConstant.RefuseAssetIndex.debris2.rawValue)
+                      ],
+                      boatAssetIndex: 0,
+                      waveGeometryShader: nil,  // no wave animation
+                      refuseNumbers: [20, 25],
+                      fishGroups: [
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],
+                            fishNumber: 6,
+                            fishRouteIndex: 0,
+                            fishVelocity: Float.pi * 2.0 / 40.0,
+                            // routeRotationVelocity: Float.pi * 2.0 / 10.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 3,              // number of fish
+                            fishRouteIndex: 1,          // #1: route for midle fish
+                            fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 14.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        ),
+                        FishGroupConstant(
+                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishNumber: 1,              // number of fish
+                            fishRouteIndex: 3,          // #3: route for large fish
+                            fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
+                            // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
+                            // routeRotationOffset: 0.0,    // [radian]
+                            fishAngleGap: (min: Float.pi / 8.0,
+                                           max: Float.pi / 6.0), // [radian]
+                            fishDiffMax: 0.1 // [m]
+                        )
+                      ]),
+        // #4: Room Stage
         StageConstant(firstSoundIndex: AssetConstant.MusicAssetIndex.wave.rawValue,
                       secondSoundIndex: AssetConstant.MusicAssetIndex.needbetter.rawValue,
                       stageAssetIndex: AssetConstant.StageAssetIndex.room.rawValue,
