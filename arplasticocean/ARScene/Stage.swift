@@ -143,6 +143,24 @@ class Stage {
             }
         }
     }
+
+    #if DEBUG
+    static func verify(names: [String]) -> Bool {
+        var result = false
+        for name in names {
+            if let entity = try? Entity.load(named: name),
+               let theEntity = entity.findEntity(named: AssetConstant.stageSurfaceModelName),
+               let surfaceModel = theEntity as? ModelEntity,
+               let domeEntity = surfaceModel.findEntity(named: AssetConstant.stageDomeModelName),
+               let baseEntity = surfaceModel.findEntity(named: AssetConstant.stageBaseModelName) {
+                if domeEntity as? ModelEntity != nil && baseEntity as? ModelEntity != nil {
+                    result = true // all conditions are ok.
+                }
+            }
+        }
+        return result
+    }
+    #endif
 }
 
 class Boat {
@@ -233,6 +251,21 @@ class Boat {
             }
         }
     }
+
+    #if DEBUG
+    static func verify(names: [String]) -> Bool {
+        var result = false
+        for name in names {
+            if let entity = try? Entity.load(named: name),
+               let theEntity = entity.findEntity(named: AssetConstant.boatModelName) {
+                if theEntity as? ModelEntity != nil {
+                    result = true // all conditions are ok.
+                }
+            }
+        }
+        return result
+    }
+    #endif
 }
 
 class FishGroup {
@@ -569,6 +602,21 @@ class Fish {
         }
     }
 
+    #if DEBUG
+    static func verify(names: [String]) -> Bool {
+        var result = false
+        for name in names {
+            if let entity = try? Entity.load(named: name),
+               let theEntity = entity.findEntity(named: AssetConstant.fishModelName) {
+                if theEntity as? ModelEntity != nil && !entity.availableAnimations.isEmpty {
+                    result = true // all conditions are ok.
+                }
+            }
+        }
+        return result
+    }
+    #endif
+
     //    #if DEBUG
     //    func setTargetEntity(_ entity: ModelEntity) {
     //        self.targetEntity = entity
@@ -859,4 +907,19 @@ class Refuse {
         assert(state == .free)
         state = .collected
     }
+
+    #if DEBUG
+    static func verify(names: [String]) -> Bool {
+        var result = false
+        for name in names {
+            if let entity = try? Entity.load(named: name),
+               let theEntity = entity.findEntity(named: AssetConstant.refuseModelName) {
+                if theEntity as? ModelEntity != nil {
+                    result = true // all conditions are ok.
+                }
+            }
+        }
+        return result
+    }
+    #endif
 }

@@ -40,9 +40,13 @@ using namespace metal;
 void highWaveGeometryModifier(realitykit::geometry_parameters params)
 {
     float3 pos = params.geometry().model_position();
-    float3 offset = float3(0.0, cos(  3.14 * 2.0 * pos.x / 0.2
-                                    + params.uniforms().time() * 1.4 ) * cos(3.14 * 2.0 * pos.z / 0.2
-                                    + params.uniforms().time() / 2.0 ) * 0.02, 0.0);
+    // x axis: wave length = 0.8 [m], cycle = 8.0 [sec]
+    // z axis: wave length = 1.0 [m], cycle = 10.0 [sec]
+    // wave height = +/- 0.05 [m]
+    float3 offset = float3(0.0,
+                           cos( 3.14 * 2.0 * pos.x / 0.8 + 3.14 * 2.0 * params.uniforms().time() / 8.0 )
+                         * cos( 3.14 * 2.0 * pos.z / 1.0 + 3.14 * 2.0 * params.uniforms().time() / 10.0 ) * 0.05,
+                           0.0);
     params.geometry().set_model_position_offset(offset);
 }
 

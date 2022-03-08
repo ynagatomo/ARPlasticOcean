@@ -13,17 +13,25 @@ struct AssetConstant {
     enum StageAssetIndex: Int {
         case room = 0, daytime, night
     }
+
+    static let stageSurfaceModelName = "StageSurface"
+    static let stageDomeModelName = "StageDome"
+    static let stageBaseModelName = "StageBase"
+    static let boatModelName = "Pole"
+    static let fishModelName = "Bone"
+    static let refuseModelName = "Refuse"
+
     static let stageAssets: [StageAssetConstant] = [
         // Room Stage
         StageAssetConstant(name: "Room",
                    modelFile: "stage1.usdz",
                    modelTexture: "daytimeTexture",
-                   topLevelModelEntityName: "StageSurface",
-                   surfaceEntityName: "StageSurface",
+                   topLevelModelEntityName: stageSurfaceModelName, // "StageSurface",
+                   surfaceEntityName: stageSurfaceModelName, // "StageSurface",
                    domeShowing: false,
-                   domeEntityName: "StageDome",
+                   domeEntityName: stageDomeModelName, // "StageDome",
                    baseShowing: false,
-                   baseEntityName: "StageBase",
+                   baseEntityName: stageBaseModelName, // "StageBase",
                    textureName: "daytimeTexture",
                    radius: 1.5,
                    surface: 0.2,
@@ -40,12 +48,12 @@ struct AssetConstant {
         StageAssetConstant(name: "Daytime",
                    modelFile: "stage1.usdz",
                    modelTexture: "daytimeTexture",
-                   topLevelModelEntityName: "StageSurface",
-                   surfaceEntityName: "StageSurface",
+                   topLevelModelEntityName: stageSurfaceModelName, // "StageSurface",
+                   surfaceEntityName: stageSurfaceModelName, // "StageSurface",
                    domeShowing: true,
-                   domeEntityName: "StageDome",
+                   domeEntityName: stageDomeModelName, // "StageDome",
                    baseShowing: true,
-                   baseEntityName: "StageBase",
+                   baseEntityName: stageBaseModelName, // "StageBase",
                    textureName: "daytimeTexture",
                    radius: 1.5,
                    surface: 0.2,
@@ -68,7 +76,7 @@ struct AssetConstant {
                           modelFile: "umeiromodoki.usdz",
                           volume: SIMD3<Float>([0.2, 0.04, 0.03]),
                           collisionRadius: 0.02,
-                          modelEntityName: "Bone",
+                          modelEntityName: fishModelName, // "Bone",
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
                           physicsRestitution: 0.1,
@@ -81,35 +89,35 @@ struct AssetConstant {
     static let refuseAssets: [RefuseAssetConstant] = [
         RefuseAssetConstant(name: "bag",
                             modelFile: "bag.usdz",
-                            modelEntityName: "Refuse",
+                            modelEntityName: refuseModelName, // "Refuse",
                             volumeRadius: 0.075,
                             physicsMass: 1.0,
                             physicsFriction: 0.1,
                             physicsRestitution: 0.1),
         RefuseAssetConstant(name: "bottle",
                             modelFile: "bottle.usdz",
-                            modelEntityName: "Refuse",
+                            modelEntityName: refuseModelName, // "Refuse",
                             volumeRadius: 0.075,
                             physicsMass: 1.0,
                             physicsFriction: 0.1,
                             physicsRestitution: 0.1),
         RefuseAssetConstant(name: "net",
                             modelFile: "net.usdz",
-                            modelEntityName: "Refuse",
+                            modelEntityName: refuseModelName, // "Refuse",
                             volumeRadius: 0.075,
                             physicsMass: 1.0,
                             physicsFriction: 0.1,
                             physicsRestitution: 0.1),
         RefuseAssetConstant(name: "debris1",
                             modelFile: "debris1.usdz",
-                            modelEntityName: "Refuse",
+                            modelEntityName: refuseModelName, // "Refuse",
                             volumeRadius: 0.075,
                             physicsMass: 1.0,
                             physicsFriction: 0.1,
                             physicsRestitution: 0.1),
         RefuseAssetConstant(name: "debris2",
                             modelFile: "debris2.usdz",
-                            modelEntityName: "Refuse",
+                            modelEntityName: refuseModelName, // "Refuse",
                             volumeRadius: 0.075,
                             physicsMass: 1.0,
                             physicsFriction: 0.1,
@@ -121,7 +129,7 @@ struct AssetConstant {
     }
     static let boatAssets: [BoatAssetConstant] = [
         BoatAssetConstant(name: "Utsuro", modelFile: "boat1.usdz",
-                          topLevelModelEntityName: "Pole",
+                          topLevelModelEntityName: boatModelName, // "Pole",
                           volume: SIMD3<Float>([0.6, 1.0, 0.6]),
                           thickness: 0.04,
                           position: SIMD3<Float>([0.0, 0.2, 0.0]),

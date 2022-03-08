@@ -21,13 +21,23 @@ struct DevView: View {
     // @State private var showingFishRoutes = false
     // @State private var showingFishTargets = false
 
-    let assetNames = ["stage1.usdz",
-                      "boat1.usdz",
-                      "umeiromodoki.usdz",
-                      "bag.usdz", "bottle.usdz", "net.usdz",
-                      "debris1.usdz", "debris2.usdz"
-    ]
+//    let assetNames = ["stage1.usdz",
+//                      "boat1.usdz",
+//                      "umeiromodoki.usdz",
+//                      "bag.usdz", "bottle.usdz", "net.usdz",
+//                      "debris1.usdz", "debris2.usdz"
+//    ]
     @State private var dumpAsset = 0
+
+    private let stageUSDZs = ["stage1.usdz"]
+    private let boatUSDZs = ["boat1.usdz"]
+    private let fishUSDZs = ["umeiromodoki.usdz"]
+    private let refuseUSDZs = ["bag.usdz", "bottle.usdz", "net.usdz",
+                               "debris1.usdz", "debris2.usdz"]
+    @State private var verifyResult: Bool? = nil
+    private var assetNames: [String] {
+        stageUSDZs + boatUSDZs + fishUSDZs + refuseUSDZs
+    }
 
     private var currentCleanupCountText: String {
         String(appStateController.cleanupCount)
@@ -55,6 +65,8 @@ struct DevView: View {
                     Text(String("Show guide again = \(appStateController.showingGuideAgain)"))
                     Text(String("Showed guide build = \(appStateController.showedPreviousBuild)"))
                 }, header: { Text(String("UserDefaults")) })
+
+                // Cleaned count
                 Section(content: { // Section("Count [0...]") { // iOS 15.0+
                         TextField(currentCleanupCountText,
                                   text: $cleanupCountText,
@@ -66,32 +78,9 @@ struct DevView: View {
                             }
                         })
                         .textFieldStyle(.roundedBorder)
-                    }, header: {Text(String("Count [0...]"))})
-                Section(content: { // Section("Assets") { // iOS 15.0+
-                        HStack {
-                            Text(String("Model"))
-                            Spacer()
-                            Picker(selection: $dumpAsset, label: Text("Model")) {
-                                ForEach(0 ..< assetNames.count) {
-                                    Text(assetNames[$0])
-                                }
-                            }
-                            //  .pickerStyle(SegmentedPickerStyle())
-                            .pickerStyle(MenuPickerStyle())
-                        }
-                        HStack {
-                            Spacer()
-                            Button(action: { dump(assetName: assetNames[dumpAsset]) },
-                                   label: {
-                                Text(String("Dump"))
-                                    .foregroundColor(Color.white)
-                                    .padding(4)
-                                    .padding(.horizontal)
-                                    .background(Color.blue)
-                                    .cornerRadius(10)
-                            })
-                        }
-                    }, header: { Text(String("Assets")) })
+                    }, header: {Text(String("Clened Count [0...]"))})
+
+                // Dev Configuration
                 Section(content: { // Section("Setting A") { // iSO 15.0+
                     Toggle(String("AR Debug Options"), isOn: $showingARDebugOptions)
                         .onChange(of: showingARDebugOptions) { value in
@@ -114,6 +103,51 @@ struct DevView: View {
                     }, header: { Text(String("Dev Configuration")) })
                 // .tint(.orange) // iOS 15.0+
                 // .listRowSeparator(.hidden) // iOS 15+
+
+                // Assets/USDZ
+                Section(content: {
+                    HStack {
+                        Text(String("Selected Model:"))
+                        Spacer()
+                        Picker(selection: $dumpAsset, label: Text("Model")) {
+                            ForEach(0 ..< assetNames.count) {
+                                Text(assetNames[$0])
+                            }
+                        }
+                        //  .pickerStyle(SegmentedPickerStyle())
+                        .pickerStyle(MenuPickerStyle())
+                    }
+                    HStack {
+                        Spacer()
+                        Button(action: { dump(assetName: assetNames[dumpAsset]) },
+                               label: {
+                            Text(String("Dump"))
+                                .foregroundColor(Color.white)
+                                .padding(4)
+                                .padding(.horizontal)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        })
+                    }
+
+                    HStack {
+                        if verifyResult == nil {
+                            Text(String("unknown"))
+                        } else {
+                            Text(String("Result: \(verifyResult! ? "OK" : "NG")"))
+                        }
+                        Spacer()
+                        Button(action: { verify() },
+                               label: {
+                            Text(String("Verify All"))
+                                .foregroundColor(Color.white)
+                                .padding(4)
+                                .padding(.horizontal)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        })
+                    }
+                }, header: { Text(String("Verify USDZs")) })
             } // List
             .listStyle(SidebarListStyle()) // iOS 14+
             // .buttonStyle(.bordered) // iOS 15+
@@ -123,6 +157,17 @@ struct DevView: View {
 
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+
+    private func verify() {
+        if Stage.verify(names: stageUSDZs)
+            && Boat.verify(names: boatUSDZs)
+            && Fish.verify(names: fishUSDZs)
+            && Refuse.verify(names: refuseUSDZs) {
+            verifyResult = true
+        } else {
+            verifyResult = false
+        }
     }
 }
 
