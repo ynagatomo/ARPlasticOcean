@@ -31,10 +31,10 @@ struct DevView: View {
 
     private let stageUSDZs = ["stage1.usdz"]
     private let boatUSDZs = ["boat1.usdz"]
-    private let fishUSDZs = ["umeiromodoki.usdz"]
+    private let fishUSDZs = ["umeiromodoki.usdz", "bonito.usdz"]
     private let refuseUSDZs = ["bag.usdz", "bottle.usdz", "net.usdz",
                                "debris1.usdz", "debris2.usdz"]
-    @State private var verifyResult: Bool? = nil
+    @State private var verifyResult: Bool?
     private var assetNames: [String] {
         stageUSDZs + boatUSDZs + fishUSDZs + refuseUSDZs
     }

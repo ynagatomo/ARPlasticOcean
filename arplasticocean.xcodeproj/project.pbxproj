@@ -57,6 +57,7 @@
 		BAAED13227D63456003204FD /* CustomShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = BAAED13127D63456003204FD /* CustomShader.metal */; };
 		BAF1860027CDA59E007EC130 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */; };
 		BAF8219427D6D78A006FFFDA /* cleanup1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */; };
+		BAFAF62727D781AD00F192DB /* bonito.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAFAF62627D781AD00F192DB /* bonito.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		BAAED13127D63456003204FD /* CustomShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CustomShader.metal; sourceTree = "<group>"; };
 		BAF185FF27CDA59E007EC130 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
+		BAFAF62627D781AD00F192DB /* bonito.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bonito.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BA2CD68127D4CBD800E4B894 /* umeiromodoki.usdz */,
+				BAFAF62627D781AD00F192DB /* bonito.usdz */,
 			);
 			path = Fish;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
 				BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
+				BAFAF62727D781AD00F192DB /* bonito.usdz in Resources */,
 				BA92B60527CF83FD008C61FA /* bag.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

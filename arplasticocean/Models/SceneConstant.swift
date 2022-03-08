@@ -9,6 +9,7 @@ import Foundation
 
 // swiftlint:disable file_length
 
+// swiftlint:disable type_body_length
 struct AssetConstant {
     enum StageAssetIndex: Int {
         case room = 0, daytime, night, evening
@@ -113,13 +114,22 @@ struct AssetConstant {
     ]
 
     enum FishAssetIndex: Int {
-        case umeiromodoki = 0
+        case umeiromodoki = 0, bonito
     }
     static let fishAssets: [FishAssetConstant] = [
         FishAssetConstant(name: "Umeiromodoki",
                           modelFile: "umeiromodoki.usdz",
                           volume: SIMD3<Float>([0.2, 0.04, 0.03]),
                           collisionRadius: 0.02,
+                          modelEntityName: fishModelName, // "Bone",
+                          physicsMass: 1.0,
+                          physicsFriction: 0.1,
+                          physicsRestitution: 0.1,
+                          weakAngleX: Float.pi / 2.0),
+        FishAssetConstant(name: "Bonito",
+                          modelFile: "bonito.usdz",
+                          volume: SIMD3<Float>([0.3, 0.1, 0.06]),
+                          collisionRadius: 0.05,
                           modelEntityName: fishModelName, // "Bone",
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
@@ -227,6 +237,7 @@ struct AssetConstant {
     ]
 }
 
+// swiftlint:disable type_body_length
 struct SceneConstant {
     static let origin = SIMD3<Float>([0.0, 0.0, -0.75])
     static let scale = SIMD3<Float>([1.0, 1.0, 1.0])
@@ -257,8 +268,12 @@ struct SceneConstant {
         FishPropertyConstant(assetIndex:
                              AssetConstant.FishAssetIndex.umeiromodoki.rawValue,
                              selectProbability: 1.0,
+                             trapCapacity: 2),
+        // #1 : Bonito (Katsuo)
+        FishPropertyConstant(assetIndex:
+                             AssetConstant.FishAssetIndex.bonito.rawValue,
+                             selectProbability: 1.0,
                              trapCapacity: 2)
-//                             damageThreshold: 4)
     ]
 
     static let fishRoutes: [FishRouteConstant] = [
@@ -349,7 +364,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [1],   // #1: Bonito (katsuo)
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
@@ -403,7 +418,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [1],   // #1: Bonito
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
@@ -457,7 +472,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [1],   // #1: Bonito
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
@@ -511,7 +526,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [1],   // #1: Bonito
                             fishNumber: 3,              // number of fish
                             fishRouteIndex: 1,          // #1: route for midle fish
                             fishVelocity: Float.pi * 2.0 / 20.0,  // [radian/sec]
