@@ -114,7 +114,7 @@ struct AssetConstant {
     ]
 
     enum FishAssetIndex: Int {
-        case umeiromodoki = 0, bonito
+        case umeiromodoki = 0, bonito, ocellatus, turtle
     }
     static let fishAssets: [FishAssetConstant] = [
         FishAssetConstant(name: "Umeiromodoki",
@@ -134,7 +134,25 @@ struct AssetConstant {
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
                           physicsRestitution: 0.1,
-                          weakAngleX: Float.pi / 2.0)
+                          weakAngleX: Float.pi / 2.0),
+        FishAssetConstant(name: "Ocellatus",
+                          modelFile: "ocellatus.usdz",
+                          volume: SIMD3<Float>([0.37, 0.06, 0.5]),
+                          collisionRadius: 0.1,
+                          modelEntityName: fishModelName, // "Bone",
+                          physicsMass: 1.0,
+                          physicsFriction: 0.1,
+                          physicsRestitution: 0.1,
+                          weakAngleX: 0.0), // not rotate
+        FishAssetConstant(name: "Turtle",
+                          modelFile: "turtle.usdz",
+                          volume: SIMD3<Float>([0.4, 0.128, 0.461]),
+                          collisionRadius: 0.1,
+                          modelEntityName: fishModelName, // "Bone",
+                          physicsMass: 1.0,
+                          physicsFriction: 0.1,
+                          physicsRestitution: 0.1,
+                          weakAngleX: 0.0) // not rotate
     ]
 
     enum RefuseAssetIndex: Int {
@@ -273,7 +291,17 @@ struct SceneConstant {
         FishPropertyConstant(assetIndex:
                              AssetConstant.FishAssetIndex.bonito.rawValue,
                              selectProbability: 1.0,
-                             trapCapacity: 2)
+                             trapCapacity: 2),
+        // #2 : Ocellatus (Madaratobiei)
+        FishPropertyConstant(assetIndex:
+                             AssetConstant.FishAssetIndex.ocellatus.rawValue,
+                             selectProbability: 0.3,
+                             trapCapacity: 3),
+        // #3 : Turtle
+        FishPropertyConstant(assetIndex:
+                             AssetConstant.FishAssetIndex.turtle.rawValue,
+                             selectProbability: 0.3,
+                             trapCapacity: 3)
     ]
 
     static let fishRoutes: [FishRouteConstant] = [
@@ -375,9 +403,9 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [2, 3],   // #2: Ocellotus or #3: Turtle
                             fishNumber: 1,              // number of fish
-                            fishRouteIndex: 3,          // #3: route for large fish
+                            fishRouteIndex: 2,          // #2: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
@@ -429,9 +457,9 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
                             fishNumber: 1,              // number of fish
-                            fishRouteIndex: 3,          // #3: route for large fish
+                            fishRouteIndex: 2,          // #2: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
@@ -483,9 +511,9 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
                             fishNumber: 1,              // number of fish
-                            fishRouteIndex: 3,          // #3: route for large fish
+                            fishRouteIndex: 2,          // #3: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
@@ -537,9 +565,9 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [0],   // #0: Umeiromodoki
+                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
                             fishNumber: 1,              // number of fish
-                            fishRouteIndex: 2,          // #2: route for large fish
+                            fishRouteIndex: 3,          // #3: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
                             // routeRotationVelocity: Float.pi * 2.0 / 20.0, // [radian/sec]
                             // routeRotationOffset: 0.0,    // [radian]
