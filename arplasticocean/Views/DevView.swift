@@ -32,7 +32,8 @@ struct DevView: View {
     private let stageUSDZs = ["stage1.usdz"]
     private let boatUSDZs = ["boat1.usdz"]
     private let fishUSDZs = ["umeiromodoki.usdz", "bonito.usdz",
-                             "ocellatus.usdz", "turtle.usdz"]
+                             "ocellatus.usdz", "turtle.usdz",
+                             "dolphin.usdz"]
     private let refuseUSDZs = ["bag.usdz", "bottle.usdz", "net.usdz",
                                "debris1.usdz", "debris2.usdz"]
     @State private var verifyResult: Bool?

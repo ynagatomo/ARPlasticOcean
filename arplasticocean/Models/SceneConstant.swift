@@ -114,7 +114,7 @@ struct AssetConstant {
     ]
 
     enum FishAssetIndex: Int {
-        case umeiromodoki = 0, bonito, ocellatus, turtle
+        case umeiromodoki = 0, bonito, ocellatus, turtle, dolphin
     }
     static let fishAssets: [FishAssetConstant] = [
         FishAssetConstant(name: "Umeiromodoki",
@@ -152,11 +152,20 @@ struct AssetConstant {
                           physicsMass: 1.0,
                           physicsFriction: 0.1,
                           physicsRestitution: 0.1,
-                          weakAngleX: 0.0) // not rotate
+                          weakAngleX: 0.0), // not rotate
+        FishAssetConstant(name: "Dolphin",
+                          modelFile: "dolphin.usdz",
+                          volume: SIMD3<Float>([0.48, 0.151, 0.195]),
+                          collisionRadius: 0.1,
+                          modelEntityName: fishModelName, // "Bone",
+                          physicsMass: 1.0,
+                          physicsFriction: 0.1,
+                          physicsRestitution: 0.1,
+                          weakAngleX: Float.pi / 2.0)
     ]
 
     enum RefuseAssetIndex: Int {
-        case bag = 0, bottle, net, debris1, debris2
+        case bag = 0, bottle, net, debris1, debris2, dolphin
     }
     static let refuseAssets: [RefuseAssetConstant] = [
         RefuseAssetConstant(name: "bag",
@@ -301,6 +310,11 @@ struct SceneConstant {
         FishPropertyConstant(assetIndex:
                              AssetConstant.FishAssetIndex.turtle.rawValue,
                              selectProbability: 0.3,
+                             trapCapacity: 3),
+        // #4 : Dolphin
+        FishPropertyConstant(assetIndex:
+                             AssetConstant.FishAssetIndex.dolphin.rawValue,
+                             selectProbability: 0.3,
                              trapCapacity: 3)
     ]
 
@@ -403,7 +417,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [2, 3],   // #2: Ocellotus or #3: Turtle
+                            fishPropertyIndexes: [2, 3, 4],
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 2,          // #2: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
@@ -457,7 +471,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
+                            fishPropertyIndexes: [4, 2, 3],   // choose one
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 2,          // #2: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
@@ -511,7 +525,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
+                            fishPropertyIndexes: [3, 4, 2],
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 2,          // #3: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]
@@ -565,7 +579,7 @@ struct SceneConstant {
                             fishDiffMax: 0.1 // [m]
                         ),
                         FishGroupConstant(
-                            fishPropertyIndexes: [2],   // #2: Ocellatus (Madaratobiei)
+                            fishPropertyIndexes: [4, 3, 2],   // chose one
                             fishNumber: 1,              // number of fish
                             fishRouteIndex: 3,          // #3: route for large fish
                             fishVelocity: Float.pi * 1.0 / 50.0,  // [radian/sec]

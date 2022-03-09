@@ -45,7 +45,8 @@ struct HomeView: View {
                     Button(action: {
                         showingDevView = true
                     }, label: {
-                        Image(systemName: "gear")
+                        Text(String("  "))
+//                        Image(systemName: "gear")
                             .font(.largeTitle)
                             .padding(4)
                     })

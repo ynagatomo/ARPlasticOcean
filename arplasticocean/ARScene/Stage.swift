@@ -604,16 +604,20 @@ class Fish {
 
     #if DEBUG
     static func verify(names: [String]) -> Bool {
-        var result = false
         for name in names {
             if let entity = try? Entity.load(named: name),
                let theEntity = entity.findEntity(named: AssetConstant.fishModelName) {
-                if theEntity as? ModelEntity != nil && !entity.availableAnimations.isEmpty {
-                    result = true // all conditions are ok.
+                if theEntity as? ModelEntity == nil || entity.availableAnimations.isEmpty {
+                    debugLog("DEBUG: Fish Verify: failed with \(name).")
+                    return false
                 }
+            } else {
+                debugLog("DEBUG: Fish Verify: failed with \(name). Could not load the Entity or ModelEntity.")
+                return false
             }
+
         }
-        return result
+        return true  // all test were passed.
     }
     #endif
 
