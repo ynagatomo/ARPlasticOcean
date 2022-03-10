@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR Plastikmeer";
+
+/* Bundle name */
+"CFBundleName" = "AR Plastikmeer";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Augmented Reality erfordert eine Kamera.";
+

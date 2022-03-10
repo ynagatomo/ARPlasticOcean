@@ -23,7 +23,7 @@ struct WelcomeView: View {
                 Image("noteFish")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 64, height: 64)
+                    .frame(width: 128, height: 128)
                 Text("save the ocean lives.", comment: "Guide: message")
             } // HStack
 
