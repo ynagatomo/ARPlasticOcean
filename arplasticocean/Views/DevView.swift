@@ -111,7 +111,7 @@ struct DevView: View {
                     HStack {
                         Text(String("Selected Model:"))
                         Spacer()
-                        Picker(selection: $dumpAsset, label: Text("Model")) {
+                        Picker(selection: $dumpAsset, label: Text(String("Model"))) {
                             ForEach(0 ..< assetNames.count) {
                                 Text(assetNames[$0])
                             }

@@ -1,3 +1,51 @@
 /* No comment provided by engineer. */
-"HELLO, WORLD!" = "こんにちは、世界．";
+"begin" = "スタート";
+
+/* No comment provided by engineer. */
+"continue" = "続ける";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "胸の高さに構えて「スタート」ボタンを押します．";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_ja.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "新しいメダルが贈られました．";
+
+/* No comment provided by engineer. */
+"not show again" = "今後は表示しない．";
+
+/* Note: damage to sea creatures. */
+"note lives" = "プラスチックを誤って食べたり、絡まって動けなくなって命を落とします．";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "削減、再使用、リサイクルなど、自分のできることに取り組みましょう．";
+
+/* Note: plastic refuses. */
+"note refuses" = "プラスチックは永久に海の中を漂います．";
+
+/* No comment provided by engineer. */
+"ok" = "はい";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "プラスチックの海";
+
+/* Guide: message */
+"save the ocean lives." = "助けて、海の命を！";
+
+/* Support: title. */
+"support" = "サポート";
+
+/* No comment provided by engineer. */
+"support website" = "サポートページ";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "漂っているプラスチックをタップして回収します．";
+
+/* Usage: title. */
+"usage" = "使い方";
+
+/* No comment provided by engineer. */
+"write a review" = "レビューを書く．";
 

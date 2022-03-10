@@ -24,7 +24,7 @@ struct WelcomeView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 64, height: 64)
-                Text("please save ocean lives from plastic.", comment: "About plastic ocean.")
+                Text("save the ocean lives.", comment: "Guide: message")
             } // HStack
 
             UsageView()

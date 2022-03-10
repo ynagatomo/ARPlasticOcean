@@ -98,21 +98,21 @@ struct NoteView_Previews: PreviewProvider {
 struct UsageView: View {
     var body: some View {
         VStack {
-            Text("usage", comment: "Usage title.")
+            Text("usage", comment: "Usage: title.")
                 .font(.title2)
                 .fontWeight(.bold)
             HStack {
                 Image(systemName: "iphone.landscape")
                     .font(.largeTitle)
-                Text("Hold your iPhone / iPad in front of your chest and press the start button.",
-                     comment: "How to begin.")
+                Text("hold your iPhone / iPad in front of your chest and press the start button.",
+                     comment: "Usage: How to begin.")
             }
             .padding(4)
             HStack {
                 Image(systemName: "hand.tap.fill")
                     .font(.largeTitle)
-                Text("Tap the plastic refuses to collect them.",
-                     comment: "How to collect refuses.")
+                Text("tap the plastic refuses to collect them.",
+                     comment: "Usage: How to collect refuses.")
             }
             .padding(4)
         } // VStack
@@ -122,13 +122,13 @@ struct UsageView: View {
 struct SupportView: View {
     var body: some View {
         VStack {
-            Text("support", comment: "Support title.")
+            Text("support", comment: "Support: title.")
                 .font(.title2)
                 .fontWeight(.bold)
 
-            Text("please visit the support website to find the further information and updates about the app.",
-                 comment: "")
-                .padding(4)
+//            Text("please visit the support website to find the further information and updates about the app.",
+//                 comment: "")
+//                .padding(4)
             Link("support website", destination: URL(string: AppConstant.supportURLstring)!)
                 .foregroundColor(.orange)
                 .padding(4)
@@ -145,19 +145,19 @@ struct SupportView: View {
 struct ExplanationView: View {
     var body: some View {
         VStack {
-            Text("explanation", comment: "Explanation title.")
+            Text("plastic ocean", comment: "Plastic Ocean: title.")
                 .font(.title2)
                 .fontWeight(.bold)
 
-            Text("note explanation", comment: "Explanation about the plastic pollution.")
-                .padding(4)
+//            Text("note explanation", comment: "Explanation about the plastic pollution.")
+//                .padding(4)
 
             HStack {
                 Image("noteRefuses")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
-                Text("note refuses", comment: "Explanation about plastic refuses.")
+                Text("note refuses", comment: "Note: plastic refuses.")
             } // HStack
 
             HStack {
@@ -165,7 +165,7 @@ struct ExplanationView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
-                Text("note lives", comment: "Explanation about damage to sea creatures.")
+                Text("note lives", comment: "Note: damage to sea creatures.")
             } // HStack
 
             HStack {
@@ -173,7 +173,7 @@ struct ExplanationView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
-                Text("note recycle", comment: "Explanation about reduce, reuse, and recycle.")
+                Text("note recycle", comment: "Note: reduce, reuse, and recycle.")
             } // HStack
         } // VStack
     }

@@ -89,7 +89,7 @@ struct HomeView: View {
                 Button(action: {
                     showingOceanView = true
                 }, label: {
-                    Text("Begin")
+                    Text("begin")
                         .font(.largeTitle)
                         .padding(.horizontal, 48)
                 })
