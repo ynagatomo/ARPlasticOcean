@@ -18,6 +18,7 @@ struct DevView: View {
     @State private var showingARDebugOptions = DevConstant.showingARDebugOptions
     @State private var singleRefuse = DevConstant.singleRefuse
     @State private var build100 = DevConstant.build100
+    @State private var usingMovingCamera = DevConstant.movingCamera
     // @State private var showingFishRoutes = false
     // @State private var showingFishTargets = false
 
@@ -93,6 +94,10 @@ struct DevView: View {
                             devConfiguration.singleRefuse = value
                         }
                     Toggle(String("Show guide again"), isOn: $appStateController.showingGuideAgain)
+                    Toggle(String("Use Moving Camera"), isOn: $usingMovingCamera)
+                        .onChange(of: usingMovingCamera) { value in
+                            devConfiguration.usingMovingCamera = value
+                        }
 
                     //    Toggle(String("Show fish routes"), isOn: $showingFishRoutes)
                     //        .onChange(of: showingFishRoutes) { value in

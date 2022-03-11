@@ -14,6 +14,9 @@ class ARViewController: UIViewController {
     private var arView: ARView!
     private var arScene: ARScene!
     private var cleanedImageView: UIImageView?
+    private var anchorEntity: AnchorEntity!
+    // private var cameraEntity: PerspectiveCamera?
+    private var movingCamera: MovingCamera?
 
     init(appStateController: AppStateController) {
         self.appStateController = appStateController
@@ -52,14 +55,22 @@ class ARViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
         view.addGestureRecognizer(tap)
 
-        let anchorEntity = AnchorEntity()
+        anchorEntity = AnchorEntity()
         arView.scene.addAnchor(anchorEntity)
+
+        #if DEBUG
+        if devConfiguration.usingMovingCamera {
+            let cameraEntity = addPerspectiveCamera()
+            movingCamera = MovingCamera(camera: cameraEntity)
+        }
+        #endif
 
         arScene = ARScene(stageIndex: appStateController.stageIndex,
                           assetManager: appStateController.assetManager,
                           soundManager: appStateController.soundManager,
                           cleanedImageView: cleanedImageView)
-        arScene.prepare(arView: arView, anchor: anchorEntity)
+        arScene.prepare(arView: arView, anchor: anchorEntity,
+                          camera: movingCamera)
 
         let config = ARWorldTrackingConfiguration()
         arView.session.run(config)
@@ -110,6 +121,23 @@ class ARViewController: UIViewController {
         }
     }
 }
+
+#if DEBUG
+extension ARViewController {
+    private func addPerspectiveCamera() -> PerspectiveCamera {
+        let camera = PerspectiveCamera()    // : Entity
+        camera.name = "moving_camera"
+        anchorEntity.addChild(camera)
+        return camera
+//        // set the default camera position
+//        let radiansX = -Float.pi * (60.0 / 180.0)
+//        cameraEntity.orientation = simd_quatf(angle: radiansX, axis: SIMD3(x: 1, y: 0, z: 0))
+//        let radiansZ = -Float.pi * (45.0 / 180.0)
+//        cameraEntity.orientation = simd_quatf(angle: radiansZ, axis: SIMD3(x: 0, y: 0, z: 1))
+//        cameraEntity.transform.translation = [0.0, 0.0, 0.0]
+    }
+}
+#endif
 
 /// The extension for ARSessionDelegate
 ///

@@ -25,6 +25,8 @@ class ARScene {
     private let cleanedImageView: UIImageView?
     private var arView: ARView!
     private var anchor: AnchorEntity!
+    // private var cameraEntity: PerspectiveCamera?
+    private var movingCamera: MovingCamera?
     private var stageEntity: Entity!
     private var renderLoopSubscription: Cancellable?
     private var animationPlaybackControllers: [AnimationPlaybackController] = []
@@ -47,9 +49,11 @@ class ARScene {
         self.soundManager = soundManager
     }
 
-    func prepare(arView: ARView, anchor: AnchorEntity) {
+    func prepare(arView: ARView, anchor: AnchorEntity, camera: MovingCamera?) {
         self.arView = arView
         self.anchor = anchor
+        // self.cameraEntity = cameraEntity
+        self.movingCamera = camera
         // load entities and place them in the AR world.
         prepareStage()
         // load entities and place them in the AR world.
@@ -186,6 +190,14 @@ class ARScene {
                 recoverFish()
             }
         }
+
+        #if DEBUG
+        if devConfiguration.usingMovingCamera {
+            if let movingCamera = movingCamera {
+                movingCamera.update(deltaTime: deltaTime)
+            }
+        }
+        #endif
     }
 
     private func setCleaned() {

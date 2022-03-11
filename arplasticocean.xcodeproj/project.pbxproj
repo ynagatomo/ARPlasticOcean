@@ -15,6 +15,7 @@
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
 		BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA727CB01C3003C7152 /* Stage.swift */; };
 		BA3C5AAA27CB4EF4003C7152 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */; };
+		BA67B83727DAE98F00271FCE /* MovingCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA67B83627DAE98F00271FCE /* MovingCamera.swift */; };
 		BA6A404827D0544D002AE540 /* boat1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA6A404727D0544D002AE540 /* boat1.usdz */; };
 		BA6A404A27D06BDA002AE540 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A404927D06BDA002AE540 /* SoundManager.swift */; };
 		BA6A404C27D0C652002AE540 /* DevConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6A404B27D0C652002AE540 /* DevConfiguration.swift */; };
@@ -86,6 +87,7 @@
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		BA67B83627DAE98F00271FCE /* MovingCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingCamera.swift; sourceTree = "<group>"; };
 		BA6A404727D0544D002AE540 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
 		BA6A404927D06BDA002AE540 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BA6A404B27D0C652002AE540 /* DevConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfiguration.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				BA74B29E27C496FC00D79775 /* ARScene.swift */,
 				BA3C5AA727CB01C3003C7152 /* Stage.swift */,
+				BA67B83627DAE98F00271FCE /* MovingCamera.swift */,
 			);
 			path = ARScene;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA67B83727DAE98F00271FCE /* MovingCamera.swift in Sources */,
 				BA74B29C27C4898E00D79775 /* AppConstant.swift in Sources */,
 				BA74B28E27C4778100D79775 /* AppStateController.swift in Sources */,
 				BA92B5FE27CF5AAE008C61FA /* Float_Extension.swift in Sources */,
