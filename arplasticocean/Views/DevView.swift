@@ -112,7 +112,7 @@ struct DevView: View {
                         Text(String("Selected Model:"))
                         Spacer()
                         Picker(selection: $dumpAsset, label: Text(String("Model"))) {
-                            ForEach(0 ..< assetNames.count) {
+                            ForEach(0 ..< 12) {  // 12 = assetNames.count
                                 Text(assetNames[$0])
                             }
                         }

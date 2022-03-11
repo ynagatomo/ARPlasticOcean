@@ -49,3 +49,11 @@
 /* No comment provided by engineer. */
 "write a review" = "レビューを書く．";
 
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "カメラアクセスが許可されていません";
+
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "設定アプリを使ってカメラアクセスを許可して下さい．";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "閉じる";

@@ -49,3 +49,11 @@
 /* No comment provided by engineer. */
 "write a review" = "Écrire une critique.";
 
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "L'accès à la caméra n'est pas autorisé";
+
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "Veuillez autoriser l'accès à la caméra à l'aide de l'application des paramètres.";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "je comprends";

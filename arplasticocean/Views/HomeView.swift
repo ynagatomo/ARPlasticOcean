@@ -108,13 +108,16 @@ struct HomeView: View {
         .ignoresSafeArea()
         .fullScreenCover(isPresented: $showingOceanView, onDismiss: update) {
             OceanView()
+                .environmentObject(appStateController) // for macOS
         }
         .sheet(isPresented: $showingNoteView, onDismiss: nil) {
             NoteView()
+                .environmentObject(appStateController) // for macOS
         }
         #if DEBUG
         .sheet(isPresented: $showingDevView, onDismiss: update) {
             DevView()
+                .environmentObject(appStateController) // for macOS
         }
         #endif
         .alert(isPresented: $showingMedalApproval) {
