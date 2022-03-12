@@ -11,6 +11,15 @@
 		BA0BA12D27D73CCA000A9D52 /* stage1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA0BA12C27D73CCA000A9D52 /* stage1.usdz */; };
 		BA0BA12F27D74863000A9D52 /* aomuke.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA0BA12E27D74863000A9D52 /* aomuke.m4a */; };
 		BA23AC9F27D89CF90048226C /* turtle.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA23AC9E27D89CF90048226C /* turtle.usdz */; };
+		BA289EED27DC59B900236577 /* inthewater.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA289EEC27DC59B900236577 /* inthewater.m4a */; };
+		BA289EEF27DC59C700236577 /* uminomori.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA289EEE27DC59C700236577 /* uminomori.m4a */; };
+		BA289EF127DC59DF00236577 /* ushinawareta.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF027DC59DF00236577 /* ushinawareta.m4a */; };
+		BA289EF327DC5D5C00236577 /* stage2.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF227DC5D5C00236577 /* stage2.usdz */; };
+		BA289EF927DC5F3E00236577 /* graywhale.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF427DC5F3E00236577 /* graywhale.usdz */; };
+		BA289EFB27DC5F3E00236577 /* narwhal.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF627DC5F3E00236577 /* narwhal.usdz */; };
+		BA289EFC27DC5F3E00236577 /* mackerel.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF727DC5F3E00236577 /* mackerel.usdz */; };
+		BA289EFD27DC5F3E00236577 /* salmon.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289EF827DC5F3E00236577 /* salmon.usdz */; };
+		BA289F0127DC89A200236577 /* beluga.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA289F0027DC89A200236577 /* beluga.usdz */; };
 		BA2CD68227D4CBD800E4B894 /* umeiromodoki.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA2CD68127D4CBD800E4B894 /* umeiromodoki.usdz */; };
 		BA3C5AA227C9BE8B003C7152 /* SceneConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */; };
 		BA3C5AA827CB01C3003C7152 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3C5AA727CB01C3003C7152 /* Stage.swift */; };
@@ -83,6 +92,15 @@
 		BA141B9C27DA142E00D4F4C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA141B9D27DA142E00D4F4C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA23AC9E27D89CF90048226C /* turtle.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = turtle.usdz; sourceTree = "<group>"; };
+		BA289EEC27DC59B900236577 /* inthewater.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = inthewater.m4a; sourceTree = "<group>"; };
+		BA289EEE27DC59C700236577 /* uminomori.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = uminomori.m4a; sourceTree = "<group>"; };
+		BA289EF027DC59DF00236577 /* ushinawareta.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ushinawareta.m4a; sourceTree = "<group>"; };
+		BA289EF227DC5D5C00236577 /* stage2.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage2.usdz; sourceTree = "<group>"; };
+		BA289EF427DC5F3E00236577 /* graywhale.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = graywhale.usdz; sourceTree = "<group>"; };
+		BA289EF627DC5F3E00236577 /* narwhal.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = narwhal.usdz; sourceTree = "<group>"; };
+		BA289EF727DC5F3E00236577 /* mackerel.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mackerel.usdz; sourceTree = "<group>"; };
+		BA289EF827DC5F3E00236577 /* salmon.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = salmon.usdz; sourceTree = "<group>"; };
+		BA289F0027DC89A200236577 /* beluga.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = beluga.usdz; sourceTree = "<group>"; };
 		BA2CD68127D4CBD800E4B894 /* umeiromodoki.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = umeiromodoki.usdz; sourceTree = "<group>"; };
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
@@ -189,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0BA12C27D73CCA000A9D52 /* stage1.usdz */,
+				BA289EF227DC5D5C00236577 /* stage2.usdz */,
 			);
 			path = Stages;
 			sourceTree = "<group>";
@@ -213,6 +232,11 @@
 				BA87ED1027D86532004DD58C /* ocellatus.usdz */,
 				BA23AC9E27D89CF90048226C /* turtle.usdz */,
 				BA8CAACC27D8E0B8002B7E27 /* dolphin.usdz */,
+				BA289EF427DC5F3E00236577 /* graywhale.usdz */,
+				BA289EF727DC5F3E00236577 /* mackerel.usdz */,
+				BA289EF627DC5F3E00236577 /* narwhal.usdz */,
+				BA289EF827DC5F3E00236577 /* salmon.usdz */,
+				BA289F0027DC89A200236577 /* beluga.usdz */,
 			);
 			path = Fish;
 			sourceTree = "<group>";
@@ -272,6 +296,9 @@
 				BA74B2AF27C4DA7300D79775 /* hidamari.m4a */,
 				BA74B2B127C4DA8600D79775 /* needbetter.m4a */,
 				BA0BA12E27D74863000A9D52 /* aomuke.m4a */,
+				BA289EEC27DC59B900236577 /* inthewater.m4a */,
+				BA289EEE27DC59C700236577 /* uminomori.m4a */,
+				BA289EF027DC59DF00236577 /* ushinawareta.m4a */,
 			);
 			path = StageSounds;
 			sourceTree = "<group>";
@@ -456,7 +483,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA289EEF27DC59C700236577 /* uminomori.m4a in Resources */,
 				BAF8219427D6D78A006FFFDA /* cleanup1.mp3 in Resources */,
+				BA289EF927DC5F3E00236577 /* graywhale.usdz in Resources */,
+				BA289EF127DC59DF00236577 /* ushinawareta.m4a in Resources */,
 				BA0BA12D27D73CCA000A9D52 /* stage1.usdz in Resources */,
 				BA23AC9F27D89CF90048226C /* turtle.usdz in Resources */,
 				BAAD376E27C3A9F2005FA7DE /* Colors.xcassets in Resources */,
@@ -473,11 +503,17 @@
 				BA2CD68227D4CBD800E4B894 /* umeiromodoki.usdz in Resources */,
 				BA74B2AE27C4DA5D00D79775 /* nukumori.m4a in Resources */,
 				BA87ED1127D86532004DD58C /* ocellatus.usdz in Resources */,
+				BA289EF327DC5D5C00236577 /* stage2.usdz in Resources */,
 				BA74B2B227C4DA8600D79775 /* needbetter.m4a in Resources */,
 				BA74B2AB27C4D99400D79775 /* wave1.m4a in Resources */,
 				BA92B60D27CF8C21008C61FA /* debris1.usdz in Resources */,
+				BA289EED27DC59B900236577 /* inthewater.m4a in Resources */,
+				BA289EFB27DC5F3E00236577 /* narwhal.usdz in Resources */,
+				BA289EFC27DC5F3E00236577 /* mackerel.usdz in Resources */,
 				BA6A404827D0544D002AE540 /* boat1.usdz in Resources */,
 				BAAD376527C3A3A3005FA7DE /* InfoPlist.strings in Resources */,
+				BA289F0127DC89A200236577 /* beluga.usdz in Resources */,
+				BA289EFD27DC5F3E00236577 /* salmon.usdz in Resources */,
 				BA0927FF27CCDCBB001F8CB4 /* Textures.xcassets in Resources */,
 				BAAD373D27C38994005FA7DE /* Assets.xcassets in Resources */,
 				BAFAF62727D781AD00F192DB /* bonito.usdz in Resources */,

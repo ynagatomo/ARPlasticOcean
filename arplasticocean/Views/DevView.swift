@@ -30,11 +30,13 @@ struct DevView: View {
 //    ]
     @State private var dumpAsset = 0
 
-    private let stageUSDZs = ["stage1.usdz"]
+    private let stageUSDZs = ["stage1.usdz", "stage2.usdz"]
     private let boatUSDZs = ["boat1.usdz"]
     private let fishUSDZs = ["umeiromodoki.usdz", "bonito.usdz",
                              "ocellatus.usdz", "turtle.usdz",
-                             "dolphin.usdz"]
+                             "dolphin.usdz",
+                             "mackerel.usdz", "salmon.usdz", "narwhal.usdz",
+                             "beluga.usdz", "graywhale.usdz"]
     private let refuseUSDZs = ["bag.usdz", "bottle.usdz", "net.usdz",
                                "debris1.usdz", "debris2.usdz"]
     @State private var verifyResult: Bool?
@@ -117,7 +119,7 @@ struct DevView: View {
                         Text(String("Selected Model:"))
                         Spacer()
                         Picker(selection: $dumpAsset, label: Text(String("Model"))) {
-                            ForEach(0 ..< 12) {  // 12 = assetNames.count
+                            ForEach(0 ..< 18) {  // 18 = assetNames.count
                                 Text(assetNames[$0])
                             }
                         }
