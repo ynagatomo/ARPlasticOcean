@@ -292,5 +292,5 @@ private func characterControllerStateComponentToStrings(_ component: CharacterCo
 }
 #else
 @discardableResult
-func dumpRealityEntity(_ entity: Entity, printing: Bool = true) -> [String] { }
+func dumpRealityEntity(_ entity: Entity, printing: Bool = true) -> [String] { return [] }
 #endif

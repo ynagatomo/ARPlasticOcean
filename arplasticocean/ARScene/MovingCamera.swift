@@ -5,7 +5,6 @@
 //  Created by Yasuhito NAGATOMO on 2022/03/11.
 //
 
-#if DEBUG
 import Foundation
 import RealityKit
 
@@ -83,4 +82,3 @@ class MovingCamera {
         return (position, rotation)
     }
 }
-#endif

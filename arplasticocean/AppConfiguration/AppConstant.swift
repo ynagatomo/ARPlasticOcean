@@ -15,8 +15,7 @@ class AppConstant {
     //                      comment: "Support page URL.")
 
     // App Review URL
-    // TODO: replace the app ID with AR Plastic Ocean app's one
-    static let reviewURLstring = NSLocalizedString("https://apps.apple.com/app/id1564570252?action=write-review",
+    static let reviewURLstring = NSLocalizedString("https://apps.apple.com/app/id1614059602?action=write-review",
                                        comment: "App Review URL.")
     //               String(localized: "https://apps.apple.com/app/id1564570252?action=write-review", // iOS 15.0+
     //                                 comment: "App Review URL.")
