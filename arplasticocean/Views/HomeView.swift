@@ -18,11 +18,11 @@ struct HomeView: View {
 
 //    @State private var medal: CleanupMedal?
 
-    private let roundedOrangeButtonStyle: CustomButtonStyle = .init(isEnabled: true,
-                                                      cornerRadius: 10,
-                                                      color: .orange,
-                                                      disabledColor: .gray,
-                                                      textColor: .white)
+//    private let roundedOrangeButtonStyle: CustomButtonStyle = .init(isEnabled: true,
+//                                                      cornerRadius: 10,
+//                                                      color: .orange,
+//                                                      disabledColor: .gray,
+//                                                      textColor: .white)
 
     var body: some View {
             VStack {
@@ -91,9 +91,14 @@ struct HomeView: View {
                 }, label: {
                     Text("begin")
                         .font(.largeTitle)
-                        .padding(.horizontal, 48)
+                        // .padding(.horizontal, 48)
+                        .foregroundColor(Color.white)
+                        .padding(4)
+                        .padding(.horizontal)
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 })
-                .buttonStyle(roundedOrangeButtonStyle)
+                // .buttonStyle(roundedOrangeButtonStyle)
             } // VStack
             .padding(.horizontal, 32)
             .padding(.vertical, 32)

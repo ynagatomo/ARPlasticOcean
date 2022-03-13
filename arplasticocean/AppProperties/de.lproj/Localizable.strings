@@ -1,11 +1,12 @@
 /* No comment provided by engineer. */
-"begin" = "Anfang";
+"begin" = "Start"; /* "Anfang"; */
 
 /* No comment provided by engineer. */
 "continue" = "Fortsetzen";
 
 /* Usage: How to begin. */
-"hold your iPhone / iPad in front of your chest and press the start button." = "Halten Sie es vor Ihre Brust und tippen Sie auf die Starttaste.";
+"hold your iPhone / iPad in front of your chest and press the start button." = "Halte dein Smartphone in Brusthöhe und drücke den “Start” Button.";
+    /* "Halten Sie es vor Ihre Brust und tippen Sie auf die Starttaste."; */
 
 /* Support page URL. */
 "https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_de.html";
@@ -14,10 +15,10 @@
 "medal approval alert" = "Sie haben eine neue Medaille gewonnen.";
 
 /* No comment provided by engineer. */
-"not show again" = "Bitte in Zukunft nicht mehr anzeigen.";
+"not show again" = "In Zukunft nicht mehr anzeigen.";  /* "Bitte in Zukunft nicht mehr anzeigen."; */
 
 /* Note: damage to sea creatures. */
-"note lives" = "Sie essen versehentlich Plastik und sterben.";
+"note lives" = "Sie essen versehentlich das Plastik und sterben daran."; /*  "Sie essen versehentlich Plastik und sterben."; */
 
 /* Note: reduce, reuse, and recycle. */
 "note recycle" = "Arbeite an dem, was du kannst.";
@@ -32,7 +33,7 @@
 "plastic ocean" = "Plastikmeer";
 
 /* Guide: message */
-"save the ocean lives." = "Rette das Leben von Meeresbewohnern.";
+"save the ocean lives." = "Rette das Leben der Meeresbewohner"; /* "Rette das Leben von Meeresbewohnern."; */
 
 /* Support: title. */
 "support" = "Support";
@@ -41,10 +42,11 @@
 "support website" = "Support Website";
 
 /* Usage: How to collect refuses. */
-"tap the plastic refuses to collect them." = "Tippen Sie auf den Plastikmüll, um ihn einzusammeln.";
+"tap the plastic refuses to collect them." = "Tippe auf dem Plastikmüll, um ihn einzusammeln.";
+    /* "Tippen Sie auf den Plastikmüll, um ihn einzusammeln."; */
 
 /* Usage: title. */
-"usage" = "Wie benutzt man";
+"usage" = "Wie funktionierts"; /* "Wie benutzt man"; */
 
 /* No comment provided by engineer. */
 "write a review" = "Eine Rezension schreiben.";

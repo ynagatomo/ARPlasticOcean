@@ -5,7 +5,9 @@
 "continue" = "Continuez";
 
 /* Usage: How to begin. */
-"hold your iPhone / iPad in front of your chest and press the start button." = "Tenez votre iPhone / iPad devant votre poitrine et appuyez sur le bouton de démarrage.";
+"hold your iPhone / iPad in front of your chest and press the start button." = "Tenez votre iPhone / iPad devant vous et appuyez sur le bouton de démarrage.";
+    /* "hold your iPhone / iPad in front of your chest and press the start button."
+     = "Tenez votre iPhone / iPad devant votre poitrine et appuyez sur le bouton de démarrage."; */
 
 /* Support page URL. */
 "https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_fr.html";
@@ -29,7 +31,7 @@
 "ok" = "J'ai compris";
 
 /* Plastic Ocean: title. */
-"plastic ocean" = "Mer en plastique";
+"plastic ocean" = "Le plastique dans l’Océan"; /* "Mer en plastique"; */
 
 /* Guide: message */
 "save the ocean lives." = "Sauvez la vie des créatures marines.";
@@ -41,10 +43,11 @@
 "support website" = "Site Web d'assistance";
 
 /* Usage: How to collect refuses. */
-"tap the plastic refuses to collect them." = "Tapotez et collectez les déchets plastiques.";
+"tap the plastic refuses to collect them." = "Tapotez et ollectez les déchets en plastique.";
+    /* "Tapotez et collectez les déchets plastiques."; */
 
 /* Usage: title. */
-"usage" = "Comment utiliser";
+"usage" = "Utilisation";  /* "Comment utiliser"; */
 
 /* No comment provided by engineer. */
 "write a review" = "Écrire une critique.";

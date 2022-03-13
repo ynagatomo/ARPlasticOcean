@@ -1,9 +1,9 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "RA Mer en plastique";
+"CFBundleDisplayName" = "AR Plastic Ocean";
 
 /* Bundle name */
-"CFBundleName" = "RA Mer en plastique";
+"CFBundleName" = "AR Plastic Ocean";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "La réalité augmentée nécessite une caméra.";
+"NSCameraUsageDescription" = "AR utilise une caméra."; /* "La réalité augmentée nécessite une caméra."; */
 

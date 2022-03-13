@@ -538,7 +538,8 @@ class Fish {
         guard let entity = entity else { return }
 
         if let animation = entity.availableAnimations.first {
-            entity.playAnimation(animation.repeat(), transitionDuration: 0, startsPaused: false)
+            // entity.playAnimation(animation.repeat(), transitionDuration: 0, startsPaused: false)
+            entity.playAnimation(animation.repeat())
             //    entity.playAnimation(animation.repeat())  // iOS 15.0+
             //    entity.playAnimation(animation.repeat(),  // iOS 15.0+
             //                         transitionDuration: 0,
