@@ -46,10 +46,10 @@
     /* "Tippen Sie auf den Plastikmüll, um ihn einzusammeln."; */
 
 /* Usage: title. */
-"usage" = "Wie funktionierts"; /* "Wie benutzt man"; */
+"usage" = "Wie funktioniert's"; /* "Wie benutzt man"; */
 
 /* No comment provided by engineer. */
-"write a review" = "Eine Rezension schreiben.";
+"write a review" = "Eine Rezension schreiben";
 
 /* Alert Title: Camera access is not allowed. */
 "ar_camera_notallowed_alert_title" = "Der Zugriff auf die Kamera ist nicht gestattet";

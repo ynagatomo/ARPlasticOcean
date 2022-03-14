@@ -15,10 +15,11 @@ struct DevView: View {
     @EnvironmentObject var appStateController: AppStateController
 
     @State private var cleanupCountText = ""
-    @State private var showingARDebugOptions = DevConstant.showingARDebugOptions
-    @State private var singleRefuse = DevConstant.singleRefuse
-    @State private var build100 = DevConstant.build100
-    @State private var usingMovingCamera = DevConstant.movingCamera
+    @State private var showingARDebugOptions = devConfiguration.showingARDebugOptions
+                                                // DevConstant.showingARDebugOptions
+    @State private var singleRefuse = devConfiguration.singleRefuse // DevConstant.singleRefuse
+//    @State private var build100 = DevConstant.build100
+    @State private var usingMovingCamera = devConfiguration.usingMovingCamera // DevConstant.movingCamera
     // @State private var showingFishRoutes = false
     // @State private var showingFishTargets = false
 

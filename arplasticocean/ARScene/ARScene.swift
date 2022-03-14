@@ -524,7 +524,15 @@ class ARScene {
         }
     }
 
+    /// Detect the collision between fish and refuses
+    ///
+    /// - Returns: nil: no collision, [Collision]: collisions
+    ///
+    /// When the number of free refuses is 0 or 1, nil will be returned, because the last refuse
+    /// is not trapped by fish. It is for user to collect it to clean the stage.
     private func detectCollision() -> [Collision]? {
+        guard Refuse.freeNumber(refuses: refuses) > 1 else { return nil }
+
         var collisions: [Collision] = []
 
         for fishGroupIndex in 0 ..< fishGroups.count {
