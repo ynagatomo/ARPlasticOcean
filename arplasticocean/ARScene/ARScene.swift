@@ -116,6 +116,8 @@ class ARScene {
         }
     }
 
+    // MARK: - Update Scenes
+
     private func updateScene(deltaTime: Double) {   // deltaTime [sec] (about 0.016)
         // move fish
         fishGroups.forEach { fishGroup in
@@ -514,10 +516,12 @@ class ARScene {
                     let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
                                               rotation: simd_quatf(angle: fish.constant.weakAngleX,
                                                                    axis: SIMD3<Float>([1.0, 0.0, 0.0])),
-                                              translation: SIMD3<Float>([fish.entity?.position.x ?? 0.0,
-                               -(AssetConstant.stageAssets[stageAssetIndex].radius    // sea bottom
-                                 - AssetConstant.stageAssets[stageAssetIndex].offset) + 0.05, // margine 5 cm
-                                                                         fish.entity?.position.z ?? 0.0]))
+                                              translation: SIMD3<Float>([
+                            fish.entity?.position.x ?? 0.0,
+                            -(AssetConstant.stageAssets[stageAssetIndex].radius    // sea bottom
+                              - AssetConstant.stageAssets[stageAssetIndex].offset)
+                              + fish.constant.volume.y, // ignoring the fish rotation
+                            fish.entity?.position.z ?? 0.0]))
                     fish.entity?.move(to: transform, relativeTo: nil, duration: 10.0) // 10 sec
                 }
             }
