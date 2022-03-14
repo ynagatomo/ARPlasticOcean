@@ -49,6 +49,7 @@ class ARViewController: UIViewController {
         }
         #endif
         view = arView
+        // view.backgroundColor = UIColor(named: "LaunchScreenColor")
 
         setupCleanedImage()
 

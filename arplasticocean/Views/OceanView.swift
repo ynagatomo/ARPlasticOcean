@@ -18,6 +18,7 @@ struct OceanView: View {
         ZStack {
             // AR View
             ARContainerView()
+                .background(Color("LaunchScreenColor")) // shown during starting up the ARView
 
             // Buttons
             VStack {
