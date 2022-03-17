@@ -127,6 +127,10 @@
 		BA74B2B127C4DA8600D79775 /* needbetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = needbetter.m4a; sourceTree = "<group>"; };
 		BA87ED1027D86532004DD58C /* ocellatus.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = ocellatus.usdz; sourceTree = "<group>"; };
 		BA8CAACC27D8E0B8002B7E27 /* dolphin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = dolphin.usdz; sourceTree = "<group>"; };
+		BA8FC28427E21E3F003EE9BD /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA8FC28527E21E3F003EE9BD /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA8FC28627E21E62003EE9BD /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA8FC28727E21E62003EE9BD /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA92B5FD27CF5AAE008C61FA /* Float_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float_Extension.swift; sourceTree = "<group>"; };
 		BA92B60427CF83FD008C61FA /* bag.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bag.usdz; sourceTree = "<group>"; };
 		BA92B60627CF877E008C61FA /* bottle.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bottle.usdz; sourceTree = "<group>"; };
@@ -466,6 +470,8 @@
 				ja,
 				fr,
 				de,
+				id,
+				it,
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -613,6 +619,8 @@
 				BAAD376927C3A45B005FA7DE /* ja */,
 				BA141B9B27DA0C8F00D4F4C4 /* fr */,
 				BA141B9D27DA142E00D4F4C4 /* de */,
+				BA8FC28527E21E3F003EE9BD /* id */,
+				BA8FC28727E21E62003EE9BD /* it */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -624,6 +632,8 @@
 				BAAD376A27C3A45B005FA7DE /* ja */,
 				BA141B9A27DA0C8F00D4F4C4 /* fr */,
 				BA141B9C27DA142E00D4F4C4 /* de */,
+				BA8FC28427E21E3F003EE9BD /* id */,
+				BA8FC28627E21E62003EE9BD /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -756,7 +766,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
@@ -791,7 +801,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;

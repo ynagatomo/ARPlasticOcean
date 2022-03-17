@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Oceano di plastica AR";
+
+/* Bundle name */
+"CFBundleName" = "Oceano di plastica AR";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "AR Richiede l'utilizzo della focamera.";
+
