@@ -35,5 +35,11 @@ Copyright: HURT RECORD (https://www.hurtrecord.com)
 1. uminomori.m4a
 1. ushinawareta.m4a
 
+## Contributions
+
+1. Localizable strings and InfoPlist strings in Italian was translated by Matteo Spada.
+2. Localizable strings in French was revised by Maxime Maisonneuve. 
+3. Localizable strings in German was revised by Andreas Schallwig and Lena.
+
 ---
 2022 Yasuhito Nagatomo @AtarayoSD (https://twitter.com/AtarayoSD)
