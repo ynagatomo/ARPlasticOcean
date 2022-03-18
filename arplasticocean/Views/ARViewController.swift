@@ -15,7 +15,6 @@ class ARViewController: UIViewController {
     private var arScene: ARScene!
     private var cleanedImageView: UIImageView?
     private var anchorEntity: AnchorEntity!
-    // private var cameraEntity: PerspectiveCamera?
     private var movingCamera: MovingCamera?
 
     init(appStateController: AppStateController) {
@@ -118,7 +117,6 @@ class ARViewController: UIViewController {
                 CGRect(x: 0, y: 0, width: scaledWidth, height: scaledHeight)
 
             cleanedImageView?.frame = rect
-//            imageView.center = CGPoint(x: scaledWidth / 2.0, y: scaledHeight / 2.0)
             cleanedImageView?.isHidden = true
             view.addSubview(cleanedImageView!)
         }
@@ -132,12 +130,6 @@ extension ARViewController {
         camera.name = "moving_camera"
         anchorEntity.addChild(camera)
         return camera
-//        // set the default camera position
-//        let radiansX = -Float.pi * (60.0 / 180.0)
-//        cameraEntity.orientation = simd_quatf(angle: radiansX, axis: SIMD3(x: 1, y: 0, z: 0))
-//        let radiansZ = -Float.pi * (45.0 / 180.0)
-//        cameraEntity.orientation = simd_quatf(angle: radiansZ, axis: SIMD3(x: 0, y: 0, z: 1))
-//        cameraEntity.transform.translation = [0.0, 0.0, 0.0]
     }
 }
 #endif

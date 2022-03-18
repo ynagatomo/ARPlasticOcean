@@ -12,17 +12,12 @@ struct DevConstant {
     static let showingARDebugOptions = false
     static let singleRefuse = false
     static let build100 = false
-    static let movingCamera = true
-//    static let showingTrappedRefuseMark = true
+    static let movingCamera = false
 }
 
 class DevConfiguration {
     var showingARDebugOptions = DevConstant.showingARDebugOptions
     var singleRefuse = DevConstant.singleRefuse
     var usingMovingCamera = DevConstant.movingCamera
-//    var showingTrappedRefuseMark = DevConstant.showingTrappedRefuseMark
-//    var showingFishRoutes = false
-//    var showingFishTargets = false
 }
-
 #endif

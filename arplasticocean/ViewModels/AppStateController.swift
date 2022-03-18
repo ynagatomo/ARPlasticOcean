@@ -112,13 +112,3 @@ class AppStateController: ObservableObject {
         return isShowing
     }
 }
-
-//    extension AppStateController {
-//        func play(soundID: SoundManager.SoundID) {
-//            soundManager.play(soundID: soundID, enable: soundEnable)
-//        }
-//
-//        func stop(soundID: SoundManager.SoundID) {
-//            soundManager.stop(soundID: soundID)
-//        }
-//    }

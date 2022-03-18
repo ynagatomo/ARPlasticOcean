@@ -18,17 +18,7 @@ struct DevView: View {
     @State private var showingARDebugOptions = devConfiguration.showingARDebugOptions
                                                 // DevConstant.showingARDebugOptions
     @State private var singleRefuse = devConfiguration.singleRefuse // DevConstant.singleRefuse
-//    @State private var build100 = DevConstant.build100
     @State private var usingMovingCamera = devConfiguration.usingMovingCamera // DevConstant.movingCamera
-    // @State private var showingFishRoutes = false
-    // @State private var showingFishTargets = false
-
-//    let assetNames = ["stage1.usdz",
-//                      "boat1.usdz",
-//                      "umeiromodoki.usdz",
-//                      "bag.usdz", "bottle.usdz", "net.usdz",
-//                      "debris1.usdz", "debris2.usdz"
-//    ]
     @State private var dumpAsset = 0
 
     private let stageUSDZs = ["stage1.usdz", "stage2.usdz"]
@@ -101,15 +91,6 @@ struct DevView: View {
                         .onChange(of: usingMovingCamera) { value in
                             devConfiguration.usingMovingCamera = value
                         }
-
-                    //    Toggle(String("Show fish routes"), isOn: $showingFishRoutes)
-                    //        .onChange(of: showingFishRoutes) { value in
-                    //            devConfiguration.showingFishRoutes = value
-                    //        }
-                    //    Toggle(String("Show fish targets"), isOn: $showingFishTargets)
-                    //        .onChange(of: showingFishTargets) { value in
-                    //            devConfiguration.showingFishTargets = value
-                    //        }
                     }, header: { Text(String("Dev Configuration")) })
                 // .tint(.orange) // iOS 15.0+
                 // .listRowSeparator(.hidden) // iOS 15+
@@ -124,7 +105,6 @@ struct DevView: View {
                                 Text(assetNames[$0])
                             }
                         }
-                        //  .pickerStyle(SegmentedPickerStyle())
                         .pickerStyle(MenuPickerStyle())
                     }
                     HStack {

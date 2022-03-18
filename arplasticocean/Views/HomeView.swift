@@ -16,14 +16,6 @@ struct HomeView: View {
     @State private var showingDevView = false
     @State private var showingMedalApproval = false
 
-//    @State private var medal: CleanupMedal?
-
-//    private let roundedOrangeButtonStyle: CustomButtonStyle = .init(isEnabled: true,
-//                                                      cornerRadius: 10,
-//                                                      color: .orange,
-//                                                      disabledColor: .gray,
-//                                                      textColor: .white)
-
     var body: some View {
             VStack {
                 // Top Bar
@@ -37,7 +29,6 @@ struct HomeView: View {
                             .padding(4)
                     })
                         .foregroundColor(.white)
-//                    .buttonStyle(roundedOrangeButtonStyle)
                     Spacer()
 
                     // Dev Button
@@ -46,21 +37,17 @@ struct HomeView: View {
                         showingDevView = true
                     }, label: {
                         Text(String("  "))
-//                        Image(systemName: "gear")
                             .font(.largeTitle)
                             .padding(4)
                     })
                         .foregroundColor(.white)
-  //                  .buttonStyle(roundedOrangeButtonStyle)
                     #endif
 
                     // Sound Button
                     Button(action: {
                         appStateController.soundEnable.toggle()
-//                        appStateController.isSoundEnable.toggle()
                     }, label: {
                         if appStateController.soundEnable {
-//                        if appStateController.isSoundEnable {
                             Image(systemName: "speaker.wave.2.fill")
                                 .font(.largeTitle)
                                 .padding(4)
@@ -71,10 +58,6 @@ struct HomeView: View {
                         }
                     })
                         .foregroundColor(.white)
-//                    .buttonStyle(roundedOrangeButtonStyle)
-                    //    Toggle(isOn: $appStateController.isSoundEnable) {
-                    //        Image(systemName: "speaker.wave.2.fill")
-                    //    }
                     // .toggleStyle(.button) // iOS 15.0+
                 } // HStack (Top Bar)
                 .font(.title2)
@@ -91,20 +74,18 @@ struct HomeView: View {
                 }, label: {
                     Text("begin")
                         .font(.largeTitle)
-                        // .padding(.horizontal, 48)
                         .foregroundColor(Color.white)
                         .padding(4)
                         .padding(.horizontal)
                         .background(Color.blue)
                         .cornerRadius(10)
                 })
-                // .buttonStyle(roundedOrangeButtonStyle)
             } // VStack
             .padding(.horizontal, 32)
             .padding(.vertical, 32)
-        // .controlSize(.large) // iOS 15.0+
-        // .tint(.mint) // iOS 15.0+
-        // .buttonStyle(.borderedProminent) // iOS 15.0+
+            // .controlSize(.large) // iOS 15.0+
+            // .tint(.mint) // iOS 15.0+
+            // .buttonStyle(.borderedProminent) // iOS 15.0+
             .background(
                 Image("homeBackground")
                     .resizable()
@@ -141,17 +122,6 @@ struct HomeView: View {
             showingMedalApproval = true
             playMedalSound()
         }
-
-//        if let latestMedal = appStateController.cleanupMedal {
-//            if medal == nil || medal?.count != latestMedal.count {
-//                debugPrint("DEBUG: medal was updated.")
-//                medal = appStateController.cleanupMedal
-//                showingMedalApproval = true
-//                playMedalSound()
-//            }
-//        } else {
-//            medal = nil // should be reset for testing with DevView
-//        }
 
         // show the AppReview in app?
         if appStateController.isShowingAppReview() {
@@ -201,7 +171,6 @@ struct ContentView: View {
             Text("\(cleanupCount)")
                 .font(.system(size: 64, weight: .black, design: .rounded))
                 .foregroundColor(.white)
-//                .padding(.horizontal, 32)
                 .shadow(radius: 20)
 
             // Medal
@@ -209,7 +178,6 @@ struct ContentView: View {
                 Image(medal.imageName)
                     .resizable()
                     .frame(width: 200, height: 200)
-//                    .padding(.horizontal, 0)
                     .shadow(radius: 20)
             }
         } // HStack

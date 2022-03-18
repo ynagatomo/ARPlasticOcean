@@ -69,7 +69,6 @@ struct NoteView: View {
                     //                in: RoundedRectangle(cornerRadius: 20.0))
                     .padding(.bottom, 16)
 
-//                Text(String("(Build: \(Bundle.main.buildNumber))"))
                 Text(String("Music: (C) HURT RECORD"))
             } // ScrollView
             .foregroundColor(.white)
@@ -125,10 +124,6 @@ struct SupportView: View {
             Text("support", comment: "Support: title.")
                 .font(.title2)
                 .fontWeight(.bold)
-
-//            Text("please visit the support website to find the further information and updates about the app.",
-//                 comment: "")
-//                .padding(4)
             Link("support website", destination: URL(string: AppConstant.supportURLstring)!)
                 .foregroundColor(.orange)
                 .padding(4)
@@ -148,9 +143,6 @@ struct ExplanationView: View {
             Text("plastic ocean", comment: "Plastic Ocean: title.")
                 .font(.title2)
                 .fontWeight(.bold)
-
-//            Text("note explanation", comment: "Explanation about the plastic pollution.")
-//                .padding(4)
 
             HStack {
                 Image("noteRefuses")

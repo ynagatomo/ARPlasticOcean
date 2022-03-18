@@ -54,13 +54,9 @@ class ARScene {
         self.anchor = anchor
         // self.cameraEntity = cameraEntity
         self.movingCamera = camera
-        // load entities and place them in the AR world.
         prepareStage()
-        // load entities and place them in the AR world.
         prepareBoat()
-        // load entities and place them in the AR world.
         prepareFishes()
-        // load entities and place them in the AR world.
         prepareRefuses()
     }
 
@@ -88,10 +84,8 @@ class ARScene {
     }
 
     func tapped(_ tappedEntity: Entity) {
-//        debugPrint("DEBUG: Entity \(tappedEntity.name) was tapped.")
         // Respond to the only tap to the Refuse Entities.
         if tappedEntity.findEntity(named: "Refuse") != nil {
-//            debugLog("DEBUG: tapped entity = \(tappedEntity)")
             if let refuse = refuses.first(where: { refuse in
                 var result = false
                 if let model = refuse.oneModelEntity {
@@ -127,18 +121,6 @@ class ARScene {
         // play the rolling animations of refuses
         refuses.forEach { refuse in
             refuse.update(deltaTime: deltaTime)
-//            // angular is reversed (+/-) because z axis upside down
-//            refuse.angle -= refuse.angularVelocity * Float(deltaTime)
-//            refuse.angle = Float.normalize(radian: refuse.angle)  // -2Pi...2Pi [radian]
-//            // rotate deltaAngular on the X-Z plane
-//            let xInit = refuse.initialPosition.x
-//            let zInit = refuse.initialPosition.z
-//            let xNext = xInit * cosf(refuse.angle) - zInit * sinf(refuse.angle)
-//            let zNext = xInit * sinf(refuse.angle) + zInit * cosf(refuse.angle)
-//            // move up and down on the Y-axis
-//            let yInit = refuse.initialPosition.y
-//            let yNext = yInit + sinf(refuse.angle * refuse.movingRate) * refuse.movingPosYRange
-//            refuse.entity.position = SIMD3<Float>([xNext, yNext, zNext])
         }
 
         // handle collision between fish and refuses
@@ -160,10 +142,6 @@ class ARScene {
 
                     // check the completion of stage clean
                     let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
-// let restRefuseNumber = freeRefuseNumber - stage.collectedRefuseNumber
-// debugLog(
-// "DEBUG2: free = \(freeRefuseNumber) rest = \(restRefuseNumber) collected =
-// \(stage.collectedRefuseNumber) traped = \(refuses.filter({$0.state == .trapped}).count)")
                     assert(freeRefuseNumber >= 0)
                     if freeRefuseNumber == 0 {
                         stage.cleaned()
@@ -319,56 +297,14 @@ class ARScene {
             }
             fishGroup.setEntities(entities) // set entities and assign initial position
 
-            //    // add collision shapes
-            //    fishGroup.addPhysics()
-
             // place them in the AR world (add as a stage's child)
             entities.forEach { entity in
                 if let entity = entity {
                     stageEntity.addChild(entity)
                 }
             }
-
-            //    #if DEBUG
-            //    if devConfiguration.showingFishTargets {
-            //        // set target entities
-            //        let targetEntities = createTargetEntities(number: constant.fishNumber)
-            //        fishGroup.setTargetEntities(targetEntities)
-            //        targetEntities.forEach { entity in
-            //            stageEntity.addChild(entity)
-            //        }
-            //    }
-            //    #endif
         }
     }
-
-    //    #if DEBUG
-    //    private func createTargetEntities(number: Int) -> [ModelEntity] {
-    //        var entities: [ModelEntity] = []
-    //        for _ in 0 ..< number {
-    //            entities.append(createTargetEntity())
-    //        }
-    //        return entities
-    //    }
-    //    #endif
-
-    //    #if DEBUG
-    //    private func createTargetEntity(color: UIColor = .green, radius: Float = 0.05) -> ModelEntity {
-    //        let mesh = MeshResource.generateSphere(radius: radius)
-    //        let material = SimpleMaterial(color: color, isMetallic: false)
-    //        let entity = ModelEntity(mesh: mesh, materials: [material])
-    //        return entity
-    //    }
-    //    #endif
-
-    //    #if DEBUG
-    //    private func createRouteEntity(color: UIColor = .yellow, radius: Float = 0.01) -> Entity {
-    //        let mesh = MeshResource.generateSphere(radius: radius)
-    //        let material = SimpleMaterial(color: color, isMetallic: false)
-    //        let entity = ModelEntity(mesh: mesh, materials: [material])
-    //        return entity
-    //    }
-    //    #endif
 
     // MARK: - Prepare Refuse
 

@@ -12,7 +12,6 @@ import RealityKit
 struct OceanView: View {
     @Environment(\.presentationMode) var presentationMode
     // @Environment(\.dismiss) private var dismiss // iOS 15.0+
-    //    @EnvironmentObject var stateController: StateController
 
     var body: some View {
         ZStack {

@@ -16,6 +16,10 @@
 - SwiftLint 0.46+ (https://github.com/realm/SwiftLint)
     - if you don't need this, remove the setting at Build Phases - SwiftLint Run Script.
 
+## DevView
+
+- In DEBUG builds, you can open DevView by tapping the space (invisible) to the left of the sound button.
+
 ## Resources
 
 Music files are licensed to be bundled with this app.
