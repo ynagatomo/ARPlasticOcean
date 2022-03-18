@@ -87,6 +87,7 @@
 		BA0927FE27CCDCBB001F8CB4 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
 		BA0BA12C27D73CCA000A9D52 /* stage1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = stage1.usdz; sourceTree = "<group>"; };
 		BA0BA12E27D74863000A9D52 /* aomuke.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = aomuke.m4a; sourceTree = "<group>"; };
+		BA0E0E9F27E401E9008EA3E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BA141B9A27DA0C8F00D4F4C4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA141B9B27DA0C8F00D4F4C4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA141B9C27DA142E00D4F4C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -310,6 +311,7 @@
 		BAAD372C27C38993005FA7DE = {
 			isa = PBXGroup;
 			children = (
+				BA0E0E9F27E401E9008EA3E6 /* README.md */,
 				BAAD373727C38993005FA7DE /* arplasticocean */,
 				BAAD374D27C39B90005FA7DE /* arplasticoceanTests */,
 				BAAD373627C38993005FA7DE /* Products */,
