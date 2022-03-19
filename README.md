@@ -38,8 +38,11 @@ Copyright: HURT RECORD (https://www.hurtrecord.com)
 ## Contributions
 
 1. Localizable strings and InfoPlist strings in Italian was translated by Matteo Spada.
-2. Localizable strings in French was revised by Maxime Maisonneuve. 
-3. Localizable strings in German was revised by Andreas Schallwig and Lena.
+1. Localizable strings in French was revised by Maxime Maisonneuve. 
+1. Localizable strings in German was revised by Andreas Schallwig and Lena.
+1. Localizable strings and InfoPlist strings in Burmese was translated by Kyaw Zay Ya Lin Tun.
+1. Localizable strings and InfoPlist strings in Korean was translated by James.
+1. Localizable strings and InfoPlist strings in Spanish was translated by Agustin M. Romo.
 
 ---
 2022 Yasuhito Nagatomo @AtarayoSD (https://twitter.com/AtarayoSD)

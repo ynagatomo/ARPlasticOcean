@@ -1,0 +1,60 @@
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "ဖုန်းကင်မရာကိုအသုံးပြုနိုင်ဖို့ settings ထဲကနေ ဒီ app ကို allow ခလုပ်လေးနှိပ်ပြီး ခွင့်ပြုပေးဖို့ မေတ္တာရပ်ခံပါတယ်။";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "ပိတ်မယ်";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "မိတ်ဆွေရဲ့ ဖုန်းကင်မရာကို app ကနေ ယူပြီးအသုံးပြုလို့မရပါ။";
+
+/* No comment provided by engineer. */
+"begin" = "စတင်မယ်";
+
+/* No comment provided by engineer. */
+"continue" = "ဆက်သွားမယ်";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "မိတ်ဆွေရဲ့ iPhone/iPad ကို ခန္ဓာကိုယ်ကနေ လက်တစ်ကမ်းစာလောက်ခွာပြီး \"စတင်မယ်\" ဆိုတဲ့ ခလုပ်လေးကို နှိပ်လိုက်ပါ။";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_my.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "ဆုတံဆိပ်အသစ်တစ်ခု ရရှိပါတယ်။";
+
+/* No comment provided by engineer. */
+"not show again" = "ထပ်မပြနဲ့တော့။";
+
+/* Note: damage to sea creatures. */
+"note lives" = "သူတို့ဟာ ပလပ်စတစ်တွေကို မြိုမိလို့ဖြစ်စေ အမှိုက်သရိုက်တွေနဲ့ ငြိသွားရာကဖြစ်စေ မတော်တဆ အသက်သေဆုံးသည်အထိ ဖြစ်တတ်ကြပါတယ်။";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "ကိုယ့်တစ်ကိုယ်စာကနေ စတင်ပါ၊ လျှော့ချပါ၊ ပြန်ပြင်ပါ၊ ပြန်သုံးပါ။";
+
+/* Note: plastic refuses. */
+"note refuses" = "ပလပ်စတစ်စွန့်ပစ်ပစ္စည်းတွေဟာ ပင်လယ်ထဲကနေ အလွယ်တကူ မပျက်ဆီး မပျောက်ကွယ်နိုင်ကြပါဘူး။";
+
+/* No comment provided by engineer. */
+"ok" = "ကောင်းပါပြီ";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "ပလပ်စတစ်စွန့်ပစ်ပစ္စည်းများဖြင့် ပင်လယ်";
+
+/* Guide: message */
+"save the ocean lives." = "ရေနေသတ္တဝါတို့ရဲ့ဘဝကို ကယ်တင်ပါ။";
+
+/* Support: title. */
+"support" = "အကူအညီ";
+
+/* No comment provided by engineer. */
+"support website" = "App နဲ့ပတ်သက်ပြီး ကူညီပေးနိုင်မယ့် website";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "ပလပ်စတစ်နဲ့ အမှိုက်သရိုက်တွေကို လက်နဲ့လိုက်နှိပ်ပြီး ရှင်းလင်းပါ။";
+
+/* Usage: title. */
+"usage" = "အသုံးပြုပုံ";
+
+/* No comment provided by engineer. */
+"write a review" = "Review ရေးမယ်";
+

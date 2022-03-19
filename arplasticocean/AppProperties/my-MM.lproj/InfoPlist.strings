@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR နည်းပညာသုံး၍ဖန်တီးထားသော ပလပ်စတစ်အမှိုက်များဖြင့်ပြည့်နေသည့် ပင်လယ်";
+
+/* Bundle name */
+"CFBundleName" = "AR နည်းပညာသုံး၍ဖန်တီးထားသော ပလပ်စတစ်အမှိုက်များဖြင့်ပြည့်နေသည့် ပင်လယ်";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "AR app ကိုအသုံးပြုနိုင်ဖို့ ဖုန်းကင်မရာကို ဖွင့်ထားပေးပါ။";
+

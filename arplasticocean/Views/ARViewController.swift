@@ -72,10 +72,12 @@ class ARViewController: UIViewController {
         arScene.prepare(arView: arView, anchor: anchorEntity,
                           camera: movingCamera)
 
+        #if !targetEnvironment(simulator)
         if !ProcessInfo.processInfo.isiOSAppOnMac {
             let config = ARWorldTrackingConfiguration()
             arView.session.run(config)
         }
+        #endif
 
         arScene.startSession()
     }

@@ -161,6 +161,8 @@
 		BAAD376A27C3A45B005FA7DE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BAAD376D27C3A9F2005FA7DE /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BAAED13127D63456003204FD /* CustomShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CustomShader.metal; sourceTree = "<group>"; };
+		BAD917E027E4C1AE004B0A9E /* my-MM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "my-MM"; path = "my-MM.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BAD917E127E4C1AE004B0A9E /* my-MM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "my-MM"; path = "my-MM.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
 		BAFAF62627D781AD00F192DB /* bonito.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bonito.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -477,6 +479,7 @@
 				de,
 				id,
 				it,
+				"my-MM",
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -629,6 +632,7 @@
 				BA141B9D27DA142E00D4F4C4 /* de */,
 				BA8FC28527E21E3F003EE9BD /* id */,
 				BA8FC28727E21E62003EE9BD /* it */,
+				BAD917E127E4C1AE004B0A9E /* my-MM */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -642,6 +646,7 @@
 				BA141B9C27DA142E00D4F4C4 /* de */,
 				BA8FC28427E21E3F003EE9BD /* id */,
 				BA8FC28627E21E62003EE9BD /* it */,
+				BAD917E027E4C1AE004B0A9E /* my-MM */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
