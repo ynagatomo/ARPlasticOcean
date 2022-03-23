@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR Plastic Ocean";
+
+/* Bundle name */
+"CFBundleName" = "AR Plastic Ocean";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "AR 관련된 기능들은 카메라가 필요합니다.";
+

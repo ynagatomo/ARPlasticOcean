@@ -115,6 +115,8 @@
 		BA3C5AA127C9BE8B003C7152 /* SceneConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneConstant.swift; sourceTree = "<group>"; };
 		BA3C5AA727CB01C3003C7152 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
 		BA3C5AA927CB4EF4003C7152 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		BA53A1C727E641B60080CB3F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA53A1C827E641B60080CB3F /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA67B83627DAE98F00271FCE /* MovingCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingCamera.swift; sourceTree = "<group>"; };
 		BA6A404727D0544D002AE540 /* boat1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = boat1.usdz; sourceTree = "<group>"; };
 		BA6A404927D06BDA002AE540 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				id,
 				it,
 				"my-MM",
+				ko,
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -633,6 +636,7 @@
 				BA8FC28527E21E3F003EE9BD /* id */,
 				BA8FC28727E21E62003EE9BD /* it */,
 				BAD917E127E4C1AE004B0A9E /* my-MM */,
+				BA53A1C827E641B60080CB3F /* ko */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -647,6 +651,7 @@
 				BA8FC28427E21E3F003EE9BD /* id */,
 				BA8FC28627E21E62003EE9BD /* it */,
 				BAD917E027E4C1AE004B0A9E /* my-MM */,
+				BA53A1C727E641B60080CB3F /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

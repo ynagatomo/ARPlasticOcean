@@ -1,0 +1,60 @@
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "설정 앱을 사용하여 카메라 액세스를 허용하십시오.";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "닫기";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "카메라 접근이 허용되지 않습니다";
+
+/* No comment provided by engineer. */
+"begin" = "시작하기";
+
+/* No comment provided by engineer. */
+"continue" = "계속하기";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "iPhone/iPad를 가슴 앞에 대고 시작 버튼을 누릅니다.";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_ko.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "새로운 메달을 획득하셨습니다.";
+
+/* No comment provided by engineer. */
+"not show again" = "다시 표시하지 않기";
+
+/* Note: damage to sea creatures. */
+"note lives" = "실수로 플라스틱을 먹거나 얽혀 목숨을 잃을 수 있습니다.";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "당신이 할 수 있는 일을 하고, 줄이고, 재사용하고, 재활용하십시오.";
+
+/* Note: plastic refuses. */
+"note refuses" = "플라스틱은 치우지 않는 한 계속 바다에 머물것입니다.";
+
+/* No comment provided by engineer. */
+"ok" = "확인";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "플라스틱 바다";
+
+/* Guide: message */
+"save the ocean lives." = "바다의 생명을 구조해주세요.";
+
+/* Support: title. */
+"support" = "지원";
+
+/* No comment provided by engineer. */
+"support website" = "지원 웹사이트";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "플라스틱을 탭하여 수집합니다.";
+
+/* Usage: title. */
+"usage" = "용법";
+
+/* No comment provided by engineer. */
+"write a review" = "리뷰 작성하기";
+
