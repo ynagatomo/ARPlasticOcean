@@ -97,6 +97,8 @@
 		BA0E0EA627E407C0008EA3E6 /* Refuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refuse.swift; sourceTree = "<group>"; };
 		BA0E0EA827E4085B008EA3E6 /* AssetConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetConstant.swift; sourceTree = "<group>"; };
 		BA0E0EAC27E409AB008EA3E6 /* AssetConstantTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetConstantTypes.swift; sourceTree = "<group>"; };
+		BA0EA2F727EAAC4900631C02 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA0EA2F827EAAC4900631C02 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA141B9A27DA0C8F00D4F4C4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA141B9B27DA0C8F00D4F4C4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA141B9C27DA142E00D4F4C4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				it,
 				"my-MM",
 				ko,
+				es,
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -637,6 +640,7 @@
 				BA8FC28727E21E62003EE9BD /* it */,
 				BAD917E127E4C1AE004B0A9E /* my-MM */,
 				BA53A1C827E641B60080CB3F /* ko */,
+				BA0EA2F827EAAC4900631C02 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -652,6 +656,7 @@
 				BA8FC28627E21E62003EE9BD /* it */,
 				BAD917E027E4C1AE004B0A9E /* my-MM */,
 				BA53A1C727E641B60080CB3F /* ko */,
+				BA0EA2F727EAAC4900631C02 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -782,8 +787,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
@@ -802,10 +807,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.arplasticocean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = arplasticocean;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -817,8 +822,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
@@ -837,10 +842,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.arplasticocean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = arplasticocean;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

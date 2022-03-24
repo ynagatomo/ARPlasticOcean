@@ -5,5 +5,5 @@
 "CFBundleName" = "AR Plastic Ocean";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "AR utilise une caméra."; /* "La réalité augmentée nécessite une caméra."; */
+"NSCameraUsageDescription" = "L'app a besoin de la caméra pour utiliser l'AR";
 

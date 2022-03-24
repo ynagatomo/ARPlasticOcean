@@ -1,0 +1,60 @@
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "Por favor permite el acceso a la cámara entrando al app de configuración. ";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "Cerrar";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "Acceso a la cámara no ha sido permitido";
+
+/* No comment provided by engineer. */
+"begin" = "Iniciar";
+
+/* No comment provided by engineer. */
+"continue" = "Continuar";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "Mantén tu iPhone / iPad frente a ti y presiona el botón de iniciar.";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_es.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "¡Ganáste una nueva medalla!";
+
+/* No comment provided by engineer. */
+"not show again" = "No volver a mostrar.";
+
+/* Note: damage to sea creatures. */
+"note lives" = "Las especies marinas pueden morir al comer o ser atrapadas por el plástico.";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "¡Tú también puedes ayudar! Reutiliza, reduce el consumo y recicla.";
+
+/* Note: plastic refuses. */
+"note refuses" = "El plástico permanece en el mar para siempre.";
+
+/* No comment provided by engineer. */
+"ok" = "Ok";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "Océanoo de Plástico";
+
+/* Guide: message */
+"save the ocean lives." = "Ayuda a salvar la vida marina.";
+
+/* Support: title. */
+"support" = "Soporte";
+
+/* No comment provided by engineer. */
+"support website" = "Sitio Web";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "Toca los residuos de plástico para recolectarlos.";
+
+/* Usage: title. */
+"usage" = "Instrucciones";
+
+/* No comment provided by engineer. */
+"write a review" = "Escribe una reseña";
+

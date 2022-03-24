@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR Océano de Plástico";
+
+/* Bundle name */
+"CFBundleName" = "AR Océano de Plástico";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "El app necesita acceso a la cámara para mostrar realidad aumentada.";
+

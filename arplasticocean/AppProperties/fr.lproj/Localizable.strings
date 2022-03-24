@@ -1,3 +1,12 @@
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "Veuillez autoriser l'accès à la caméra à l'aide de l'application Réglages.";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "je comprends";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "L'accès à la caméra n'est pas autorisé";
+
 /* No comment provided by engineer. */
 "begin" = "Démarrer";
 
@@ -6,32 +15,30 @@
 
 /* Usage: How to begin. */
 "hold your iPhone / iPad in front of your chest and press the start button." = "Tenez votre iPhone / iPad devant vous et appuyez sur le bouton de démarrage.";
-    /* "hold your iPhone / iPad in front of your chest and press the start button."
-     = "Tenez votre iPhone / iPad devant votre poitrine et appuyez sur le bouton de démarrage."; */
 
 /* Support page URL. */
 "https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_fr.html";
 
 /* No comment provided by engineer. */
-"medal approval alert" = "J'ai une nouvelle médaille.";
+"medal approval alert" = "Vous avez une nouvelle médaille.";
 
 /* No comment provided by engineer. */
 "not show again" = "Ne plus afficher.";
 
 /* Note: damage to sea creatures. */
-"note lives" = "Ils mangent accidentellement du plastique et meurent.";
+"note lives" = "Les animaux peuvent accidentellement manger du plastique ou s’emmêler  dedans. Cela peut provoquer leur mort.";
 
 /* Note: reduce, reuse, and recycle. */
-"note recycle" = "Travaillez sur ce que vous pouvez faire.";
+"note recycle" = "Travaillez sur ce que vous pouvez faire, réduire, réutiliser et recycler.";
 
 /* Note: plastic refuses. */
-"note refuses" = "Le plastique flotte dans la mer pour toujours.";
+"note refuses" = "Le plastique est présent dans la mer pour toujours.";
 
 /* No comment provided by engineer. */
 "ok" = "J'ai compris";
 
 /* Plastic Ocean: title. */
-"plastic ocean" = "Le plastique dans l’Océan"; /* "Mer en plastique"; */
+"plastic ocean" = "L'Océan de Plastique";
 
 /* Guide: message */
 "save the ocean lives." = "Sauvez la vie des créatures marines.";
@@ -43,20 +50,11 @@
 "support website" = "Site Web d'assistance";
 
 /* Usage: How to collect refuses. */
-"tap the plastic refuses to collect them." = "Tapotez et ollectez les déchets en plastique.";
-    /* "Tapotez et collectez les déchets plastiques."; */
+"tap the plastic refuses to collect them." = "Touchez les déchets en plastique pour les collecter.";
 
 /* Usage: title. */
-"usage" = "Utilisation";  /* "Comment utiliser"; */
+"usage" = "Utilisation";
 
 /* No comment provided by engineer. */
 "write a review" = "Écrire une critique.";
 
-/* Alert Title: Camera access is not allowed. */
-"ar_camera_notallowed_alert_title" = "L'accès à la caméra n'est pas autorisé";
-
-/* Alert Message: Camera access is not allowed. */
-"ar_camera_notallowd_alert_message" = "Veuillez autoriser l'accès à la caméra à l'aide de l'application des paramètres.";
-
-/* Alert Button: Camera access is not allowed. */
-"ar_camera_notallowd_alert_ok" = "je comprends";
