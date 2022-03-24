@@ -1,0 +1,63 @@
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "請允許相機使用。";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "關閉";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "無法使用相機";
+
+/* No comment provided by engineer. */
+"begin" = "開始";
+
+/* No comment provided by engineer. */
+"continue" = "繼續";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "請將你的iPhone / iPad 放置胸前並按下開始按鈕。";
+
+/* App Review URL. */
+"https://apps.apple.com/app/id1614059602?action=write-review" = "https://apps.apple.com/app/id1614059602?action=write-review";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app_zh_hant.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "你獲得一個新的勳章。";
+
+/* No comment provided by engineer. */
+"not show again" = "不再顯示。";
+
+/* Note: damage to sea creatures. */
+"note lives" = "他們可能不小心吃下塑膠垃圾或被勒住以至於死亡。";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "盡你所能，減量使用、再次利用和資源回收。";
+
+/* Note: plastic refuses. */
+"note refuses" = "塑膠垃圾會永遠在海中沈浮。";
+
+/* No comment provided by engineer. */
+"ok" = "好的。";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "海洋塑膠垃圾";
+
+/* Guide: message */
+"save the ocean lives." = "拯救海中生物。";
+
+/* Support: title. */
+"support" = "支援服務";
+
+/* No comment provided by engineer. */
+"support website" = "支援網站";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "點擊塑膠回收物來收回他們。";
+
+/* Usage: title. */
+"usage" = "使用方法";
+
+/* No comment provided by engineer. */
+"write a review" = "填寫回饋";
+

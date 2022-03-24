@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR 搶救海洋大作戰(塑膠污染)";
+
+/* Bundle name */
+"CFBundleName" = "AR 搶救海洋大作戰(塑膠污染)";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "AR 需要開啟相機";
+

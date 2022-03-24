@@ -43,6 +43,7 @@ Copyright: HURT RECORD (https://www.hurtrecord.com)
 1. Localizable strings and InfoPlist strings in Burmese was translated by Kyaw Zay Ya Lin Tun.
 1. Localizable strings and InfoPlist strings in Korean was translated by James.
 1. Localizable strings and InfoPlist strings in Spanish was translated by Agustin Mendoza.
+1. Localizable strings and InfoPlist strings in Chinese, Traditional was translated by Jack.
 
 ---
 2022 Yasuhito Nagatomo @AtarayoSD (https://twitter.com/AtarayoSD)

@@ -139,6 +139,8 @@
 		BA74B2AD27C4DA5D00D79775 /* nukumori.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nukumori.m4a; sourceTree = "<group>"; };
 		BA74B2AF27C4DA7300D79775 /* hidamari.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hidamari.m4a; sourceTree = "<group>"; };
 		BA74B2B127C4DA8600D79775 /* needbetter.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = needbetter.m4a; sourceTree = "<group>"; };
+		BA81795627ECA5DC0063E82D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BA81795727ECA5DC0063E82D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BA87ED1027D86532004DD58C /* ocellatus.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = ocellatus.usdz; sourceTree = "<group>"; };
 		BA8CAACC27D8E0B8002B7E27 /* dolphin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = dolphin.usdz; sourceTree = "<group>"; };
 		BA8FC28427E21E3F003EE9BD /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				"my-MM",
 				ko,
 				es,
+				"zh-Hant",
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -641,6 +644,7 @@
 				BAD917E127E4C1AE004B0A9E /* my-MM */,
 				BA53A1C827E641B60080CB3F /* ko */,
 				BA0EA2F827EAAC4900631C02 /* es */,
+				BA81795727ECA5DC0063E82D /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -657,6 +661,7 @@
 				BAD917E027E4C1AE004B0A9E /* my-MM */,
 				BA53A1C727E641B60080CB3F /* ko */,
 				BA0EA2F727EAAC4900631C02 /* es */,
+				BA81795627ECA5DC0063E82D /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -789,7 +794,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
@@ -824,7 +829,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
