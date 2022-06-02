@@ -20,7 +20,9 @@ class AppConstant {
     static let twitterURLstring = "https://twitter.com/ARPlasticOcean"
 
     // App Review
-    static let appReviewInterval = 27 // cleanup count interval
+    // changed at Ver.1.2: interval => one time
+    // static let appReviewInterval = 27 // cleanup count interval
+    static let appReviewCount = 5 // one time
 
     static let cleanedMessageImageName: String = "cleaned" // image file name in bundle
     static let showingCleanedMessageTime: Float = 5.0 // [sec]

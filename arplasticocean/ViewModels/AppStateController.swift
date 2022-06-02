@@ -65,20 +65,22 @@ class AppStateController: ObservableObject {
         soundManager.enable = soundEnable
     }
 
-    func shouldApproveNewMedal() -> Bool {
-        guard let medal = cleanupMedal else { return false }
+    // removed at Ver.1.2
+    //    func shouldApproveNewMedal() -> Bool {
+    //        guard let medal = cleanupMedal else { return false }
+    //
+    //        var result = false
+    //        if approvedMedalLevel != medal.level {
+    //            result = true
+    //        }
+    //        return result
+    //    }
 
-        var result = false
-        if approvedMedalLevel != medal.level {
-            result = true
-        }
-        return result
-    }
-
-    func approvedNewMedal() {
-        guard let medal = cleanupMedal else { return }
-        approvedMedalLevel = medal.level
-    }
+    // removed at Ver.1.2
+    //    func approvedNewMedal() {
+    //        guard let medal = cleanupMedal else { return }
+    //        approvedMedalLevel = medal.level
+    //    }
 
     /// Set the stage cleaned and move to the next stage
     func setCleaned() {
@@ -104,11 +106,18 @@ class AppStateController: ObservableObject {
 
     func isShowingAppReview() -> Bool {
         var isShowing = false
-        if cleanupCount % AppConstant.appReviewInterval == 0
-            && lastAppReviewCleanupCount != cleanupCount {
+        // changed showing it once at Ver.1.2
+        if cleanupCount >= AppConstant.appReviewCount
+            && lastAppReviewCleanupCount == 0 {
             lastAppReviewCleanupCount = cleanupCount
             isShowing = true
         }
+        // removed at Ver.1.2
+        //    if cleanupCount % AppConstant.appReviewInterval == 0
+        //        && lastAppReviewCleanupCount != cleanupCount {
+        //        lastAppReviewCleanupCount = cleanupCount
+        //        isShowing = true
+        //    }
         return isShowing
     }
 }

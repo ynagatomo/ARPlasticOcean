@@ -14,7 +14,7 @@ struct HomeView: View {
     @State private var showingNoteView = false
     @State private var showingOceanView = false
     @State private var showingDevView = false
-    @State private var showingMedalApproval = false
+    // @State private var showingMedalApproval = false
 
     var body: some View {
             VStack {
@@ -106,22 +106,24 @@ struct HomeView: View {
                 .environmentObject(appStateController) // for macOS
         }
         #endif
-        .alert(isPresented: $showingMedalApproval) {
-            Alert(title: Text("medal approval alert"),
-                  message: nil,
-                  dismissButton: .default(Text("ok")))
-        }
-        //    .alert("medal approval alert",  // iOS 15.0+
+        //  removed at Ver.1.2
+        //    .alert(isPresented: $showingMedalApproval) {
+        //        Alert(title: Text("medal approval alert"),
+        //              message: nil,
+        //              dismissButton: .default(Text("ok")))
+        //    }
+        //      .alert("medal approval alert",  // iOS 15.0+
         //           isPresented: $showingMedalApproval, actions: {})
     }
 
     private func update() {
-        // got a new medal?
-        if appStateController.shouldApproveNewMedal() {
-            appStateController.approvedNewMedal()
-            showingMedalApproval = true
-            playMedalSound()
-        }
+        // removed at Ver.1.2
+        //    // got a new medal?
+        //    if appStateController.shouldApproveNewMedal() {
+        //        appStateController.approvedNewMedal()
+        //        showingMedalApproval = true
+        //        playMedalSound()
+        //    }
 
         // show the AppReview in app?
         if appStateController.isShowingAppReview() {
@@ -132,10 +134,11 @@ struct HomeView: View {
         }
     }
 
-    // Play the Sound Effect to approve getting a new Medal.
-    private func playMedalSound() {
-        appStateController.soundManager.play(soundID: SoundManager.medalSoundID)
-    }
+    // removed at Ver.1.2
+    //    // Play the Sound Effect to approve getting a new Medal.
+    //    private func playMedalSound() {
+    //        appStateController.soundManager.play(soundID: SoundManager.medalSoundID)
+    //    }
 }
 
 struct HomeView_Previews: PreviewProvider {

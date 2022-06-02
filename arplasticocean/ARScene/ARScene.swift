@@ -140,16 +140,34 @@ class ARScene {
                     // collected the refuse
                     stage.collectedRefuse()
 
-                    // check the completion of stage clean
-                    let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
-                    assert(freeRefuseNumber >= 0)
-                    if freeRefuseNumber == 0 {
-                        stage.cleaned()
-                        setCleaned()
-                        showingCleanedView = true
-                        cleanedImageView?.isHidden = false
-                        startCleanedSound()
-                    }
+                    // [Note] made below a comment at Ver.1.2, to fix a bug
+                    //    // check the completion of stage clean
+                    //    let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
+                    //    assert(freeRefuseNumber >= 0)
+                    //    if freeRefuseNumber == 0 {
+                    //        stage.cleaned()
+                    //        setCleaned()
+                    //        showingCleanedView = true
+                    //        cleanedImageView?.isHidden = false
+                    //        startCleanedSound()
+                    //    }
+                }
+            }
+
+            // [Note] added at Ver.1.2
+            // When all move-animations complete,
+            // check the completion of the stage clean
+            if animationPlaybackControllers.first(where: {
+                !$0.isComplete
+            }) == nil {
+                let freeRefuseNumber = Refuse.freeNumber(refuses: refuses)
+                assert(freeRefuseNumber >= 0)
+                if freeRefuseNumber == 0 {
+                    stage.cleaned()
+                    setCleaned()
+                    showingCleanedView = true
+                    cleanedImageView?.isHidden = false
+                    startCleanedSound()
                 }
             }
 
