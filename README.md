@@ -9,6 +9,7 @@
 
 - Ver.1.0 (Build 3): released on March 16, 2022
 - Ver.1.1 (Build 4): under development
+- Ver.1.3 (Build 9): fixed an issue about device rotation on iOS 16/iPadOS 16
 
 ## Tools
 

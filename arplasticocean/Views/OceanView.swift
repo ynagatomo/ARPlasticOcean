@@ -59,9 +59,9 @@ struct ARContainerView: UIViewControllerRepresentable {
     typealias UIViewControllerType = ARViewController
     @EnvironmentObject var appStateController: AppStateController
 
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
-    }
+//    func makeCoordinator() -> Coordinator {
+//        return Coordinator(self)
+//    }
 
     func makeUIViewController(context: Context) -> ARViewController {
         debugLog("ARContainerView: makeUIViewController(context:) was called.")
@@ -73,10 +73,10 @@ struct ARContainerView: UIViewControllerRepresentable {
         debugLog("ARContainerView: updateUIViewController(context:) was called.")
     }
 
-    class Coordinator: NSObject {
-        var parent: ARContainerView
-        init(_ parent: ARContainerView) {
-            self.parent = parent
-        }
-    }
+//    class Coordinator: NSObject {
+//        var parent: ARContainerView
+//        init(_ parent: ARContainerView) {
+//            self.parent = parent
+//        }
+//    }
 }

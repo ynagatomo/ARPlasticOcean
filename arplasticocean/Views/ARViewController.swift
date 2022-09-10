@@ -26,11 +26,13 @@ class ARViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        debugLog("ARViewController: viewDidAppear(_:) was called.")
-        #if targetEnvironment(simulator)
+//    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        debugLog("ARViewController: viewDidLoad() was called.")
+
+#if targetEnvironment(simulator)
         arView = ARView(frame: .zero)
-        #else
+#else
         // automatically configure session : disable
         if ProcessInfo.processInfo.isiOSAppOnMac {
             debugLog("DEBUG: Process Info: iOS app on macOS")
@@ -39,18 +41,16 @@ class ARViewController: UIViewController {
             debugLog("DEBUG: Process Info: not on macOS")
             arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: false)
         }
-        #endif
+#endif
         arView.session.delegate = self
 
-        #if DEBUG
+#if DEBUG
         if devConfiguration.showingARDebugOptions {
             arView.debugOptions = [.showPhysics]
         }
-        #endif
+#endif
         view = arView
         // view.backgroundColor = UIColor(named: "LaunchScreenColor")
-
-        setupCleanedImage()
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
         view.addGestureRecognizer(tap)
@@ -58,12 +58,19 @@ class ARViewController: UIViewController {
         anchorEntity = AnchorEntity()
         arView.scene.addAnchor(anchorEntity)
 
-        #if DEBUG
+#if DEBUG
         if devConfiguration.usingMovingCamera {
             let cameraEntity = addPerspectiveCamera()
             movingCamera = MovingCamera(camera: cameraEntity)
         }
-        #endif
+#endif
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        debugLog("ARViewController: viewDidAppear(_:) was called.")
+
+        setupCleanedImage() // requires the view-frame size
 
         arScene = ARScene(stageIndex: appStateController.stageIndex,
                           assetManager: appStateController.assetManager,
@@ -81,6 +88,62 @@ class ARViewController: UIViewController {
 
         arScene.startSession()
     }
+
+//    override func viewDidAppear(_ animated: Bool) {
+//        debugLog("ARViewController: viewDidAppear(_:) was called.")
+//        #if targetEnvironment(simulator)
+//        arView = ARView(frame: .zero)
+//        #else
+//        // automatically configure session : disable
+//        if ProcessInfo.processInfo.isiOSAppOnMac {
+//            debugLog("DEBUG: Process Info: iOS app on macOS")
+//            arView = ARView(frame: .zero, cameraMode: .nonAR, automaticallyConfigureSession: true)
+//        } else {
+//            debugLog("DEBUG: Process Info: not on macOS")
+//            arView = ARView(frame: .zero, cameraMode: .ar, automaticallyConfigureSession: false)
+//        }
+//        #endif
+//        arView.session.delegate = self
+//
+//        #if DEBUG
+//        if devConfiguration.showingARDebugOptions {
+//            arView.debugOptions = [.showPhysics]
+//        }
+//        #endif
+//        view = arView
+//        // view.backgroundColor = UIColor(named: "LaunchScreenColor")
+//
+//        setupCleanedImage()
+//
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapHandler(_:)))
+//        view.addGestureRecognizer(tap)
+//
+//        anchorEntity = AnchorEntity()
+//        arView.scene.addAnchor(anchorEntity)
+//
+//        #if DEBUG
+//        if devConfiguration.usingMovingCamera {
+//            let cameraEntity = addPerspectiveCamera()
+//            movingCamera = MovingCamera(camera: cameraEntity)
+//        }
+//        #endif
+//
+//        arScene = ARScene(stageIndex: appStateController.stageIndex,
+//                          assetManager: appStateController.assetManager,
+//                          soundManager: appStateController.soundManager,
+//                          cleanedImageView: cleanedImageView)
+//        arScene.prepare(arView: arView, anchor: anchorEntity,
+//                          camera: movingCamera)
+//
+//        #if !targetEnvironment(simulator)
+//        if !ProcessInfo.processInfo.isiOSAppOnMac {
+//            let config = ARWorldTrackingConfiguration()
+//            arView.session.run(config)
+//        }
+//        #endif
+//
+//        arScene.startSession()
+//    }
 
     override func viewWillDisappear(_ animated: Bool) {
         debugLog("ARViewController: viewWillDisappear(_:) was called.")
@@ -142,25 +205,26 @@ extension ARViewController {
 extension ARViewController: ARSessionDelegate {
     // Monitor the delegation call during development. No function to do in release mode.
     #if DEBUG
-    /// tells that ARAnchors was added cause of like a plane-detection
-    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-        // <AREnvironmentProbeAnchor> can be added for environmentTexturing
-        debugLog("DEBUG: AR-DELEGATE: didAdd anchors: [ARAnchor] : \(anchors)")
-        assertionFailure("The session(_:didAdd) should not be called.")
-    }
-
-    /// tells that ARAnchors were changed cause of like a progress of plane-detection
-    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-        // <AREnvironmentProbeAnchor> can be added for environmentTexturing
-        debugLog("DEBUG: AR-DELEGATE: ARSessionDelegate: session(_:didUpdate) was called. \(anchors) were updated.")
-        assertionFailure("The session(_:didUpdate) should not be called.")
-    }
-
-    /// tells that the ARAnchors were removed
-    func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
-        debugLog("DEBUG: AR-DELEGATE: The session(_:didRemove) was called.  [ARAnchor] were removed.")
-        assertionFailure("The session(_:didUpdate) should not be called.")
-    }
+    //    /// tells that ARAnchors was added cause of like a plane-detection
+    //    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+    //        // <AREnvironmentProbeAnchor> can be added for environmentTexturing
+    //        debugLog("DEBUG: AR-DELEGATE: didAdd anchors: [ARAnchor] : \(anchors)")
+    //        // assertionFailure("The session(_:didAdd) should not be called.")
+    //    }
+    //
+    //    /// tells that ARAnchors were changed cause of like a progress of plane-detection
+    //    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
+    //        // <AREnvironmentProbeAnchor> can be added for environmentTexturing
+    // swiftlint:disable line_length
+    //        debugLog("DEBUG: AR-DELEGATE: ARSessionDelegate: session(_:didUpdate) was called. \(anchors) were updated.")
+    //        // assertionFailure("The session(_:didUpdate) should not be called.")
+    //    }
+    //
+    //    /// tells that the ARAnchors were removed
+    //    func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
+    //        debugLog("DEBUG: AR-DELEGATE: The session(_:didRemove) was called.  [ARAnchor] were removed.")
+    //        // assertionFailure("The session(_:didUpdate) should not be called.")
+    //    }
 
     /// tells that the AR session was interrupted due to app switching or something
     func sessionWasInterrupted(_ session: ARSession) {
