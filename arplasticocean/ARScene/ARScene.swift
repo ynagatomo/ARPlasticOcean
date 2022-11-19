@@ -101,7 +101,7 @@ class ARScene {
             let transform = Transform(scale: SIMD3<Float>([1.0, 1.0, 1.0]),
                      rotation: simd_quatf(),
                      translation: SIMD3<Float>([
-                        Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ) ,
+                        Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ),
                         SceneConstant.collectingYPosition,
                         Float.random(in: -SceneConstant.gazeXZ ... SceneConstant.gazeXZ)]))
             animationPlaybackControllers.append(tappedEntity.move(to: transform,
