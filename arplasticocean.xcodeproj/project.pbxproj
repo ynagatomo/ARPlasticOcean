@@ -171,6 +171,8 @@
 		BAD917E127E4C1AE004B0A9E /* my-MM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "my-MM"; path = "my-MM.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		BAF8219327D6D78A006FFFDA /* cleanup1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cleanup1.mp3; sourceTree = "<group>"; };
 		BAFAF62627D781AD00F192DB /* bonito.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bonito.usdz; sourceTree = "<group>"; };
+		BAFBC3B62929DEB1003EC0C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BAFBC3B72929DEB1003EC0C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 				ko,
 				es,
 				"zh-Hant",
+				pl,
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -646,6 +649,7 @@
 				BA53A1C827E641B60080CB3F /* ko */,
 				BA0EA2F827EAAC4900631C02 /* es */,
 				BA81795727ECA5DC0063E82D /* zh-Hant */,
+				BAFBC3B72929DEB1003EC0C9 /* pl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -663,6 +667,7 @@
 				BA53A1C727E641B60080CB3F /* ko */,
 				BA0EA2F727EAAC4900631C02 /* es */,
 				BA81795627ECA5DC0063E82D /* zh-Hant */,
+				BAFBC3B62929DEB1003EC0C9 /* pl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

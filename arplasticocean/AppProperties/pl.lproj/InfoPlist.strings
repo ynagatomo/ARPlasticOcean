@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR Ocean Plastiku";
+
+/* Bundle name */
+"CFBundleName" = "AR Ocean Plastiku";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Kamera jest wymagana do AR";
+

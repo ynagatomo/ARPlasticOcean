@@ -1,0 +1,66 @@
+/* No comment provided by engineer. */
+"%lld" = "%lld";
+
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "Zezwól na dostęp do aparatu w ustawieniach.";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "Zamknij";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "Dostęp do aparatu jest zablokowany";
+
+/* No comment provided by engineer. */
+"begin" = "Rozpocznij";
+
+/* No comment provided by engineer. */
+"continue" = "Dalej";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "Trzymaj iPhone'a / iPad'a przed klatką piersiową i naciśnij przycisk start.";
+
+/* App Review URL. */
+"https://apps.apple.com/app/id1614059602?action=write-review" = "https://apps.apple.com/app/id1614059602?action=write-review";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "Dostałeś nowy medal.";
+
+/* No comment provided by engineer. */
+"not show again" = "Nie pokazuj ponownie.";
+
+/* Note: damage to sea creatures. */
+"note lives" = "Mogą przypadkowo zjeść plastik lub zaplątać się i stracić życie.";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "Pracuj nad tym, co możesz zrobić, aby ograniczyć, ponownie wykorzystać i poddać recyklingowi plastik.";
+
+/* Note: plastic refuses. */
+"note refuses" = "Plastik pływa w morzu na zawsze.";
+
+/* No comment provided by engineer. */
+"ok" = "Ok";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "Ocean Plastiku";
+
+/* Guide: message */
+"save the ocean lives." = "Uratuj życie oceanu.";
+
+/* Support: title. */
+"support" = "Wsparcie";
+
+/* No comment provided by engineer. */
+"support website" = "Strona wsparcia";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "Dotnij odpadów z plastiku, żeby je zebrać.";
+
+/* Usage: title. */
+"usage" = "Instrukcja";
+
+/* No comment provided by engineer. */
+"write a review" = "Podziel się opinią";
+
