@@ -173,6 +173,8 @@
 		BAFAF62627D781AD00F192DB /* bonito.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bonito.usdz; sourceTree = "<group>"; };
 		BAFBC3B62929DEB1003EC0C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BAFBC3B72929DEB1003EC0C9 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C5707EEE2938656100397304 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C5707EEF2938656100397304 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +494,7 @@
 				es,
 				"zh-Hant",
 				pl,
+				vi,
 			);
 			mainGroup = BAAD372C27C38993005FA7DE;
 			productRefGroup = BAAD373627C38993005FA7DE /* Products */;
@@ -650,6 +653,7 @@
 				BA0EA2F827EAAC4900631C02 /* es */,
 				BA81795727ECA5DC0063E82D /* zh-Hant */,
 				BAFBC3B72929DEB1003EC0C9 /* pl */,
+				C5707EEF2938656100397304 /* vi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -668,6 +672,7 @@
 				BA0EA2F727EAAC4900631C02 /* es */,
 				BA81795627ECA5DC0063E82D /* zh-Hant */,
 				BAFBC3B62929DEB1003EC0C9 /* pl */,
+				C5707EEE2938656100397304 /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -802,7 +807,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
-				DEVELOPMENT_TEAM = J5CY9Q9UP5;
+				DEVELOPMENT_TEAM = QH5T4HK53Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = arplasticocean/Info.plist;
@@ -836,7 +841,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"arplasticocean/Preview Content\"";
-				DEVELOPMENT_TEAM = J5CY9Q9UP5;
+				DEVELOPMENT_TEAM = QH5T4HK53Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = arplasticocean/Info.plist;

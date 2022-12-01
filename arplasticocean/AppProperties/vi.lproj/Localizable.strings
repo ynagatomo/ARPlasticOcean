@@ -1,0 +1,59 @@
+/* No comment provided by engineer. */
+"begin" = "Bắt đầu";
+
+/* No comment provided by engineer. */
+"continue" = "Tiếp tục";
+
+/* Usage: How to begin. */
+"hold your iPhone / iPad in front of your chest and press the start button." = "Giữ iPhone / iPad trước ngực và nhấn nút Bắt đầu";
+
+/* Support page URL. */
+"https://www.atarayosd.com/apo/support.html" = "https://www.atarayosd.com/plastic/app.html";
+
+/* No comment provided by engineer. */
+"medal approval alert" = "Bạn đã đạt được một huy chương mới.";
+
+/* No comment provided by engineer. */
+"not show again" = "Không hiển thị lại.";
+
+/* Note: damage to sea creatures. */
+"note lives" = "Chúng có thể vô tình ăn phải nhựa hoặc bị vướng vào và mất mạng.";
+
+/* Note: reduce, reuse, and recycle. */
+"note recycle" = "Làm việc dựa trên những gì bạn có thể làm, giảm thiểu, tái sử dụng và tái chế.";
+
+/* Note: plastic refuses. */
+"note refuses" = "Nhựa trôi mãi mãi trên biển.";
+
+/* No comment provided by engineer. */
+"ok" = "Ok";
+
+/* Plastic Ocean: title. */
+"plastic ocean" = "Đại dương nhựa";
+
+/* Guide: message */
+"save the ocean lives." = "Cứu sống đại dương.";
+
+/* Support: title. */
+"support" = "Hỗ trợ";
+
+/* No comment provided by engineer. */
+"support website" = "Trang web hỗ trợ";
+
+/* Usage: How to collect refuses. */
+"tap the plastic refuses to collect them." = "Nhấn vào nhựa thải để thu thập chúng.";
+
+/* Usage: title. */
+"usage" = "Hướng dẫn sử dụng app";
+
+/* No comment provided by engineer. */
+"write a review" = "Viết đánh giá";
+
+/* Alert Title: Camera access is not allowed. */
+"ar_camera_notallowed_alert_title" = "Không được phép truy cập camera";
+
+/* Alert Message: Camera access is not allowed. */
+"ar_camera_notallowd_alert_message" = "Hãy cho phép truy cập camera qua Cài đặt.";
+
+/* Alert Button: Camera access is not allowed. */
+"ar_camera_notallowd_alert_ok" = "Đóng";
