@@ -22,6 +22,7 @@ This is an educational iOS app aimed at getting people interested in marine plas
 - Ver.1.1/1.2 (Build 4-8): added some localization support.
 - Ver.1.3 (Build 9): fixed an issue about device rotation on iOS 16/iPadOS 16.
 - Ver.1.4 (Build 10): added Polish support.
+- Ver.1.5 (Build 11): added Vietnamese support. Merged the PR by Dan Tong.
 
 DevView
 
@@ -41,6 +42,7 @@ Licensed Music Files
 - Localizable strings and InfoPlist strings in Spanish was translated by Agustin Mendoza.
 - Localizable strings and InfoPlist strings in Chinese, Traditional was translated by Jack.
 - Localizable strings and InfoPlist strings in Polish was translated by Bartosz Król.
+- Localizable strings and InfoPlist strings in Vietnamese was provided by Dan Tong.
 
 ## Frameworks
 
